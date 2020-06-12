@@ -1,0 +1,132 @@
+@import "variables";
+// general
+app-stars{
+    font-size: .7rem !important;
+}
+
+hr{
+    width: 85%;
+}
+
+
+$ligtColor: #a2a2a2;
+.main-title{
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: #000;
+
+    span{
+        color: #000;
+    }
+}
+
+.second-title{
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 550;
+}
+
+.third-title{
+    color: $ligtColor;
+    font-size: .9rem;
+    font-weight: 450;
+    margin: 0;
+    padding: 0
+}
+
+section{
+    background-color: $whiteColor;
+
+    .brev{
+        position: relative;
+        width: 180px;
+        &::after{
+            opacity: .7;
+            top: -5%;
+            left: 100%;
+            position: absolute;
+            content: '';
+            height: 100%;
+            width: 1.5px;
+            background-color: $ligtColor;
+        }
+    }
+    .sub-title{
+        color: $ligtColor;
+        font-size: 1rem;
+        margin:0 ; 
+        
+        span{
+            width: 40px;
+        }
+    }
+
+    div.desc{
+        width: calc(100% - 340px);
+
+        .main-title{
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #000000;
+            margin-bottom: 0;
+        }
+        
+        h5.main-title{
+            font-size: .9rem;
+            color: gray;
+            opacity: .7;
+            font-weight: 400;
+            span{
+                font-size: .9rem;
+            }
+        }
+        p.desc{
+            line-height: 1.5rem;
+            font-size: .9rem;
+            font-weight: 450;
+        }
+    }
+
+    button.main-header-color{
+        background-color: gainsboro !important;
+        padding: 10px 25px;
+        border-radius: 0;
+        // color: $textLightColor;
+    }
+
+}
+
+// new review
+.review{
+    font-size: 2rem;
+    color: $ligtColor;
+    font-weight: lighter;
+    display: block;
+    margin-bottom: 18px;
+}
+
+// table
+
+table{
+    th{
+        border-bottom: 0;
+        background-color: #f8f8f8;
+        font-size: .7rem ;
+    }
+
+    td{
+        text-align: center;
+        color: $grayColor;
+    }
+
+    .radio{
+        &:hover{
+           cursor: pointer;
+        }
+    }
+
+}
+
+.submit-btn{
+    border-radius: 3px;
+}

@@ -1,0 +1,239 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "framework";
+@import "variables";
+@import '~@angular\material\prebuilt-themes\pink-bluegrey.css';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+// generals
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {  
+    font-size: 16.5px;
+    width: 100%;
+    text-align: center;
+    height: auto;
+}
+  
+.desc{
+    color: $mainHeaderColor;
+    opacity: .8;
+    font-weight: 500;
+}
+
+.main-background{
+    background-color: $mainBackground;
+    border-bottom: 1px solid rgba(87, 154, 211, 0.3);
+    border-top: 1.5px solid rgba(87, 154, 211, 0.3);
+}
+
+.some-margin{
+    margin-left: 20px;
+}
+
+.main-title{
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: rgb(33,37,41)
+}
+
+.desc-light{
+    color: $textLightColor;
+    opacity: .8;
+    font-weight: 500;
+}
+
+.text-light-color{
+    color: $textLightColor;
+    font-weight: 450;
+}
+
+.main-section{
+    padding: 50px 0;
+    // margin-bottom: 50px;
+}
+
+// tools
+
+.main-divider{
+    background-color: $secondColor;
+    height: 40px;
+}
+
+// buttons
+.btn{
+    border-radius: 20px;
+    padding: 5px 6%;
+    color: $mainHeaderColor;
+    font-weight: 450;
+}
+
+.main-btn{
+    background-color: $mainColor;
+    color: #fff;
+    transition: $mainTransition;
+     
+    &:hover{
+        color: $mainHeaderColor;
+    }
+}
+
+.second-btn{
+    background-color: #17517F;
+    color: #fff;
+    padding: 7px 4%;
+    transition: $mainTransition;
+    &:hover{
+        color: $mainColor;
+    }
+}
+
+// colors
+.main-color{
+    color: $mainColor;
+
+    &:hover{
+        color: $mainColor;
+    }
+}
+
+.second-color{
+    color: $secondColor;
+    &:hover{
+        color: $secondColor;
+
+    }
+}
+
+.silver-color{
+    color: $silverColor;
+    &:hover{
+        color: $silverColor;
+
+    }
+}
+
+.main-header-color{
+    color: $mainHeaderColor;
+    &:hover{
+        color: $mainHeaderColor;
+
+    }
+}
+
+.second-header-color{
+    color: $secondHeaderColor;
+    &:hover{
+        color: $secondHeaderColor;
+
+    }
+}
+
+
+.black-header-color{
+    color: $blackHeaderColor;
+    &:hover{
+        color: $blackHeaderColor;
+
+    }
+}
+
+
+.second-light-color{
+    color: $secondLighterColor;
+   &:hover{
+        color: $secondLighterColor;
+    }
+}
+
+.stars-color{
+    color: $starsColor;
+    &:hover{
+        color: $starsColor;
+
+    }
+}
+
+.gray-color{
+    color: $grayColor;
+    &:hover{
+        color: $grayColor;
+
+    }
+}
+
+.lighter-header-color{
+    color: $lighterHeaderColor;
+    &:hover{
+        color: $lighterHeaderColor;
+
+    }
+}
+
+.light-color{
+    color: rgba(200,200,200);
+   &:hover{
+        color: rgba(200,200,200);
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.light-border{
+    border: 1px soli $lightBorder;
+}
+
+// for courses
+.coursers-wrapper, .instructors-wrapper{
+    .owl-carousel.owl-drag .owl-item{
+        // padding-right: 15px;
+        max-width: 350px !important;
+    }
+}
+
+// for insturctor
+.instructors-wrapper{
+    .owl-carousel.owl-drag .owl-item{
+        // padding-right: 15px;
+        max-width: 250px !important;
+    }
+}
+
+
+input:focus, select:focus, textarea:focus{
+    border-color: $silverColor !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+// faq
+
+.mat-panel-title{
+    box-shadow: 0 !important;
+    padding: 0 !important;
+}
+// title
+
+// general
+.main-title{
+    text-transform: capitalize;
+    font-size: 1.7rem;
+    color: $secondColor;
+    font-weight: 400;
+    b{
+        font-weight: 400;
+        color: $mainColor;
+    }
+    span{
+        color: $mainHeaderColor;
+        font-weight: bold;
+    }
+}
+
+.main-title-bold{
+    text-transform: capitalize;
+    font-size: 1.9rem;
+    color: $mainHeaderColor;
+    font-weight: 600;
+    
+}

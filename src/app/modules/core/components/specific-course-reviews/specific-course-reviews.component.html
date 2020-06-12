@@ -1,0 +1,99 @@
+<section class="ph-20 pv-40">
+    <h2 class="main-title mb-20">Customer Reviews</h2>
+
+    <article class="pv-10 d-flex"> 
+        <div class="brev" >
+            <h3 class="sub-title"><span class="d-inline-block" > price </span> <app-stars class="mh-20"></app-stars> </h3>
+            <h3 class="sub-title"><span class="d-inline-block"> value  </span> <app-stars class="mh-20"></app-stars> </h3>
+            <h3 class="sub-title"><span class="d-inline-block"> quality </span> <app-stars class="mh-20"></app-stars> </h3>       
+        </div>
+
+        <div class="ph-30 desc d-inline-block">
+            <h4 class="main-title text-capitalize font-weight-bold"> excellent </h4>
+            
+            <h5 class="main-title mb-20"> Review by 
+                <span class="black-header-color font-weight-bold text-capitalize">Karim Saber</span> on
+                <span class="date">20/10/2020</span>
+            </h5>
+
+            <p class="gray-color desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut beatae quidem omnis! Ullam fuga cum maxime explicabo dicta aliquid suscipit ut similique! Aut esse aliquid vero dolore, voluptas hic commodi.</p>
+        </div>
+    </article>    
+    
+    <hr class="float-left mv-20">   
+    <div class="clearfix"></div>
+    <button class="btn main-header-color">Show All</button>
+
+    <h4 class="pt-40 second-title mb-20">Write Your Own Review</h4>
+
+    <form class="pb-20 row new-review">
+                <div class="black-header-color col-md-5">
+            <h5 class="third-title">You're reviewing <span class="black-header-color"> karim ali hassan saber course</span>    </h5>
+            <h5 class="third-title">How do you rate this product </h5>
+    
+            <table class="mt-10 table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">1 Star</th>
+                    <th scope="col">2 Stars</th>
+                    <th scope="col">3 Stars</th>
+                    <th scope="col">4 Stars</th>
+                    <th scope="col">5 Stars</th>
+                  </tr>
+                </thead>
+                
+               
+                <tbody>
+                  <tr>
+                    <td scope="row">Price</td>
+                    
+                    <td *ngFor="let i of [1,2,3,4,5]">
+                        <input required class="radio" [id]="i" [value]="i" name="price" type="radio">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Value</td>
+                    
+                    <td *ngFor="let i of [1,2,3,4,5]">
+                        <input required class="radio" [id]="i" [value]="i" name="value" type="radio">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Quality</td>
+                    
+                    <td *ngFor="let i of [1,2,3,4,5]">
+                        <input required class="radio" [id]="i" [value]="i" name="quality" type="radio">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    
+        <div class="col-md">
+            <!-- <h5 class="mb-10 third-title"> All Fields are required </h5>
+
+            <div class="third-title row no-gutters">
+                    <div class="pr-10  col-md-6 form-group">
+                        <label for="nickName">Nickname</label>
+                        <input id="nickName" class="form-control" >
+                      </div>
+
+                      <div class="col-md-6 form-group">
+                        <label for="summary">Summary of Your Review</label>
+                        <input type="email" class="form-control" id="summary" placeholder="name@example.com">
+                      </div>  
+            </div> -->
+            <div class="form-group">
+                <label class="review" for="second-title Review">Review</label>
+                <textarea required class="form-control" id="Review" rows="5"></textarea>
+            </div>
+
+              <button class="btn second-btn submit-btn">Submit Review</button>
+        </div>
+        </form>
+</section>
+
+

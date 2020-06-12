@@ -1,0 +1,169 @@
+<div class="main-divider"></div>
+<section class="main-section">
+    <div class="login-wrapper">
+        <div class="row no-gutters">
+            <div class="form-wrapper col-md-6">
+                <h1 class="main-title text-center pt-30 pb-20"> Create New Account</h1>
+
+                <form #userForm="ngForm" (ngSubmit)="signUp(userForm.value)" class="ph-50 text-left">
+                    <section class="wrapper row">
+                        <div class="mb-10 col-md-6 form-groub">
+                            <select 
+                                [ngClass]="{ 'is-invalid': !title.value && title.touched, 'is-valid': title.value && title.touched}"
+                                name="title" ngModel #title="ngModel" required class="custom-select">
+                                <option value="" selected>Title</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+
+                            <div class="alert alert-danger" *ngIf="!title.value && title.touched">
+                                <small>*this field is required </small>
+                            </div>
+                        </div>
+
+                        <div class="mb-10 col-md-6 form-groub">
+                            <select 
+                                [ngClass]="{ 'is-invalid': !job.value && job.touched, 'is-valid': job.value && job.touched}"
+                                name="job" ngModel #job="ngModel" required class="custom-select">
+
+                                <option value="" selected>Profession</option>
+                                <option value="1" >1</option>
+                                <option *ngFor="let job of jobList" [value]="job.name">{{job?.name}}</option>
+                            </select>
+                            
+                            <div class="alert alert-danger" *ngIf="!job.value && job.touched">
+                                <small>*this field is required </small>
+                            </div>
+                        </div>
+
+                        <!-- first name -->
+                        <div class="col-md-6 form-group">
+                            <input 
+                                [ngClass]="{ 'is-invalid': first_name.invalid && first_name.touched, 'is-valid': !first_name.invalid && first_name.touched}"
+                                name="first_name" ngModel #first_name="ngModel" required minlength="3" placeholder="First Name" type="text" class="form-control" id="firstName">
+                            
+                            <div *ngIf="!first_name.valid && first_name.touched" class="" >
+                                <div class="alert alert-danger" *ngIf="first_name.errors.required"> <small> *Your first name is required </small> </div>
+                                <div class="alert alert-danger" *ngIf="first_name.errors.minlength"> <small> *Your First name must be at least 3 characters </small> </div>
+                            </div>
+                        </div>
+
+                        <!-- last name -->
+                        <div class="col-md-6 form-group">
+                            <input 
+                                [ngClass]="{ 'is-invalid': last_name.invalid && last_name.touched, 'is-valid': !last_name.invalid && last_name.touched}"
+
+                                name="last_name" minlength="3" ngModel #last_name="ngModel" required placeholder="LastName" type="text" class="form-control" id="lastName">
+                            
+                            <div *ngIf="!last_name.valid && last_name.touched" >
+                                <div class="alert alert-danger" *ngIf="last_name.errors.required"> <small> *Your last name is required </small> </div>
+                                <div class="alert alert-danger" *ngIf="last_name.errors.minlength"> <small> *Your last name must be at least 3 characters </small> </div>
+                            </div>
+                        </div>
+
+                        <!-- id number -->
+                        <div class="col-md-6 form-group">
+                            <input pattern="^[1-9]\d*$" required 
+                                [ngClass]="{ 'is-invalid': id_number.invalid && id_number.touched, 'is-valid': !id_number.invalid && id_number.touched}"
+
+                                name="id_number" ngModel #id_number="ngModel" placeholder="ID Number" type="number" class="form-control" id="idNumber">
+
+                            <div class="alert alert-danger" *ngIf="id_number.errors?.required && id_number.touched"> <small> *Your id number is required </small> </div>
+                            <div class="alert alert-danger" *ngIf="id_number.errors?.pattern && id_number.touched"> <small> *positive numbers only </small> </div>
+                        </div>
+
+                        <!-- medical number -->
+                        <div class="col-md-6 form-group">
+                            <input pattern="^[1-9]\d*$"
+                                [ngClass]="{ 'is-invalid': medical_number.invalid && medical_number.touched, 'is-valid': !medical_number.invalid && medical_number.touched}"
+                                name="medical_number" ngModel #medical_number="ngModel" required placeholder="Medicl Number" type="number" class="form-control" id="medicalNumber">
+                        
+                            <div class="alert alert-danger" *ngIf="medical_number.errors?.required && medical_number.touched"> <small> *Your medical number is required </small> </div>
+                            <div class="alert alert-danger" *ngIf="medical_number.errors?.pattern && medical_number.touched"> <small> *positive numbers only </small> </div>
+                        </div>
+
+                        <!-- gender -->
+                        <div class="col-md-6 gender-wrapper mv-10">
+                            <input checked [(ngModel)]="gender" id="male" type="radio" value="male" name="gender" class="radio">
+                            <label for="male"> male</label>
+
+                            <input [(ngModel)]="gender" id="female" type="radio" value="femmele" name="gender" class="radio">
+                            <label  for="female"> female</label>
+                        </div>
+
+
+                        <!-- phone -->
+                        <div class="col-md-6 form-group">
+                            <input 
+                                [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
+                                required name="phone" pattern="[0-9 ]{7,}" ngModel #phone="ngModel" placeholder="Cell Phone" type="number" class="form-control" id="phone">
+                      
+                            <div *ngIf="!phone.valid && phone.touched" >
+                                <div class="alert alert-danger" *ngIf="phone.errors.required"> <small> *Your cell phone required </small> </div>
+                                <div class="alert alert-danger" *ngIf="phone.errors.pattern"> <small> type a valid phone </small> </div>
+                            </div>
+                        </div>
+
+                        <!-- email -->
+                        <div class="col-12 form-group">
+                            <input required email
+                                [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched}"
+                                name="email" ngModel #email="ngModel" placeholder="E-mail" type="email" class="form-control" id="email">
+                            
+                            <div *ngIf="!email.valid && email.touched">
+                                <div class="alert alert-danger" *ngIf="email.errors.required"> <small> * your email is required </small>  </div>
+                                <div class="alert alert-danger" *ngIf="email.errors.email"> invalid email </div>
+                            </div>
+
+                          <div class="alert alert-danger" *ngIf="emailExists">this email is already exist </div>
+                        </div>
+
+                        <!-- password -->
+                        <div class="col-md-12 form-group">
+                            <input required
+                                [ngClass]="{ 'is-invalid': password.touched && (password.invalid || passwordError(password.value)) , 'is-valid': !password.invalid && password.touched && !passwordError(password.value)}"
+                                name="password" ngModel #password="ngModel" placeholder="Password" type="password" class="form-control" id="password"
+                            >
+                        
+                            <div class="alert alert-danger" *ngIf="passwordError(password.value) && password.touched"> <small> {{passwordErrorMessage}} </small> </div>
+                        </div>
+
+                        <!-- confirm password -->
+                        <div class="col-md-12 form-group">
+                            <input required 
+                            [ngClass]="{ 'is-invalid': confirm_password.touched && (confirmPasswordError(confirm_password.value) || !isPasswordMatches(password.value, confirm_password.value)) , 'is-valid': confirm_password.touched && !confirmPasswordError(confirm_password.value) && isPasswordMatches(password.value, confirm_password.value)}"
+                                name="confirm_password" ngModel #confirm_password="ngModel" placeholder="Confirm password" type="password" class="form-control" id="confirm_password">
+                                    
+                            <div class="alert alert-danger" *ngIf="!isPasswordMatches(password.value, confirm_password.value)  && confirm_password.touched && !confirmPasswordError(confirm_password.value)"> <small> passwords must be identical </small> </div>
+                            <div class="alert alert-danger" *ngIf="confirmPasswordError(confirm_password.value) && confirm_password.touched"> <small> {{confirmPasswordErrorMessage}} </small> </div>
+                        </div>
+                    </section>
+
+                    <div class="action mt-20">
+                        <a routerLink="/login" class="ph-40 float-left submit btn second-btn">Back</a>
+                        <button type="submit" class="ph-40 float-right submit btn second-btn">Next</button>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <p class="terms ligth-color pt-20 text-center silver-color">By Clicking the 'Sign Up' button, you
+                        confirm that you confirm our
+                        <br>
+                        <a class="second-color" routerLink="/signup">Terms Of Use</a> and
+                        <a class="second-color" routerLink="/signup">Privacy Policy</a>
+                    </p>
+
+                    <hr>
+                    <p class="ligth-color pt-20 text-center">Have an account? 
+                        <a class="main-header-color" routerLink="/login">Log In</a>
+                    </p>
+                </form>
+            </div>
+
+            <div class="col-md-6 p-0">
+                <img class="img-fluid" src="assets/images/auth/auth.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,59 @@
+@import "variables";
+footer{
+    margin-top: 50px;
+    .upper{
+        padding: 20px 0;
+    }
+
+    .title{
+        color: $mainHeaderColor;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .item-link{
+        color: rgb(125, 133, 151) !important;
+        margin-bottom: 12px ;
+        display: inline-block;
+        transition: $mainTransition;
+
+        &:hover{
+            transform: scale(1.2);
+        }
+
+        &.icon{
+            padding: 10px 30px;
+            width: 170px;
+            color: white !important;
+            background-color: $mainHeaderColor;
+            border-radius: 5px;
+            
+            &:hover{
+                transform: scale(1.1);
+            }
+
+        }
+    }
+
+    .bottom{
+        .copy{
+            color: $textLightColor;
+            font-weight: 450;
+            a{
+                color: $secondColor
+            }
+        }
+
+        .goto{
+            color: $textLightColor;
+            font-weight: 450;
+
+        }
+    }
+}
+
+// general 
+li{
+    display: block;
+}

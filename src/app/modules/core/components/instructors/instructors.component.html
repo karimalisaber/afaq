@@ -1,0 +1,22 @@
+<section class="slider" style="background: url('assets/images/core/instructors-slider.png');">
+    <div class="container">
+        <h1 class="title">instructors</h1>
+    </div>
+</section>
+
+<div class="container">
+    <h2 class="full-title mv-20 second-color">
+        <i class="fas fa-home "></i> <span class="mh-20"> Home / instructors</span>
+    </h2>
+</div>
+
+<!-- start instructors -->
+<section class="pb-60 main-section main-background">
+    <div class="container">
+        <div *ngFor="let instructor of instructros" class="instructors-wrapper">
+            <app-instructor-item *ngIf="instructor" [instructor]="instructor" ></app-instructor-item> <!-- the component has the responsibility of col -->
+        </div>
+    </div>
+</section>
+
+<!-- end instructors -->

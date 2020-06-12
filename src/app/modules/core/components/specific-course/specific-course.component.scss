@@ -1,0 +1,215 @@
+@import "variables";
+// general -----
+$ligtColor: #a2a2a2;
+
+// .active{
+//   background-color: #8FBCE1 !important;
+//   color: #fff;
+// }
+.main-paragraph {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.custom-width{
+  display: inline-block;
+  width: 150px;
+}
+.second-paragraph {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7rem;
+}
+.main-title {
+  font-size: 1.5rem;
+  font-weight: 450;
+}
+.second-title {
+  color: $blackHeaderColor;
+  font-size: 1.1rem;
+  font-weight: 550;
+}
+
+.third-title {
+  color: $ligtColor;
+  font-size: 0.9rem;
+  font-weight: 450;
+  margin: 0;
+  padding: 0;
+}
+
+.fake-price {
+  font-weight: 400;
+  opacity: 0.5;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+
+.second-btn {
+  min-width: 120px;
+  border-radius: 10px;
+}
+
+.fa-heart{
+    color: $whiteColor;
+    background-color: $secondHeaderColor;
+    padding: 6px;
+    margin: 0 5px;
+    position: relative;
+    top: 5px;
+    border-radius: 3px;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+.real-price {
+  color: #018bc8;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+hr {
+  width: 60%;
+  height: 10px;
+}
+
+
+// header 
+
+.header{
+  border: 1px solid $mainHeaderColor;
+  border-radius: 12px;
+  padding: 20px 40px 40px 10px;
+
+  .main-img{
+    height: 320px;
+    width: 100%;  
+  }
+
+  .stars{
+    font-size: .6rem;
+    margin-bottom: 11px;  
+    .fas{
+      margin-right: 3px;
+    }
+
+    p{
+      font-size: 1.2rem;
+    }
+  }
+
+  .socials {
+    padding: 0 10%;
+    h5 {
+      font-size: 1.4rem;
+      color: rgb(81, 92, 111);
+      margin-right: 10px;
+      margin-left: 10px;
+      padding-top: 4px;
+    }
+  
+    .fab {
+      margin-left: 4px;
+      padding: 7px;
+      color: #fff;
+      border-radius: 4px;
+    }
+  
+    .fa-instagram {
+      background-color: #a47a5e;
+    }
+  
+    .fa-facebook-f {
+      background-color: #39599f;
+    }
+  
+    .fa-twitter {
+      background-color: #40bff5;
+    }
+  
+    .fa-linkedin-in {
+      background-color: #328dd3;
+    }
+  }
+
+
+  
+  
+  // start right section
+  .course-name {
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: rgb(33, 37, 41);
+  }
+  
+  .enroll-btn{
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .purchased-btn{
+    font-size: 1rem;
+    font-weight: lighter;
+    padding: 5px 40px;
+    background-color: $secondHeaderColor;
+    border-radius: 20px;
+
+    &:hover{
+      cursor: initial;
+    }
+  }
+}
+
+
+.details {
+  p.black-header-color {
+    font-size: 1.4rem;
+    margin-left: 6px;
+    margin-right: 6px;
+    opacity: 0.9;
+  }
+
+  .live{
+      color: #058DC9;
+      font-size: 1.2rem;
+      font-weight: bold;
+  }
+}
+
+
+
+
+// start content
+.content-wrapper {
+  $mainBorder: 1px solid
+    rgba(
+      $color: $grayColor,
+      $alpha: 0.5,
+    );
+  .control-wrapper {
+    .control-item {
+      border: $mainBorder;
+      border-radius: 0;
+      width: 140px;
+      color: $blackHeaderColor;
+      background-color: #fff;
+      border-bottom: 0;
+      box-shadow: 0px 0px 1px 0px #000;
+    
+      &.active{
+          background-color: $secondColor;
+          color: #fff;
+      }
+    }
+
+    li:nth-child(2) .control-item {
+      margin: 0 8px;
+    }
+  }
+
+  .content {
+    border: $mainBorder;
+    box-shadow: 0px 0px 1px 0px #000;
+  }
+}

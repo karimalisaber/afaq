@@ -1,0 +1,10 @@
+<div class="header text-left mb-40">
+    <h2 class="silver-color m-0">Calender</h2>
+    <h2 class="date silver-color">{{date | date:'mediumDate'}}</h2>
+</div>
+
+<div *ngFor="let i of [6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6]" class="row no-gutters silver-color hour">
+    <h3 class="col-md-1">{{i}} <br> <span>AM</span></h3>
+    <hr class="col-md p-0">
+</div>
+

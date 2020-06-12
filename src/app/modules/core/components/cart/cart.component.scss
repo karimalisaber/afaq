@@ -1,0 +1,27 @@
+table{
+    color: rgba(128,128,128);
+    background-color: #fff;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    border-color: rgba(128,128,128);
+}
+.remove{
+    font-size: 1.2rem;
+    padding: 0 8px;
+
+    background-color: transparent;
+    border: 0;
+}
+
+.btn{
+    font-size: .9rem;
+    margin-top: 11px;
+}
+
+.capital{
+    text-transform: capitalize;
+}
+
+.upper{
+    text-transform: uppercase;
+}

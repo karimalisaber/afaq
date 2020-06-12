@@ -1,0 +1,56 @@
+<div class="main-divider"></div>
+<section class="main-section">
+    <div class="login-wrapper">
+        <div class="row no-gutters">
+            <div class="col-md-6 form-wrapper">
+                <h1 class="main-title text-center pt-30 pb-80"> Login</h1>
+
+                <form #userForm="ngForm" (ngSubmit)="login(userForm.value)">
+                    <div class="form-group row no-gutters">
+                      <label for="email" class="text-center col-sm-4 col-form-label">E-mail</label>
+                      <div class="col-sm-8">
+                        <input required email name="email" ngModel type="email" #email="ngModel" class="form-control" placeholder="enter Your email" id="email">
+                      </div>
+                    </div>
+
+                    
+                    <div *ngIf="!email.valid && !validInput">
+                      <div class="alert alert-danger" *ngIf="email.errors.required"> <small> * please enter your email </small></div>
+                      <div class="alert alert-danger" *ngIf="email.errors.email"> <small> * please enter valid email </small></div>
+                    </div>
+
+                    <div class="form-group row no-gutters">
+                      <label for="inputPassword" class="text-center col-sm-4  col-form-label">Password</label>
+                      
+                      <div class="input-wrapper col-sm-8 col">
+                        <input required name="password" ngModel #password="ngModel" type="password" class="form-control" placeholder="Your password" id="password">
+                        <i *ngIf="passwordVisibile" (click)="togglePasswordVisibility()" class="fas fa-eye-slash"></i> 
+                        <i *ngIf="!passwordVisibile" (click)="togglePasswordVisibility()" class="fas fa-eye"></i> 
+                      </div>
+                    </div>  
+                      <div *ngIf="!password.valid && !validInput">
+                        <div class="alert alert-danger" *ngIf="password.errors.required"> <small> * please enter your password </small></div>
+                      </div>
+
+                  <div class="action mt-40">
+                    <a  routerLink="/forget_password" class="main-header-color pt-20 d-inline-block fotget-password small-header"> Forget Password? </a>
+
+                    <button type="submit" class="submit btn second-btn">LOGIN</button>
+
+                    <h5 class="ligth-color pt-20 d-inline-block float-right small-header">No Account? <a class="main-header-color" routerLink="/signup">Sign Up</a></h5>
+                    <div class="clearfix"></div>
+                  </div>
+                </form>
+
+                
+              <div class="mt-20 mh-20 server-error-message alert alert-danger" *ngIf="userForm.valid && loginError"> 
+                {{errorMessage}}
+              </div>
+            </div>
+            
+            <div class="col-md-6 p-0">
+                <img class="img-fluid" src="assets/images/auth/auth.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>

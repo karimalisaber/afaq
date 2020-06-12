@@ -1,0 +1,24 @@
+
+.date{
+    font-size: 1.7em;
+    color: #000;
+    font-weight: 550;
+}
+
+.hour{
+    h3{
+        font-size: 1.1rem;
+        font-weight: 550;
+        span{
+            display: inline-block;
+            margin-left: -6px;
+            position: relative;
+            top: -9px;
+        }
+    }
+    hr{
+        height: 1.1rem;
+        right: 0;
+        padding: 0;
+    }
+}

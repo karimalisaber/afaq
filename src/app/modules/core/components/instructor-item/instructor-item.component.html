@@ -1,0 +1,15 @@
+<div *ngIf="instructor" class="d-inline-block instructor">
+    <img class="img-fluid" src="assets/images/5.jpg" alt="">
+
+    <a [routerLink]="['/instructor', instructor.id]" class="details row no-gutters">
+        <div class="mr-auto">
+            <h3 class="name">{{instructor?.user_data?.first_name}} {{instructor?.user_data?.last_name}}</h3>
+
+            <h3 class="position">{{instructor?.user_data?.title}} & {{instructor?.user_data?.job}}</h3>
+        </div>
+
+        <p class="rate">
+            4.5
+        </p>
+    </a>
+</div>

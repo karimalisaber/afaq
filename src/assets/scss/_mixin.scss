@@ -1,0 +1,33 @@
+@mixin img-cover {
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    
+}
+
+@mixin  abs-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin virtical-abs-center{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin overLay($overLayColor) {
+    width: 100%;
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        opacity: .5;
+        background-color: $overLayColor;
+    }
+}
+  

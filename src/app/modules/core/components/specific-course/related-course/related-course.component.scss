@@ -1,0 +1,56 @@
+@import "variables";
+// related courses
+
+.related-courses-wrapper {
+    background-color: $whiteColor;
+    padding: 35px 20px;
+  
+    .course{
+        position: relative;
+        &::after{
+            height: 100%;
+            content: '';
+            width: 1px;
+            left: 98%;
+            top: 0;
+            position: absolute;
+            background-color: #b8b8b8;
+        }
+       
+        &:last-child::after{
+            border: 0;
+            height: 0;
+            width: 0;
+        }
+    }
+      .course-img {
+        height: 130px;
+        width: 120px;
+      }
+  
+      .course-details {
+          position: relative;
+          
+          .thrid-title {
+              margin: 8px;
+              font-size: 0.9rem;
+              font-weight: 400;
+              color: #494949;
+              
+          }
+  
+          .date{
+              position: absolute;
+              bottom: 0;
+              color: #b8b8b8;
+              font-size: 1rem;
+              font-weight: 400;
+              svg{
+                  margin: 0 8px;
+                  width: 35px ;
+                  height: 15px;
+              }
+          }
+    }
+  }
+  

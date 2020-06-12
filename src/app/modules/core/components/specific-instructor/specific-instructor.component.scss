@@ -1,0 +1,39 @@
+img{
+    margin-top: 8px;
+    height: 310px;
+}
+
+h4{
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: rgb(33,37,41)
+}
+
+p.desc{
+    color: rgb(84,84,84);
+    line-height: 1.5rem;
+}
+
+
+.reviews-wrapper{
+    margin-top: -12px;
+
+    p{
+        padding: 10px 30px;
+        background-color: #fff;
+        font-size: 1.2rem;
+        color: rgb(81,92,111);
+    }
+
+    .btn{
+        width: 100%;
+        border-radius: 0;
+        background-color: rgba(87,154,211,.5);
+        text-align: start;
+       
+        &:hover{
+            background-color: rgba(87,154,211,1);
+            color: #fff;
+        }
+    }
+}

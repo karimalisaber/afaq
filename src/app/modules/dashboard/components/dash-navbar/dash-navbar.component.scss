@@ -1,0 +1,75 @@
+@import "variables";
+nav{
+border-bottom: 1px solid $borderBlueColor;
+
+.nav-item{
+    line-height: 60px;
+    font-size: 1.1rem;
+    margin: 0 10px;
+    text-transform: uppercase;
+    .nav-link{
+        color: $grayColor;
+    }
+
+    .nav-link.active{
+        color: $mainColor;
+    }
+
+    &.lang{
+        .nav-link{
+            color: $secondColor;
+        }
+    }
+
+    .manger-name{
+        margin: 0 15px;
+
+        font-size: 1.2rem;
+        // color: $purblueColor;
+        font-weight: 500;
+        span{
+            color: $grayColor;
+            font-size: .8rem;
+        }
+        // padding-top: 30px;
+    }
+
+
+    .shop{
+        $dashHeight: 50px;
+        width: 50px;
+        height: $dashHeight;
+        border: 1px solid $lightBorder;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        .fa-shopping-cart{
+            line-height: $dashHeight;
+            color: $grayColor;
+            opacity: .8;
+
+        }
+    
+        .badge{
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            color: #fff;
+            background-color: $mainColor;
+            border-radius: 3px;
+        }
+    }
+
+    img.manger{
+        border: 3px solid $borderBlueColor;
+    }
+}
+}
+
+.shop-wrapper{
+    margin-left: 8rem !important;
+    margin-right: 25px !important;
+}

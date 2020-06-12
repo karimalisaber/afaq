@@ -1,0 +1,139 @@
+@import "variables";
+
+.dash-top{
+    .action{
+        margin-top: 20px;
+        margin-right: 15px;
+        width: 322px;
+        .take-course{
+            font-size: 1.3rem;
+        }
+
+        .new-course{
+            color: #EC4E6E;
+            display: flex;
+            font-size: 1.2rem;
+            font-weight: 450;
+            align-items: center;
+
+            .add{
+                
+                border-radius: 50%;
+                color: #fff;
+                background-color: #EC4E6E;
+                // display: inline-block;
+                width: 30px;
+                height: 30px;
+                font-size: 1.3rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }   
+        }
+    }
+    .courses{
+        flex-grow: 1;
+
+        .course-wrapper{
+            border-radius: 15px;
+            background-color: rgba(87, 154, 211, 0.65);
+            padding: 30px 10px 40px;
+
+            .course-name{
+                font-size: .8rem;
+                color: #fff;
+                line-height: 1.2rem;
+                margin-bottom: 15px;
+            }
+
+            .rounded-small-img{
+                width: 35px;
+                height: 35px;
+                // line-height: 30px;
+                font-weight: 550;
+                font-size: .7rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: -10px;
+                border: 2px solid #fff;
+                background-color: #fff;
+                
+            }
+
+            img.rounded-small-img:first-of-type{
+                margin-left: 0;
+            }
+
+            span.rounded-small-img{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+   
+    .progress{
+        height: 8px;
+        .progress-bar{
+            background-color: $mainColor;
+        }
+    }
+    }
+}
+
+//others
+.course-compeletion{
+    font-weight: 550;
+    margin-bottom: 3px;
+}
+
+h3.instructor{
+    font-weight: 550;
+    font-size: .9rem;
+}
+
+
+// all courses
+.header{
+    font-size: .9rem;
+    font-weight: 550;
+}
+.item{
+    margin-bottom: 12px;
+    border-radius: 4px;
+    border: 1px solid $borderBlueColor;
+    padding: 4px 5px;
+    display: flex;
+    align-items: center;    
+    font-weight: 550;
+    .course-img{
+        width: 55px;
+        height: 55px;
+        border-radius: 30%;
+    }
+
+    .in-progress{
+        color: $mainColor;
+        background-color: #FFF3E9;
+        display: inline-block;
+        border-radius: 6px;
+        font-weight: 570;
+    }
+
+    .open{
+        color: $secondColor;
+        background-color: $mainBackground;
+    }
+}
+
+
+// admin
+
+.admin{
+
+    .system-header{
+        font-weight: 550;
+    }
+
+    
+}

@@ -1,0 +1,29 @@
+@import "variables";
+app-admin-navbar{
+    z-index: 1000;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.content{
+    margin-top: 92px;
+    margin-bottom: -50px;
+}
+
+app-admin-sidebar{
+    border: 1px solid $borderBlueColor;
+    width: 240px;
+    min-height: 100vh;
+}
+
+app-dash-home{
+    width: calc(100% - (240px));
+    padding: 30px 20px;
+}
+
+app-footer{
+    margin-top: -20px;
+}

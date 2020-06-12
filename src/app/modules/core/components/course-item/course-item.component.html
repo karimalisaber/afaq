@@ -1,0 +1,32 @@
+<div class="card-wrapper">
+<div *ngIf="course" class="card" [ngClass]="{'mh-10': home}" >
+    <button class="btn event course">course</button>
+    <img src="assets/images/course.jpg" class="card-img-top" alt="course-number">
+    <div class="card-body">
+      <div class="card-date row no-gutters">
+        <p class="date"> 06 Apr 2020  <span>To</span>  07 Apr 2020 </p>
+        <button class="main-btn red btn mh-0">Free</button>
+      </div>
+
+      <p class="desc">{{course.name}}</p>
+
+      <div class="rate row no-gutters">
+        <div class="stars row no-gutters">
+            <div class="d-inline fill-starts">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+
+            <p class="numbers text-light-color">(105151)</p>
+        </div>
+
+        <p class="views text-light-color ml-auto">
+            2,1545154 views
+        </p>
+      </div>
+    </div>
+  </div>
+  </div>

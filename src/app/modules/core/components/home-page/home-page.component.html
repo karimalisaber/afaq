@@ -1,0 +1,134 @@
+<section class="static-slider">
+    <div class="slider" style="background: url('assets/images/core/slider.png');">
+        <div class="add">
+            <h1 class="title"> Learn Somthing New</h1>
+            <h2 class="sub-title">Everyday AnyWhere AnyTime</h2>
+            <p class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae tempora molestiae et
+                aliquam officiis rerum deserunt fuga ipsum repellat animi recusandae</p>
+            <div class="btn main-btn">
+                only 600 SR
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- start coursers section -->
+<section class="coursers main-section">
+    <div class="container">
+        <div class="title-wrapper row pb-50">
+            <h2 class="p-0 main-title col-md-7"> Live Events <b>& </b> <span>Courses</span> </h2>
+
+            <a routerLink="courses" class="btn all-coursers">Browse All</a>
+        </div>
+
+        <div>
+
+            <owl-carousel-o class="coursers-wrapper" [options]="CarsoulOptions">
+                <ng-template *ngFor="let course of courses" carouselSlide>
+                    <app-course-item [home] ="true" [course] = "course" ></app-course-item>
+                </ng-template>
+                <!-- load ng-template -->
+            </owl-carousel-o>
+        </div>
+    </div>
+</section>
+<!-- end coursers section -->
+
+<!-- start feedback -->
+<section class="feedback" id="feedback">
+    <div class="row no-gutters">
+        <div class="img-wrapper col-md-4" style="background: url('assets/images/core/feedback.png');"></div>
+
+        <div class="col main-section mh-30">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="title">Why You Should</h2>
+                    <h3 class="sub-title first pb-20">Choose Us</h3>
+
+                    <p class="desc-light gray-color pb-10">
+                        Lorem ipsum dolo sequi doloremque provident fugit facere maxime, quibusdam molestiae asperiores
+                        dignissimos qui, iusto accusamus! Dicta ea voluptates illum rem sint, facere saepe.
+                    </p>
+
+                    <div class="features ph-40">
+                        <p class="desc"><i class="mr-10 fas fa-check"></i> 2400+ Online Coursers</p>
+                        <p class="desc"><i class="mr-10 fas fa-check"></i> Epert Instruction</p>
+                        <p class="desc"><i class="mr-10 fas fa-check"></i> Unlimited Access</p>
+                        <p class="desc"><i class="mr-10 fas fa-check"></i> Compfortable Prices</p>
+                        <p class="desc"><i class="mr-10 fas fa-check"></i> Top Instructors</p>
+                        <p class="desc"><i class="mr-10 fas fa-check"></i> Review System</p>
+                    </div>
+                </div>
+                <div class="second-lighter-color col-md-6">
+                    <h2 class="title">Enroll Our Members</h2>
+                    <h3 class="sub-title mb-50">Feedback</h3>
+
+                    <div class="clients-feedback pb-50">
+                        <blockquote class="desc-light  mt-50 pb-20 ph-20 text-center">
+                            <i class="fas fa-quote-left"></i>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque alias exercitationem voluptas
+                            quia ratione cum, quibusdam quo totam nemo? Nesciunt optio deserunt reprehenderit impedit
+                            illo earum accusamus. Qui, rerum cum?
+                        </blockquote>
+
+                        <div class="img-quote-wrapper text-center">
+                            <img src="assets/images/7.jpg" class="rounded-small-img" alt="">
+
+                            <p class="desc name pt-20">Karim Saber</p>
+                            <p class="desc second-light-color position">CEO, NRD Group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end feedback -->
+
+<!-- start viedo-add section -->
+<section  class="main-section main-background" id="viedo-add">
+    <div class="video-wrapper">
+        <div class="video">
+            <video controls class="embed-responsive-item">
+                <source src="assets/videos/video.mp4">
+            </video>
+        </div>
+        <!-- <img src="assets/images/core/video.png" alt="course-video"> -->
+    </div>
+</section>
+<!-- end viedo-add section -->
+
+<!-- start instructor section  -->
+<section class="instructors main-section">
+    <div class="container">
+        <div class="title-wrapper row no-gutters mb-30">
+            <h2 class="main-title mr-auto"> Top Rated <span>Instructors</span> </h2>
+
+            <i id="fas_long" class="not-active fas fa-long-arrow-alt-left mr-10"></i>
+            <a routerLink="instructors">
+                <i class="fas fa-long-arrow-alt-right "></i>
+            </a>
+
+            <!-- <a routerLink="courses" class="btn all-coursers">Browse All</a> -->
+        </div>
+
+        <owl-carousel-o #instructor class=" instructors-wrapper" [options]="CarsoulInstructorsOptions">
+            <ng-template *ngFor="let instructor of instructors" carouselSlide>
+                <app-instructor-item  [instructor] ="instructor"></app-instructor-item>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</section>
+<!-- end instructor section  -->
+
+<!-- start subscribe section -->
+<section class="subscribe main-background main-section">
+    <h2 class="main-title text-center"> to get latest news & futher update </h2>
+
+    <div class="text-center sub-title-wrapper">
+        <h3 class="subtitle main-title-bold mr-40 d-inline-block">subscribe our newsletter</h3>
+        <button class="second-btn btn">subscribe</button>
+    </div>
+</section>
+<!-- end subscribe section -->

@@ -1,0 +1,77 @@
+<app-component-title 
+[title]="'live events & course list'" 
+[sub-title]="'cardiovascular pharmacology'" 
+src="'assets/images/core/about-slider.png'">
+</app-component-title>
+
+<div class="main-background main-section">
+        <div class="container">
+            <header class="header row">
+            <div class="col-md-5">
+                <img class="main-img" src="assets/images/core/instructor.png" alt="">
+                <div class="d-flex mt-20 socials">
+                    <h5>Share this: </h5>
+
+                    <a href="" class="social-item"><i class="fab fa-instagram"></i></a>
+                    <a href="" class="social-item"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" class="social-item"><i class="fab fa-twitter"></i></a>
+                    <a href="" class="social-item"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- right section  -->
+            <div class="gray-color col-md-7 details">
+                <h2 class="course-name mv-20 text-capitalize">Course Name <span class="live float-right">live</span></h2>
+
+                <!-- rate -->
+                <div class="stars row no-gutters">
+                    <div class="stars-color d-inline fill-starts">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class= "black-header-color text-light-color">3 Review(s) | Add your Review </p>
+                </div>
+        
+                <p class="main-paragraph p-0"> <span class="custom-width"> Availability: </span>  <span class="main-color">only course 24 april</span></p>
+                <p class="main-paragraph p-0"><span class="custom-width"> Course Code: </span>  <span class="">ps-60</span></p>
+   
+                <hr class="float-left mv-10">
+                <div class="clearfix"></div>
+
+                <p class="second-paragraph p-0 mb-40">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque perspiciatis aperiam vero est eum, necessitatibus libero inventore mollitia, sapiente voluptatibus delectus qui corrupti possimus repudiandae explicabo facilis praesentium, nam architecto?</p>
+                
+                <div class="row no-gutters">
+                    <span class= "pt-10 main-paragraph fake-price">RS 99.99 </span>
+                    <span class="pt-10 main-paragraph mh-20 real-price">RS 99.99 </span>    
+
+                    <div class="ml-auto">
+                        <!-- <button class="enroll-btn ml-auto btn second-btn mh-30"> Enroll Now</button> -->
+                        <span class=" ml-auto btn purchased-btn second-btn mh-30"> Purchased</span>
+    
+                        <i class="fas fa-heart"></i>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+        </header>
+        
+        <section class="black-header-color content-wrapper main-section">
+            <ul class="control-wrapper d-flex">
+                <li><button routerLinkActive="active" routerLink="/course/1/description" class="text-left control-item btn">Description</button></li>
+                <li><button routerLinkActive="active" routerLink="content" class="text-left control-item btn">Content</button></li>
+                <li><button routerLinkActive="active" routerLink="reviews" class="text-left control-item btn">Reviews(10)</button></li>
+            </ul>
+
+            <article class="content">
+                <router-outlet></router-outlet>
+            </article>
+        </section>
+        
+        <app-related-course></app-related-course>
+    </div>
+</div>

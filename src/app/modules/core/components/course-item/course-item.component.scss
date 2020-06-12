@@ -1,0 +1,88 @@
+@import "variables";
+@import "mixin";
+
+.card-wrapper {
+  padding-right: 0;
+  &:first-of-type {
+    padding-left: 0;
+  }
+}
+
+.card {
+  padding: 0;
+
+  border-radius: 16px;
+  border: 1.5px solid $secondColor;
+
+  .event {
+    padding-right: 25px;
+    padding-left: 25px;
+    position: absolute;
+    top: -1.5px;
+    left: -1.5px;
+    background-color: $secondColor;
+    color: #fff;
+    border-radius: 15px;
+
+    &.course {
+      background-color: #7760dc;
+    }
+  }
+
+  img {
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+  }
+  .card-body {
+    padding: 20px 12px 15px;
+    margin-bottom: 0px;
+    .card-date {
+      height: 30px;
+      color: $textLightColor;
+      font-size: 0.7rem;
+      margin-bottom: 25px;
+      p.date {
+        color: rgb(125, 133, 151);
+        font-weight: 450;
+        span {
+          margin: 0 7px;
+        }
+      }
+
+      .main-btn {
+        font-size: .7rem;
+        margin-left: auto;
+        margin-top: -1px;
+        height: 25px;
+        padding: 1px 20px !important;
+
+        &.red{
+            background-color: rgb(224, 71, 78);
+
+        }
+      }
+    }
+
+    .desc {
+        height: 58px;
+        font-size: 1.2rem;
+        font-weight: 550;
+        line-height: 1.8rem;
+        margin-bottom: 20px;
+        color: $secondLighterColor;
+    }
+
+    .fa-star {
+      color: $mainColor;
+    }
+  }
+
+  .rate{
+    font-size: .7rem;
+ 
+    *{ 
+        color: rgb(125, 133, 151);
+    }
+  }
+
+}

@@ -1,0 +1,27 @@
+@import "mixin";
+@import "variables";
+.slider{
+    height: 250px;
+    @include overLay($overLayColor);
+    .title{
+        position: relative;
+        z-index: 1000000000;
+        line-height: 250px;
+        color: #FF6969;
+        font-size: 3rem;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+
+    .full-title{
+        text-transform: capitalize;
+ 
+        span{
+            font-size: 1rem;
+        }
+
+        .fa-home{
+            font-size: 1.3rem;
+        }
+    }
+}
