@@ -237,3 +237,13 @@ input:focus, select:focus, textarea:focus{
     font-weight: 600;
     
 }
+
+// helpers 
+
+.mat-expansion-indicator::after{
+    color: #000;
+}
+// view specific course
+.main-wrapper .mat-expansion-panel-body{
+    padding: 0 !important;  
+}

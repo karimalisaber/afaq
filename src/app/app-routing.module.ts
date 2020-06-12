@@ -18,6 +18,7 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { AboutComponent } from './modules/core/components/about/about.component';
 import { SpecificCourseComponent } from './modules/core/components/specific-course/specific-course.component';
 import { AdminMainComponent } from './modules/admin/components/admin-main/admin-main.component';
+import { ViewSpecificCourseComponent } from './modules/core/components/view-specific-course/view-specific-course.component';
 
 
 const routes: Routes = [
@@ -29,10 +30,10 @@ const routes: Routes = [
     {path: 'courses', component: CoursesComponent},
     {path: 'instructors', component: InstructorsComponent},
     {path: 'instructor/:id', component: SpecificInstructorComponent},
-    {path: 'course/view/:id', component: SpecificInstructorComponent},
+    {path: 'course/view/:id', component: ViewSpecificCourseComponent},
 
     {path: 'course/:id', component: SpecificCourseComponent, children:[
-        {path: 'description', component: SpecificCourseDescriptionComponent},
+        {path: '', component: SpecificCourseDescriptionComponent},
         {path: 'content', component: SpecificCourseContentComponent},
         {path: 'reviews', component: SpecificCourseReviewsComponent},
     ]},
@@ -54,7 +55,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+exports: [RouterModule]
 })
 
 

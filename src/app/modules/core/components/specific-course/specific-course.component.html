@@ -62,7 +62,7 @@ src="'assets/images/core/about-slider.png'">
         
         <section class="black-header-color content-wrapper main-section">
             <ul class="control-wrapper d-flex">
-                <li><button routerLinkActive="active" routerLink="/course/1/description" class="text-left control-item btn">Description</button></li>
+                <li><button routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/course/1" class="text-left control-item btn">Description</button></li>
                 <li><button routerLinkActive="active" routerLink="content" class="text-left control-item btn">Content</button></li>
                 <li><button routerLinkActive="active" routerLink="reviews" class="text-left control-item btn">Reviews(10)</button></li>
             </ul>
