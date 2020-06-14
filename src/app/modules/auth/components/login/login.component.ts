@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
     this.api.login(credientials)
       .subscribe(
-        res=> this.router.navigateByUrl('/'),
+        res=> this.router.navigateByUrl('/dashboard'),
 
         error=>{
           this.loginError = true;

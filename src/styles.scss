@@ -140,7 +140,7 @@
 
 .second-light-color{
     color: $secondLighterColor;
-   &:hover{
+&:hover{
         color: $secondLighterColor;
     }
 }
@@ -175,6 +175,7 @@
         color: rgba(200,200,200);
     }
 }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -188,7 +189,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     .owl-carousel.owl-drag .owl-item{
         // padding-right: 15px;
         max-width: 350px !important;
-    }
+    }}
+@media(max-width: 768px){
+    //courses
+    .coursers-wrapper, .instructors-wrapper{
+        .owl-carousel.owl-drag .owl-item{
+            // padding-right: 15px;
+            max-width: 470px !important;
+        }
+    }   
+}
+
+@media(max-width: 576px){
+    //courses
+    .coursers-wrapper, .instructors-wrapper{
+        .owl-carousel.owl-drag .owl-item{
+            // padding-right: 15px;
+            max-width: 450px !important;
+        }
+    }   
 }
 
 // for insturctor
@@ -198,6 +217,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         max-width: 250px !important;
     }
 }
+
+
+@media(max-width: 576px){
+    
+// for insturctor
+.instructors-wrapper{
+    .owl-carousel.owl-drag .owl-item{
+        // padding-right: 15px;
+        max-width: 350px !important;
+    }
+}
+
+}
+
 
 
 input:focus, select:focus, textarea:focus{
@@ -236,14 +269,39 @@ input:focus, select:focus, textarea:focus{
     color: $mainHeaderColor;
     font-weight: 600;
     
-}
+    }
 
 // helpers 
 
 .mat-expansion-indicator::after{
-    color: #000;
+    // color: #000;
 }
+
 // view specific course
 .main-wrapper .mat-expansion-panel-body{
     padding: 0 !important;  
+}
+
+// mat-progress-spinner circle, .mat-spinner circle {
+//     stroke: gray;
+// }
+
+.spinner-border{
+    width: 100px;
+    height: 100px;
+    margin: 150px auto;
+}
+
+// pagination
+
+.page-item{
+    font-size: 1.1rem;
+    
+    .page-link{
+        color: $grayColor;
+            
+        &.active{
+            background-color: $mainColor;
+        }
+    }
 }

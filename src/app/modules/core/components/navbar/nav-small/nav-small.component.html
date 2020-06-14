@@ -1,0 +1,31 @@
+<section class="navbar-small-wrapper">
+    <div *ngIf="!navCollapse" class="overlay"></div>
+    <div class="navbar-small">
+      <ul>
+        
+        <li class="nav-item mh-40 brand-small mr-auto">  
+          <a routerLink="/">
+            <img class="img-fluid" src="assets/images/core/logo-english.png" alt="">
+        </a> 
+        </li>
+  
+      
+        <ul id="navExpand" [class.collapse]="navCollapse" class="navbar-list-small">
+            <li class="text-center nav-item d-block"><a routerLink="/">HOME</a></li><hr>
+            <li class="text-center nav-item d-block"><a routerLink="/about">About</a></li><hr>
+            <li class="text-center nav-item d-block"><a routerLink="/education">Education</a></li><hr>
+            <li class="text-center nav-item d-block"><a routerLink="/library">Library</a></li> <hr>
+            <li class="text-center nav-item d-block"><a routerLink="/blog">Blog</a></li><hr>
+            <li class="text-center nav-item d-block"><a routerLink="/FAQ">members area</a></li>
+          </ul>      
+
+          <li class="icon float-right mh-40">
+            <i id="navIcon nav-item"
+             *ngIf="navCollapse" (click)="navToggle()" class="fa fa-bars"></i>
+            <i id="navIcon" *ngIf="!navCollapse" (click)="navToggle()" class="fa fa-times-circle"> </i>
+          </li>
+        </ul>
+
+      
+    </div>
+</section>

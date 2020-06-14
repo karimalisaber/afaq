@@ -10,7 +10,7 @@
     
       <article class="d-flex categories-wrapper mv-20">
          <a *ngFor="let category of categories" class="d-flex hover cat-img-wrapper" (click)="changeCategory(category.id)">
-            <img class="cat-img" src="assets/images/7.jpg" alt="">
+          <img class="cat-img" src="assets/images/7.jpg" alt="">
             <h5 class="cat-name"> {{category.name}}  <br> Courses</h5>
          </a>
 
@@ -20,39 +20,54 @@
       </article>
 
       <h2 class="p-0 main-title col-md-7 text-capitalize"> Browse All   <span>Courses </span> <b>& </b> Events </h2>
-     
-      
+       
     <div class="coursers-wrapper row">
-        <div *ngFor="let course of courses" class="col-md-3 mb-20">
-           <app-course-item [course]="course"></app-course-item>
+      <div *ngIf="!isloading" class="col-md-3 mb-20">
+        <div  *ngFor="let course of courses">
+          <app-course-item [course]="course"></app-course-item>
         </div>
+      </div>
+
+      <div *ngIf="isloading" class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
-    
+
+    <!-- spinner -->
+   
+
     <!-- <div class="load-more-wrapper text-center">
       <button class="btn second-color">Load more...</button>
     </div> -->
 
     <!-- start pagination -->
-<!-- <nav aria-label="Page navigation example">
-   <ul class="pagination">
-     <li (click) = "prevCourses()" class="page-item">
+<nav class="d-flex" aria-label="Page navigation example">
+   <ul class="m-auto pagination">
+     <li class="page-item">
        <button class="page-link " aria-label="Previous">
          <span aria-hidden="true">&laquo;</span>
        </button>
      </li>
  
      
-     <li *ngFor="let page of pages.pagesNumber; index as i" class="page-item">
-       <button (click)="otherCourses($event ,i+1);" [id] ="'item-' + (i+1)" [class.active]="i===0" class="page-link" >{{i + 1}}</button>
+     <li class="page-item" >
+       <button class="active page-link" >1</button>
      </li>
    
-     <li (click) = "nextCourses()" class="page-item">
+     <li class="page-item">
        <button class="page-link" aria-label="Next">
          <span aria-hidden="true">&raquo;</span>
        </button>
      </li>
    </ul>
- </nav> -->
+ </nav>
  <!-- end pagination -->
 </div>
+
+
+
 </section>
+
+<!-- 
+<mat-progress-spinner>
+</mat-progress-spinner> -->

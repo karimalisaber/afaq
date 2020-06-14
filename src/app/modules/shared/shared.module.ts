@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 const SharedComponents =[
   FooterComponent
@@ -14,7 +15,8 @@ const SharedComponents =[
 @NgModule({
   declarations: [SharedComponents],
   imports: [
-    CommonModule,
+  CommonModule,
+    RouterModule,
     FormsModule,
     HttpClientModule
   ],

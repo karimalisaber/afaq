@@ -28,6 +28,10 @@ import { WebsiteComponent } from './components/website/website.component';
 import { RelatedCourseComponent } from './components/specific-course/related-course/related-course.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewSpecificCourseComponent } from './components/view-specific-course/view-specific-course.component';
+import { NavSmallComponent } from './components/navbar/nav-small/nav-small.component';
+import { NavLargeComponent } from './components/navbar/nav-large/nav-large.component';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { BrowserModule } from '@angular/platform-browser';
 
 const CoreComponents = [
   NavbarComponent,
@@ -44,20 +48,32 @@ const CoreComponents = [
   SpecificCourseDescriptionComponent, 
   SpecificCourseContentComponent, 
   SpecificCourseReviewsComponent, 
-  StarsComponent
+  StarsComponent, 
+  FAQComponent, 
+  ContactComponent, 
+  WebsiteComponent, 
+  RelatedCourseComponent, 
+  ViewSpecificCourseComponent, 
+  NavSmallComponent, 
+  NavLargeComponent
 ]
 
 @NgModule({
-  declarations: [CoreComponents, FAQComponent, ContactComponent, WebsiteComponent, RelatedCourseComponent, ViewSpecificCourseComponent],
+  declarations: [CoreComponents],
   imports: [
   CommonModule,
     RouterModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatRadioModule,
     CarouselModule,
     MatExpansionModule,
     SharedModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
+
   ],
   exports:[
     CoreComponents

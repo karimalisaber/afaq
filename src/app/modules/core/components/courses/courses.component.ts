@@ -1,9 +1,9 @@
-import { Pages } from './../../../../interfaces/pages';
-import { Course } from './../../../../interfaces/courses';
-import { ApiCallService } from './../../../shared/services/api-call.service';
-import { Category } from './../../../../interfaces/categories';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/interfaces/categories';
+import { Course } from 'src/app/interfaces/courses';
+import { Pages } from 'src/app/interfaces/pages';
+import { ApiCallService } from 'src/app/modules/shared/services/api-call.service';
 
 @Component({
   selector: 'app-courses',
@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+  isloading: boolean = false;
+
   categories: Array<Category>;
   courses: Array<Course>;
   categoryId: number = 0;
@@ -33,23 +35,36 @@ export class CoursesComponent implements OnInit {
   }
 
   private getAllCategories(){
+    this.isloading = true;
     this.api.getAllCategories()
-      .subscribe( res=> this.categories = res
+      .subscribe( 
+        res=> this.categories = res,
+        () => {},
+        () => this.isloading = false
       )
   } 
 
   private getAllCourses(){
+    this.isloading = true;
     this.api.getAllCourses(this.pages.current_page)
       .subscribe(
-        res=> this.courses = res.data
+        res=> this.courses = res.data,
+        () => {},
+        () => this.isloading = false
       );
   }
 
 
   private getCoursesByCategory(){
+    this.isloading = true;
     this.api.getCoursesByCategory(this.categoryId)
       .subscribe(
-        res=> this.courses = res.data
+        res=> {
+          this.courses = res.data;
+     
+        },
+        () => {},
+        () => this.isloading = false
       )
   }
 
@@ -68,17 +83,20 @@ export class CoursesComponent implements OnInit {
   }
 
   changeCategory(id){ // for filtering
+    this.categoryId = id;
+
     if(!id) {
       this.router.navigate([]);
+      this.getAllCourses();
       return
     };
-
+    
     this.router.navigate([], {
       queryParams: {'page': this.pages.current_page, 'category_id': id},
     });
-
-    this.setCategoryId();
+   
     this.getCoursesByCategory();
+    this.setCategoryId();
   }
   
 }

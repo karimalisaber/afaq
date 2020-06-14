@@ -1,6 +1,6 @@
 <section class="static-slider">
     <div class="slider" style="background: url('assets/images/core/slider.png');">
-        <div class="add">
+        <div class="add d-block">
             <h1 class="title"> Learn Somthing New</h1>
             <h2 class="sub-title">Everyday AnyWhere AnyTime</h2>
             <p class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae tempora molestiae et
@@ -16,9 +16,14 @@
 <section class="coursers main-section">
     <div class="container">
         <div class="title-wrapper row pb-50">
-            <h2 class="p-0 main-title col-md-7"> Live Events <b>& </b> <span>Courses</span> </h2>
+            <h2 class="p-0 main-title col col-md-6 col-lg-7"> Live Events <b> & </b> <span>Courses</span> </h2>
+            
+                <a routerLink="courses" class="d-none d-lg-block text-right btn all-coursers">Browse All</a>
+    
 
-            <a routerLink="courses" class="btn all-coursers">Browse All</a>
+              <div class="d-block d-lg-none col d-none text-right" >
+                <a routerLink="courses" class="text-right btn all-coursers">Browse All <span class="d-lg-none"> (445) </span></a>
+            </div>
         </div>
 
         <div>
@@ -37,11 +42,11 @@
 <!-- start feedback -->
 <section class="feedback" id="feedback">
     <div class="row no-gutters">
-        <div class="img-wrapper col-md-4" style="background: url('assets/images/core/feedback.png');"></div>
+        <div class="d-none d-lg-block img-wrapper col-md-3" style="background: url('assets/images/core/feedback.png');"></div>
 
         <div class="col main-section mh-30">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-20">
                     <h2 class="title">Why You Should</h2>
                     <h3 class="sub-title first pb-20">Choose Us</h3>
 
@@ -90,14 +95,15 @@
 <section  class="main-section main-background" id="viedo-add">
     <div class="video-wrapper">
         <div class="video">
-            <video controls class="embed-responsive-item">
-                <source src="assets/videos/video.mp4">
-            </video>
+            <iframe src="//www.youtube.com/embed/OOy764mDtiA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <!-- <img src="assets/images/core/video.png" alt="course-video"> -->
+
+        <img src="assets/images/core/video.png" alt="course-video">
     </div>
 </section>
 <!-- end viedo-add section -->
+
+
 
 <!-- start instructor section  -->
 <section class="instructors main-section">
@@ -128,7 +134,16 @@
 
     <div class="text-center sub-title-wrapper">
         <h3 class="subtitle main-title-bold mr-40 d-inline-block">subscribe our newsletter</h3>
-        <button class="second-btn btn">subscribe</button>
+        
+        <div class="second-btn-wrapper d-none d-xl-inline-block">
+            <button class=" second-btn btn">subscribe</button>
+        </div>
     </div>
+
+    <div class="text-center mt-10">
+        <button class="d-xl-none d-inline-block second-btn btn">subscribe</button>
+    </div>
+
 </section>
+
 <!-- end subscribe section -->

@@ -1,0 +1,64 @@
+$primary-color: rgb(179, 114, 49);
+
+// navbar-small
+.navbar-small-wrapper .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-color;
+    opacity: .2;
+    z-index: 10;
+  }
+  
+  .navbar-small{
+    top:0;
+    position: fixed;
+    width: 100vw;
+    height: 70px;
+    background: white;
+    z-index: 10000;
+    border-bottom: 1.5px solid $primary-color;
+  }
+  
+  .navbar-list-small{
+    background-color: white;
+    position: fixed;
+    right:0;
+    top: 70px;
+    height: 100vh;
+    min-width: 220px;
+    padding: 30px 60px;
+    box-shadow: 0 1px 8px rgba(57,73,76,.35);
+}
+  
+  .brand-small{
+    line-height: 70px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+  
+  
+  .icon i:hover{
+    cursor: pointer;
+  }
+  
+  .fa-times-circle{
+    font-size: 1.4rem;
+  }
+  
+  .icon i {
+    line-height: 70px;
+    color: black;
+  }
+  
+  .collapse {
+    width: 0;
+    height:0;
+  }
+  
+
+  .fa-bars{
+      font-size: 1.2rem;
+  }
