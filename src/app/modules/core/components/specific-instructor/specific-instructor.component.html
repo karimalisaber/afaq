@@ -42,5 +42,74 @@ src="'assets/images/core/about-slider.png'">
                 <a href="" class="ph-40 btn second-btn">Reviews</a>
             </div>
         </div>
+    
+        
+    <!-- review -->
+
+        <div class="new-review-wrapper" >
+            <h4 class="pt-40 second-title mb-20">Write Your Own Review</h4>
+
+            <form class="pb-20 row new-review">
+                <div class="black-header-color col-md-5">
+            <h5 class="third-title">You're reviewing <span class="black-header-color"> karim ali hassan saber course</span>    </h5>
+            <h5 class="third-title">How do you rate this product </h5>
+    
+            <table class="mt-10 table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">1 Star</th>
+                    <th scope="col">2 Stars</th>
+                    <th scope="col">3 Stars</th>
+                    <th scope="col">4 Stars</th>
+                    <th scope="col">5 Stars</th>
+                  </tr>
+                </thead>
+                
+               
+                <tbody>
+                  <tr>
+                    <td scope="row">Price</td>
+                    
+                    
+                    <td class="radio-wrapper" [id]="i" name="price" *ngFor="let i of [1,2,3,4,5]">
+                      <!-- <mat-radio-button [id]="i" value="{{i}}" name="price" ></mat-radio-button> -->
+                      <!-- <i class="far fa-circle"></i> -->
+                      <input class="radio"  required [id]="i" [value]="i" name="price" type="radio">
+
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Value</td>
+                    
+                    <td *ngFor="let i of [1,2,3,4,5]">
+                        <input required class="radio" [id]="i" [value]="i" name="value" type="radio">
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td scope="row">Quality</td>
+                    
+                    <td *ngFor="let i of [1,2,3,4,5]">
+                        <input required class="radio" [id]="i" [value]="i" name="quality" type="radio">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    
+        <div class="col-md">
+            <div class="form-group">
+                <label class="review" for="second-title Review">Review</label>
+                <textarea required class="form-control" id="Review" rows="5"></textarea>
+            </div>
+
+              <button class="btn second-btn submit-btn">Submit Review</button>
+        </div>
+        </form>
+    </div>
+    
+
     </div>
 </section>

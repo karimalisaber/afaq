@@ -1,3 +1,4 @@
+@import "variables";
 img{
     margin-top: 8px;
     height: 310px;
@@ -36,4 +37,67 @@ p.desc{
             color: #fff;
         }
     }
+}
+
+
+
+
+// new review
+
+.new-review-wrapper{
+    border: 1px solid $lightBorder;
+    margin-top: 30px ;
+    background-color: #fff;
+    padding: 10px 50px 30px 30px ;
+.review{
+    font-size: 2rem;
+    // color: $lightBorder;
+    font-weight: lighter;
+    display: block;
+    margin-bottom: 18px;
+}
+
+
+.third-title{
+    color: #a2a2a2;
+    font-size: .9rem;
+    font-weight: 450;
+    margin: 0;
+    padding: 0
+}
+
+
+.second-title{
+    font-weight: normal;
+}
+
+textarea{
+    resize: none;
+}
+// table
+
+table{
+    th{
+        border-bottom: 0;
+        background-color: #f8f8f8;
+        font-size: .7rem ;
+    }
+
+    td{
+        text-align: center;
+        color: $grayColor;
+    }
+
+    .radio{
+        &:hover{
+           cursor: pointer;
+        }
+    }
+
+}
+
+.submit-btn{
+    border-radius: 3px;
+}
+
 }

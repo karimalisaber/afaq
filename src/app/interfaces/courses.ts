@@ -1,8 +1,10 @@
 import { Category } from './categories';
 import { Instructor } from './instructors';
+
 export interface Courses {
     current_page: number,
     data: Array<Course>,
+    instuctor?: Instructor
 }
 
 export interface Course {
@@ -13,6 +15,9 @@ export interface Course {
     price: string,
     trend: number,
     lang: number,
+    discount?: string,
+    type?: string,
+    time?: string,
     category_id: number,
     instractuer_id: number,
     created_at: string,

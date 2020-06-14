@@ -1,5 +1,5 @@
 
-const url = 'http://devmode.fv.academy/'; 
+const url = '//devmode.fv.academy/'; 
 const auth = 'api/auth/'; 
 const mobile = 'api/mobile/'; 
 const dashboard = 'api/dashboard/'; 
@@ -8,11 +8,14 @@ const dashboard = 'api/dashboard/';
 // get variables
 // ------------------------------------------
 
-// categories
+// categories and Courses 
 export const getAllCategoriesUrl = url + mobile + 'all_categories/';
 export const getAllInstructorsUrl = url + mobile + 'all_instructors/';
 export const getAllCoursesUrl = url + dashboard + 'all_courses/';
 export const getCoursesOfCategoriesUrl = url + mobile + 'courses/';
+export const getSpecificCoursesUrl = url + mobile + 'course_details/';
+export const getRelatedCoursesUrl = url + mobile + 'related_courses/';
+
 
 // home data
 export const getHomeDataUrl = url + mobile + 'home_data/';

@@ -32,7 +32,7 @@ import { NavSmallComponent } from './components/navbar/nav-small/nav-small.compo
 import { NavLargeComponent } from './components/navbar/nav-large/nav-large.component';
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { BrowserModule } from '@angular/platform-browser';
-
+// import {AngularSocialShare} from 'angular-socialshare/dist'
 const CoreComponents = [
   NavbarComponent,
   HomePageComponent,
@@ -55,7 +55,8 @@ const CoreComponents = [
   RelatedCourseComponent, 
   ViewSpecificCourseComponent, 
   NavSmallComponent, 
-  NavLargeComponent
+  NavLargeComponent,
+  // AngularSocialShare
 ]
 
 @NgModule({
@@ -73,7 +74,6 @@ const CoreComponents = [
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule
-
   ],
   exports:[
     CoreComponents

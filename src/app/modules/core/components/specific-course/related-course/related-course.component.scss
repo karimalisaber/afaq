@@ -1,10 +1,26 @@
 @import "variables";
 // related courses
-
+.second-title {
+    color: $blackHeaderColor;
+    font-size: 1.1rem;
+    font-weight: 550;
+  }
+  
+  .third-title {
+    // color: #494949;
+    color: #000 !important;
+    font-size: 1rem;
+    font-weight: 450;
+    // margin: 0;
+    // padding: 0;
+    line-height: .9rem;
+  }
+    
+  
 .related-courses-wrapper {
     background-color: $whiteColor;
     padding: 35px 20px;
-  
+    border: 1px solid $lightBorder;
     .course{
         position: relative;
         &::after{
@@ -31,11 +47,12 @@
       .course-details {
           position: relative;
           
-          .thrid-title {
+          .third-title {
               margin: 8px;
-              font-size: 0.9rem;
+              font-size: 1rem;
               font-weight: 400;
-              color: #494949;
+            //   color: #494949;
+            opacity: .9;
               
           }
   

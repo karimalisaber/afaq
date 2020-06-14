@@ -7,6 +7,12 @@
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 // generals
 
+// google fonts
+@import 'https://fonts.googleapis.com/css?family=Inconsolata|Cantarell';
+
+*{
+    // font-family: Cantarell;
+}
 .custom-file-input:lang(en) ~ .custom-file-label::after {  
     font-size: 16.5px;
     width: 100%;

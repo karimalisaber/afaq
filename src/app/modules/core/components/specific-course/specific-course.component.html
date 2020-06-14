@@ -8,7 +8,7 @@ src="'assets/images/core/about-slider.png'">
         <div class="container">
             <header class="header row">
             <div class="col-md-5">
-                <img class="main-img" src="assets/images/core/instructor.png" alt="">
+                <img class="main-img" src="assets/images/course.jpg" alt="">
                 <div class="d-flex mt-20 socials">
                     <h5>Share this: </h5>
 
@@ -20,8 +20,8 @@ src="'assets/images/core/about-slider.png'">
             </div>
 
             <!-- right section  -->
-            <div class="gray-color col-md-7 details">
-                <h2 class="course-name mv-20 text-capitalize">Course Name <span class="live float-right">live</span></h2>
+            <div *ngIf="course" class="gray-color col-md-7 details">
+                <h2 class="course-name mv-20 text-capitalize">{{course.name}} <span class="live float-right">{{course.type}}</span></h2>
 
                 <!-- rate -->
                 <div class="stars row no-gutters">
@@ -32,20 +32,22 @@ src="'assets/images/core/about-slider.png'">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <p class= "black-header-color text-light-color">3 Review(s) | Add your Review </p>
+                    <p class= "black-header-color text-light-color">3 Review(s) <a href="course/{{'1'}}/reviews#Review"> | Add your Review </a>  </p>
                 </div>
         
-                <p class="main-paragraph p-0"> <span class="custom-width"> Availability: </span>  <span class="main-color">only course 24 april</span></p>
+                <p class="main-paragraph p-0"> <span class="custom-width"> Availability: </span>  <span class="main-color">{{course.time}}</span></p>
                 <p class="main-paragraph p-0"><span class="custom-width"> Course Code: </span>  <span class="">ps-60</span></p>
    
                 <hr class="float-left mv-10">
                 <div class="clearfix"></div>
 
-                <p class="second-paragraph p-0 mb-40">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque perspiciatis aperiam vero est eum, necessitatibus libero inventore mollitia, sapiente voluptatibus delectus qui corrupti possimus repudiandae explicabo facilis praesentium, nam architecto?</p>
+                <p class="second-paragraph p-0 mb-40">
+                    {{course.details}}
+                </p>
                 
                 <div class="row no-gutters">
-                    <span class= "pt-10 main-paragraph fake-price">RS 99.99 </span>
-                    <span class="pt-10 main-paragraph mh-20 real-price">RS 99.99 </span>    
+                    <span class= "pt-10 main-paragraph fake-price"> RS{{course.discount}} </span>
+                    <span class="pt-10 main-paragraph mh-20 real-price"> RS{{course.price}} </span>    
 
                     <div class="ml-auto">
                         <!-- <button class="enroll-btn ml-auto btn second-btn mh-30"> Enroll Now</button> -->
@@ -60,6 +62,7 @@ src="'assets/images/core/about-slider.png'">
             </div>
         </header>
         
+
         <section class="black-header-color content-wrapper main-section">
             <ul class="control-wrapper d-flex">
                 <li><button routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/course/1" class="text-left control-item btn">Description</button></li>
@@ -72,6 +75,7 @@ src="'assets/images/core/about-slider.png'">
             </article>
         </section>
         
-        <app-related-course></app-related-course>
+        <app-related-course [relatedCourses] = "relatedCourses"></app-related-course>
     </div>
 </div>
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-specific-course-reviews',
@@ -12,4 +13,8 @@ export class SpecificCourseReviewsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  radioCheck(i){
+    // let element = document.getElementById(i);
+    
+  }
 }

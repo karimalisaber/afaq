@@ -1,20 +1,18 @@
-import { Categories, Category } from './../../../interfaces/categories';
-import { Courses } from './../../../interfaces/courses';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { getAllCoursesUrl, getAllCategoriesUrl, getCoursesOfCategoriesUrl, getAllInstructorsUrl, getJobListUrl, loginPostUrl} from 'src/app/backend/variables/Apis';
-import {map, take} from "rxjs/operators"
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/interfaces/categories';
+import { getAllCategoriesUrl, getAllCoursesUrl, getCoursesOfCategoriesUrl, getRelatedCoursesUrl, getSpecificCoursesUrl, getAllInstructorsUrl, getHomeDataUrl, getJobListUrl, registerPostUrl, loginPostUrl,  } from 'src/app/backend/variables/Apis';
+import { Courses, Course } from 'src/app/interfaces/courses';
 import { Instructor } from 'src/app/interfaces/instructors';
-import { getHomeDataUrl, registerPostUrl } from './../../../backend/variables/Apis';
-import { HomeData } from './../../../interfaces/home-data';
+import { HomeData } from 'src/app/interfaces/home-data';
+import {map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiCallService {
  lang = 0;
-
   constructor(private http: HttpClient) { }
 
   // categories & courses
@@ -28,6 +26,14 @@ export class ApiCallService {
 
   getCoursesByCategory(id): Observable<Courses>{
     return this.http.get(getCoursesOfCategoriesUrl + id + '/' +this.lang).pipe(map((res:any)=> res), take(1));
+  }
+
+  getSpecificCourse(id): Observable<Course>{
+    return this.http.get(getSpecificCoursesUrl + id + '/' +  this.lang).pipe(map((res:any)=> res.data), take(1));
+  }
+ 
+  getRelatedCourses(catId): Observable<Courses>{
+    return this.http.get(getRelatedCoursesUrl + catId + '/' +  this.lang).pipe(map((res:any)=> res.data), take(1));
   }
 
 
