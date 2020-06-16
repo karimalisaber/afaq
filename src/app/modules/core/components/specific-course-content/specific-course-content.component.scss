@@ -36,3 +36,31 @@
         }
     }
 }
+
+@media(max-width: 1200px){
+    .main-wrapper{
+        .vedio-item{
+            width: 100%;
+        }
+    }   
+}
+
+
+@media(max-width: 768px){
+    .main-wrapper{    
+        .vedio-item{
+            h4{
+                font-size: 1rem;
+            }
+    
+            .time{
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+            }
+
+            .title{
+                font-size: 1rem;
+            }
+        }
+    }   
+}

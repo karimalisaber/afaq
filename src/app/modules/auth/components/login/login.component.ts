@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   errorMessage:string ="";
   validInput: boolean = true;
   passwordVisibile: boolean = true;
+  isLoading: boolean = false;
 
   @ViewChild('userForm') userForm: FormGroup;
   
@@ -29,14 +30,19 @@ export class LoginComponent implements OnInit {
       this.validInput = false;
       return;
     }
+    
+    this.isLoading = true;
 
     this.api.login(credientials)
       .subscribe(
-        res=> this.router.navigateByUrl('/dashboard'),
+        res=> {
+          this.router.navigateByUrl('/dashboard')
+          this.isLoading = false;
+        },
 
         error=>{
           this.loginError = true;
-
+          this.isLoading = false;
           if (error.status === 401 && this.userForm.valid) this.errorMessage = "email and password didn't match";
 
         }

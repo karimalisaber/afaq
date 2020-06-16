@@ -27,3 +27,29 @@
     grid-template-columns: 20% 20% 20% 20% 20%;
     gap: 20px 0;
 }
+
+@media(max-width: 1200px){
+    .instructors-wrapper{
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%; 
+    }
+}
+
+
+
+@media(max-width: 992px){
+    .instructors-wrapper{
+        display: grid;
+        grid-template-columns: 33.33% 33.33% 33.33%; 
+    }
+}
+
+
+@media(max-width: 768px){
+    
+    .instructors-wrapper{
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+    
+}

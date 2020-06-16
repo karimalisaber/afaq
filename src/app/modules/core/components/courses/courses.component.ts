@@ -12,7 +12,7 @@ import { ApiCallService } from 'src/app/modules/shared/services/api-call.service
 })
 export class CoursesComponent implements OnInit {
   isloading: boolean = false;
-
+  activeCatName: string = "";
   categories: Array<Category>;
   courses: Array<Course>;
   categoryId: number = 0;
@@ -45,6 +45,7 @@ export class CoursesComponent implements OnInit {
   } 
 
   private getAllCourses(){
+    this.activeCatName = 'All'; 
     this.isloading = true;
     this.api.getAllCourses(this.pages.current_page)
       .subscribe(
@@ -61,7 +62,6 @@ export class CoursesComponent implements OnInit {
       .subscribe(
         res=> {
           this.courses = res.data;
-     
         },
         () => {},
         () => this.isloading = false
@@ -82,17 +82,18 @@ export class CoursesComponent implements OnInit {
       )
   }
 
-  changeCategory(id){ // for filtering
-    this.categoryId = id;
+  changeCategory(cat){ // for filtering
+    this.categoryId = cat.id;
+    this.activeCatName = cat.name ;
 
-    if(!id) {
+    if(!cat.id) {
       this.router.navigate([]);
       this.getAllCourses();
       return
     };
     
     this.router.navigate([], {
-      queryParams: {'page': this.pages.current_page, 'category_id': id},
+      queryParams: {'page': this.pages.current_page, 'category_id': cat.id},
     });
    
     this.getCoursesByCategory();

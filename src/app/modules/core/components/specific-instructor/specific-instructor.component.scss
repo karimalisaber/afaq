@@ -18,7 +18,7 @@ p.desc{
 
 .reviews-wrapper{
     margin-top: -12px;
-
+    border: 1px solid $lightBorder;
     p{
         padding: 10px 30px;
         background-color: #fff;
@@ -27,7 +27,7 @@ p.desc{
     }
 
     .btn{
-        width: 100%;
+        width: calc(100% - 20px);
         border-radius: 0;
         background-color: rgba(87,154,211,.5);
         text-align: start;
@@ -37,10 +37,12 @@ p.desc{
             color: #fff;
         }
     }
+// }
+// .rate{
+//     font-size: 1.2rem;
+// }
+
 }
-
-
-
 
 // new review
 
@@ -101,3 +103,4 @@ table{
 }
 
 }
+

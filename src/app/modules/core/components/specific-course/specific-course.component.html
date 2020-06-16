@@ -10,7 +10,7 @@ src="'assets/images/core/about-slider.png'">
             <div class="col-md-5">
                 <img class="main-img" src="assets/images/course.jpg" alt="">
                 <div class="d-flex mt-20 socials">
-                    <h5>Share this: </h5>
+                    <h5 class="share">Share this: </h5>
 
                     <a href="" class="social-item"><i class="fab fa-instagram"></i></a>
                     <a href="" class="social-item"><i class="fab fa-facebook-f"></i></a>
@@ -46,15 +46,19 @@ src="'assets/images/core/about-slider.png'">
                 </p>
                 
                 <div class="row no-gutters">
-                    <span class= "pt-10 main-paragraph fake-price"> RS{{course.discount}} </span>
-                    <span class="pt-10 main-paragraph mh-20 real-price"> RS{{course.price}} </span>    
-
-                    <div class="ml-auto">
+                    <div class="col-lg-5 col-xl col-md-12 mb-20">
+                        <span class= "pt-10 main-paragraph fake-price"> RS{{course.discount}} </span>
+                        <span class="pt-10 main-paragraph mh-20 real-price"> RS{{course.price}} </span>        
+                    </div>
+                    
+                    <div class="col-lg-7 col-xl col-md-12">
                         <!-- <button class="enroll-btn ml-auto btn second-btn mh-30"> Enroll Now</button> -->
-                        <span class=" ml-auto btn purchased-btn second-btn mh-30"> Purchased</span>
+                        <span class="btn purchased-btn second-btn"> Purchased</span>
     
-                        <i class="fas fa-heart"></i>
-                        <i class="fas fa-heart"></i>
+                        <div class="d-inline-block ph-30">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                        </div>
                     </div>
                 </div>
                 

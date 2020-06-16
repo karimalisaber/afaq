@@ -2,10 +2,10 @@
 <section class="main-section">
     <div class="login-wrapper">
         <div class="row no-gutters">
-            <div class="form-wrapper col-md-6">
+            <div class="form-wrapper col-lg-6">
                 <h1 class="main-title text-center pt-30 pb-20"> Create New Account</h1>
 
-                <form #userForm="ngForm" (ngSubmit)="signUp(userForm.value)" class="ph-50 text-left">
+                <form *ngIf="!isLoading" #userForm="ngForm" (ngSubmit)="signUp(userForm.value)" class="ph-50 text-left">
                     <section class="wrapper row">
                         <div class="mb-10 col-md-6 form-groub">
                             <select 
@@ -115,8 +115,6 @@
                                 <div class="alert alert-danger" *ngIf="email.errors.required"> <small> * your email is required </small>  </div>
                                 <div class="alert alert-danger" *ngIf="email.errors.email"> invalid email </div>
                             </div>
-
-                          <div class="alert alert-danger" *ngIf="emailExists">this email is already exist </div>
                         </div>
 
                         <!-- password -->
@@ -140,6 +138,8 @@
                         </div>
                     </section>
 
+                    <div class="alert alert-danger" *ngIf="emailExists">email is already exist </div>
+
                     <div class="action mt-20">
                         <a routerLink="/login" class="ph-40 float-left submit btn second-btn">Back</a>
                         <button type="submit" class="ph-40 float-right submit btn second-btn">Next</button>
@@ -159,9 +159,17 @@
                         <a class="main-header-color" routerLink="/login">Log In</a>
                     </p>
                 </form>
+
+                
+                <div *ngIf="isLoading" class="row">
+                    <div class="spinner-border" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
             </div>
 
-            <div class="col-md-6 p-0">
+
+            <div  class="d-none d-lg-block col-md-6 p-0">
                 <img class="img-fluid" src="assets/images/auth/auth.png" alt="">
             </div>
         </div>

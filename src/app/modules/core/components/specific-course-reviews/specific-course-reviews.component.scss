@@ -2,6 +2,12 @@
 // general
 app-stars{
     font-size: .7rem !important;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+textarea{
+    resize: none;
 }
 
 hr{
@@ -153,4 +159,48 @@ table{
     //         // cursor: pointer;
     //     }
     // }
+}
+
+
+@media(max-width: 1000px){
+    app-stars{
+        margin-right: 10px;
+        margin-left:10px ;
+    }
+
+        
+    section{
+        .brev{
+            width: 140px;
+        }
+        
+        .sub-title{
+            font-size: .9rem;
+        }
+
+        div.desc{
+            width: calc(100% - 140px);
+            padding-right: 0 !important;
+            .main-title{
+                font-size: 1rem;
+            }
+            
+            h5.main-title{
+                font-size: .8rem;
+
+                span{
+                    font-size: .8rem;
+                }
+            }
+
+            p.desc{
+                font-size: .8rem;
+            }
+        }
+
+        button.main-header-color{
+            padding: 10px 25px;
+        }
+    }
+
 }

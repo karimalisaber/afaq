@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   passwordValid: boolean = false;
   gender = "male";
   emailExists = false;
+  isLoading: boolean = false; 
 
   @ViewChild('userForm') userForm;
 
@@ -39,6 +40,8 @@ export class SignupComponent implements OnInit {
       return 
     }
 
+    this.isLoading = true;
+
     delete credientials['confirm_password']; // we don't need it 
 
     this.api.register(credientials)
@@ -46,6 +49,7 @@ export class SignupComponent implements OnInit {
       ()=> this.router.navigateByUrl('/') ,
       error=> {
         if (error.status === 401) this.emailExists = true;
+        this.isLoading = false;
       });
     document.querySelector('input').blur(); // for clear errors
   }

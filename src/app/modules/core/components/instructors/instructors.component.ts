@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructorsComponent implements OnInit {
   instructros: Array<Instructor>;
+  isloading: boolean = false;
   constructor(private api: ApiCallService) { }
 
   ngOnInit(): void {
@@ -16,12 +17,19 @@ export class InstructorsComponent implements OnInit {
   }
 
   private getAllInstructors(){
+    this.isloading = true;
+
     this.api.getAllInstructors()
       .subscribe(
         res => this.instructros = res
         // res => console.log(res)
-        
-      );
+      )
+      ,
+      ()=>{},
+      ()=>{
+        this.isloading = false;
+      }
+      ;
   }
 
 }

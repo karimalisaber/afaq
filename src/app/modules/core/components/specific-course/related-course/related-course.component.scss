@@ -50,7 +50,7 @@
           .third-title {
               margin: 8px;
               font-size: 1rem;
-              font-weight: 400;
+              font-weight: 430;
             //   color: #494949;
             opacity: .9;
               
@@ -69,5 +69,101 @@
               }
           }
     }
+}
+
+@media(max-width: 1000px){
+  .second-title {
+    font-size: 1rem;
+    font-weight: 520;
   }
   
+  .third-title {
+    color: #000 !important;
+    font-size: .9rem;
+    line-height: .9rem;
+  }
+    
+  
+  .related-courses-wrapper {
+    background-color: $whiteColor;
+    padding: 35px 17px;
+    border: 1px solid $lightBorder;
+    
+    .course-img {
+        height: 125px;
+        width: 117px;
+      }
+  
+      .course-details {
+          .third-title {
+              margin: 7px;
+              font-size: .9rem;
+          }
+  
+          .date{
+              font-size: .8rem;
+              svg{
+                  margin: 0 7px;
+                  width: 32px ;
+                  height: 15px;
+              }
+          }
+    }
+  }
+ 
+}
+
+@media(max-width: 992px){
+  .second-title {
+    color: $blackHeaderColor;
+    font-size: 1.1rem;
+    font-weight: 550;
+  }
+  
+  .third-title {
+    // color: #494949;
+    color: #000 !important;
+    font-size: 1rem;
+    font-weight: 450;
+    // margin: 0;
+    // padding: 0;
+    line-height: .9rem;
+  }
+    
+  
+.related-courses-wrapper {
+    padding: 35px 20px;
+    border: 1px solid $lightBorder;
+
+    .course{
+        &::after{
+            height: 0;
+            width: 0;
+        }
+    }
+      
+    .course-img {
+        height: 150px;
+        width: 170px;
+    }
+  
+      .course-details {
+          .third-title {
+              margin: 15px;
+              font-size: 1.3rem;
+              font-weight: 430;
+          }
+  
+          .date{
+              font-size: 1.3rem;
+              font-weight: 430;
+              svg{
+                  margin: 0 8px;
+                  width: 35px ;
+                  height: 15px;
+              }
+          }
+    }
+  }
+ 
+}

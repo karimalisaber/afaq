@@ -33,6 +33,8 @@ import { NavLargeComponent } from './components/navbar/nav-large/nav-large.compo
 import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { BrowserModule } from '@angular/platform-browser';
 // import {AngularSocialShare} from 'angular-socialshare/dist'
+import {MatMenuModule} from '@angular/material/menu';
+
 const CoreComponents = [
   NavbarComponent,
   HomePageComponent,
@@ -73,7 +75,8 @@ const CoreComponents = [
     MatProgressBarModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule
   ],
   exports:[
     CoreComponents

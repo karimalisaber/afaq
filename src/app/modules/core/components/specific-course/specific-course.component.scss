@@ -100,7 +100,8 @@ hr {
   }
 
   .socials {
-    padding: 0 10%;
+    display: flex;
+    justify-content: center;
     h5 {
       font-size: 1.4rem;
       color: rgb(81, 92, 111);
@@ -178,8 +179,6 @@ hr {
 }
 
 
-
-
 // start content
 .content-wrapper {
   $mainBorder: 1px solid
@@ -211,5 +210,31 @@ hr {
   .content {
     border: $mainBorder;
     box-shadow: 0px 0px 1px 0px #000;
+  }
+}
+
+
+@media(max-width: 1000px) and (min-width: 768px){
+  .share{
+    font-size: 1.1rem !important;
+  }
+
+  .social-item{
+ 
+    font-size: .9rem;
+  }
+}
+
+@media(max-width: 992px){
+ 
+  .purchased-btn{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+@media(max-width: 600px){
+  .control-item{
+     width: 110px !important;
   }
 }

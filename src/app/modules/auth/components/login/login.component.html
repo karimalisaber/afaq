@@ -2,7 +2,7 @@
 <section class="main-section">
     <div class="login-wrapper">
         <div class="row no-gutters">
-            <div class="col-md-6 form-wrapper">
+            <div class="col-lg-6 form-wrapper pb-30">
                 <h1 class="main-title text-center pt-30 pb-80"> Login</h1>
 
                 <form #userForm="ngForm" (ngSubmit)="login(userForm.value)">
@@ -43,13 +43,20 @@
                 </form>
 
                 
+                <div *ngIf="isLoading" class="row">
+                  <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+                </div>
+
               <div class="mt-20 mh-20 server-error-message alert alert-danger" *ngIf="userForm.valid && loginError"> 
                 {{errorMessage}}
               </div>
             </div>
             
-            <div class="col-md-6 p-0">
-                <img class="img-fluid" src="assets/images/auth/auth.png" alt="">
+            
+            <div  class="d-none d-lg-block col-md-6 p-0">
+              <img class="img-fluid" src="assets/images/auth/auth.png" alt="">
             </div>
         </div>
     </div>

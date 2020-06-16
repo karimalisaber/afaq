@@ -6,31 +6,44 @@
 
 <section class="coursers main-section main-background">
     <div class="container">
-      <h2 class="p-0 main-title col-md-7"> Browse by <span>Category</span> </h2>
+      <div class="d-flex ">
+        <h2 class="p-0 main-title  col-md-7"> Browse by <span>Category</span> </h2>
+
+        <button style="width: 200px;" mat-button class="d-lg-none btn p-0 " [matMenuTriggerFor]="menu"> Category <i class="fas fa-chevron-down"></i></button>
+
+        <mat-menu  #menu="matMenu">
+          <button class="text-center" (click)="changeCategory(0)" mat-menu-item>All Categories</button>
+          <button  class="text-center" *ngFor="let category of categories"  (click)="changeCategory(category)" mat-menu-item>{{category.name}}</button>
+        </mat-menu>
+      </div>
     
-      <article class="d-flex categories-wrapper mv-20">
-         <a *ngFor="let category of categories" class="d-flex hover cat-img-wrapper" (click)="changeCategory(category.id)">
+      <article class="d-none d-lg-flex categories-wrapper mv-20">
+         <a *ngFor="let category of categories"  class="d-flex hover cat-img-wrapper" [ngClass]="{'in-active': category.id !== categoryId}" (click)="changeCategory(category)">
           <img class="cat-img" src="assets/images/7.jpg" alt="">
             <h5 class="cat-name"> {{category.name}}  <br> Courses</h5>
          </a>
 
-         <a class="d-flex hover see-all" (click)="changeCategory(0)">
+         <a class="d-flex hover see-all" [ngClass]="{'in-active': categoryId !== 0}" (click)="changeCategory(0)">
             <h5 class="cat-name">see  <br> All</h5>
          </a>
       </article>
 
-      <h2 class="p-0 main-title col-md-7 text-capitalize"> Browse All   <span>Courses </span> <b>& </b> Events </h2>
+      <h2 class="p-0 main-title col-md-7 text-capitalize"> Browse All   <span>Courses {{activeCatName}} </span> <b>& </b> Events </h2>
        
-    <div class="coursers-wrapper row">
-      <div *ngIf="!isloading" class="col-md-3 mb-20">
-        <div  *ngFor="let course of courses">
-          <app-course-item [course]="course"></app-course-item>
+    <div class="coursers-wrapper">
+     
+      <div *ngIf="!isloading">
+        <div  class="row" *ngFor="let course of courses">
+          <app-course-item class="col-md-6 col-lg-4 col-xl-3 mb-30" [course]="course"></app-course-item>
         </div>
       </div>
 
-      <div *ngIf="isloading" class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
+      <div class="row">
+        <div *ngIf="isloading" class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
+      
     </div>
 
     <!-- spinner -->
@@ -63,8 +76,6 @@
  </nav>
  <!-- end pagination -->
 </div>
-
-
 
 </section>
 
