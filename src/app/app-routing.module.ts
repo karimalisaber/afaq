@@ -1,24 +1,29 @@
+import { Routes, RouterModule } from '@angular/router';
 import { WebsiteComponent } from './modules/core/components/website/website.component';
-import { DashMainComponent } from './modules/dashboard/components/dash-main/dash-main.component';
+import { HomePageComponent } from './modules/core/components/home-page/home-page.component';
+import { AboutComponent } from './modules/core/components/about/about.component';
 import { ContactComponent } from './modules/core/components/contact/contact.component';
 import { FAQComponent } from './modules/core/components/faq/faq.component';
-import { SpecificCourseReviewsComponent } from './modules/core/components/specific-course-reviews/specific-course-reviews.component';
-import { SpecificCourseContentComponent } from './modules/core/components/specific-course-content/specific-course-content.component';
-import { SpecificCourseDescriptionComponent } from './modules/core/components/specific-course-description/specific-course-description.component';
-import { CartComponent } from './modules/core/components/cart/cart.component';
-import { SpecificInstructorComponent } from './modules/core/components/specific-instructor/specific-instructor.component';
-import { InstructorsComponent } from './modules/core/components/instructors/instructors.component';
 import { CoursesComponent } from './modules/core/components/courses/courses.component';
-import { SignupComponent } from './modules/auth/components/signup/signup.component';
-import { ForgetPasswordComponent } from './modules/auth/components/forget-password/forget-password.component';
-import { HomePageComponent } from './modules/core/components/home-page/home-page.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './modules/auth/components/login/login.component';
-import { AboutComponent } from './modules/core/components/about/about.component';
-import { SpecificCourseComponent } from './modules/core/components/specific-course/specific-course.component';
-import { AdminMainComponent } from './modules/admin/components/admin-main/admin-main.component';
+import { InstructorsComponent } from './modules/core/components/instructors/instructors.component';
+import { SpecificInstructorComponent } from './modules/core/components/specific-instructor/specific-instructor.component';
 import { ViewSpecificCourseComponent } from './modules/core/components/view-specific-course/view-specific-course.component';
+import { SpecificCourseComponent } from './modules/core/components/specific-course/specific-course.component';
+import { SpecificCourseDescriptionComponent } from './modules/core/components/specific-course-description/specific-course-description.component';
+import { SpecificCourseContentComponent } from './modules/core/components/specific-course-content/specific-course-content.component';
+import { SpecificCourseReviewsComponent } from './modules/core/components/specific-course-reviews/specific-course-reviews.component';
+import { CartComponent } from './modules/core/components/cart/cart.component';
+import { LoginComponent } from './modules/auth/components/login/login.component';
+import { ForgetPasswordComponent } from './modules/auth/components/forget-password/forget-password.component';
+import { SignupComponent } from './modules/auth/components/signup/signup.component';
+import { DashMainComponent } from './modules/dashboard/components/dash-main/dash-main.component';
+import { MainAdminDashboardComponent } from './modules/main-admin/components/main-admin-dashboard/main-admin-dashboard.component';
+import { ViewCategoriesComponent } from './modules/main-admin/components/view-categories/view-categories.component';
+import { AddCategoryComponent } from './modules/main-admin/components/add-category/add-category.component';
+import { NgModule } from '@angular/core';
+import { ViewInstructorsComponent } from './modules/main-admin/components/view-instructors/view-instructors.component';
+import { AddInstructorComponent } from './modules/main-admin/components/add-instructor/add-instructor.component';
+import { EditInstructorComponent } from './modules/main-admin/components/edit-instructor/edit-instructor.component';
 
 
 const routes: Routes = [
@@ -49,13 +54,23 @@ const routes: Routes = [
   // dashboard
   {path: 'dashboard', component: DashMainComponent},
 
-  {path: 'admin', component: AdminMainComponent},
+  {path: 'admin', component: MainAdminDashboardComponent, children:[
+    {path: 'categories', component: ViewCategoriesComponent},
+    {path: 'add_category', component: AddCategoryComponent},
+    {path: 'edit_category/:id', component: AddCategoryComponent},
+
+    // insturctors 
+    {path: 'instructors', component: ViewInstructorsComponent},
+    {path: 'add_instructor', component: AddInstructorComponent},
+    {path: 'edit_instructor/:id', component: EditInstructorComponent},
+
+  ]},
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 
 

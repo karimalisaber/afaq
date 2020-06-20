@@ -1,0 +1,31 @@
+<app-main-admin-title
+    [type]="'category'"
+    [title]="'Categories'"
+    [link] ="'/admin/add_category'"
+>
+</app-main-admin-title>
+
+<section *ngIf="!isLoading" class="row">
+    <div *ngFor="let category of categories" class="col-md-4 mb-70">
+        <div class="card light-shadow">
+            <img src="assets/images/5.jpg" class="card-img-top" alt="..." style="height: 470px;">
+            <div class="card-body">
+                <h4 class="card-title ">{{category.name}}</h4>
+              
+
+                <div class="action d-flex">
+                    <a routerLink="/admin/edit_category/10" class="rounded-0 btn btn-primary"><i class="fas fa-wrench"></i> edit</a>
+    
+                    <a href="#" class="btn btn-danger rounded-0"><i class="fas fa-trash"></i> delete</a> 
+                </div>        
+            </div>
+          </div>
+    </div>
+</section>
+
+<div class="row">
+    <div *ngIf="isLoading" class="spinner-border main-header-color" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
+  

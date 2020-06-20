@@ -5,20 +5,22 @@ import { AdminNavbarComponent } from './components/admin-navbar/admin-navbar.com
 import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.component';
 import { SharedModule } from './../shared/shared.module';
 
-export const AdminComponents = [
+export const InstructorAdminComponents = [
   AdminMainComponent, 
-  AdminNavbarComponent
+  AdminNavbarComponent,
+  AdminSidebarComponent
 ]
 
 
 @NgModule({
-  declarations: [AdminComponents, AdminSidebarComponent],
+  declarations: [InstructorAdminComponents],
   imports: [
-  CommonModule,
-    SharedModule
+    CommonModule,
+    SharedModule,
+  
   ],
   exports:[
-    AdminComponents
+    InstructorAdminComponents
   ]
 })
-export class AdminModule { }
+export class InstructorAdminModule { }

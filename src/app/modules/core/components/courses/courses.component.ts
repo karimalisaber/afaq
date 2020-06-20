@@ -96,7 +96,7 @@ export class CoursesComponent implements OnInit {
       queryParams: {'page': this.pages.current_page, 'category_id': cat.id},
     });
    
-    this.getCoursesByCategory();
+     this.getCoursesByCategory();
     this.setCategoryId();
   }
   

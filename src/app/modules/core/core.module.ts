@@ -18,22 +18,15 @@ import { SpecificCourseDescriptionComponent } from './components/specific-course
 import { SpecificCourseContentComponent } from './components/specific-course-content/specific-course-content.component';
 import { SpecificCourseReviewsComponent } from './components/specific-course-reviews/specific-course-reviews.component';
 import { StarsComponent } from './components/stars/stars.component';
-import {MatRadioModule} from '@angular/material/radio';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FAQComponent } from './components/faq/faq.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ContactComponent } from './components/contact/contact.component';
 import { WebsiteComponent } from './components/website/website.component';
 import { RelatedCourseComponent } from './components/specific-course/related-course/related-course.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ViewSpecificCourseComponent } from './components/view-specific-course/view-specific-course.component';
 import { NavSmallComponent } from './components/navbar/nav-small/nav-small.component';
 import { NavLargeComponent } from './components/navbar/nav-large/nav-large.component';
-import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'
-import { BrowserModule } from '@angular/platform-browser';
 // import {AngularSocialShare} from 'angular-socialshare/dist'
-import {MatMenuModule} from '@angular/material/menu';
 
 const CoreComponents = [
   NavbarComponent,
@@ -64,19 +57,8 @@ const CoreComponents = [
 @NgModule({
   declarations: [CoreComponents],
   imports: [
-  CommonModule,
-    RouterModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatRadioModule,
     CarouselModule,
-    MatExpansionModule,
     SharedModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    BrowserAnimationsModule,
-    MatProgressSpinnerModule,
-    MatMenuModule
   ],
   exports:[
     CoreComponents

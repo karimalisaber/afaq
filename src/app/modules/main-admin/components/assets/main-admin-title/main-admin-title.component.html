@@ -1,0 +1,8 @@
+<div class="main-wrapper d-flex align-items-center light-shadow mb-40">
+    
+    <h2 class="title mb-0 mh-30"> <i class="fas fa-university text-capitalize"></i> {{title}} </h2>
+    
+    <div *ngIf="type" class="action">
+        <a [routerLink]="link" class="admin-btn btn mh-30 "> + Add {{type}}</a>
+    </div>
+</div>

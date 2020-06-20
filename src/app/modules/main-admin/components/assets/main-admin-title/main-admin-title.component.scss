@@ -1,0 +1,15 @@
+@import "variables";
+
+.main-wrapper{
+    height: 100px;
+    background-color: #fff;
+    justify-content: space-between;
+    *{
+        color: $brawnColor;
+    }
+
+    .title{
+        font-weight: 500;
+    }
+
+}

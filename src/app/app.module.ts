@@ -2,7 +2,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AdminModule } from './modules/admin/admin.module';
+import { InstructorAdminModule } from './modules/admin/admin.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,10 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
+import { MainAdminModule } from './modules/main-admin/main-admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,9 +26,10 @@ import { ChartsModule } from 'ng2-charts';
     CoreModule,
     AuthModule,
     DashboardModule,
-    AdminModule,
+    InstructorAdminModule,
+    MainAdminModule,
     NgbModule,
-    MatProgressSpinnerModule  
+    MatProgressSpinnerModule,
   ],
   
   providers: [],

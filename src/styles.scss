@@ -2,7 +2,9 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "framework";
 @import "variables";
-@import '~@angular\material\prebuilt-themes\pink-bluegrey.css';
+// @import '~@angular\material\prebuilt-themes\pink-bluegrey.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import '~ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 // generals
@@ -13,12 +15,12 @@
 *{
     // font-family: Cantarell;
 }
-.custom-file-input:lang(en) ~ .custom-file-label::after {  
-    font-size: 16.5px;
-    width: 100%;
-    text-align: center;
-    height: auto;
-}
+// .custom-file-input:lang(en) ~ .custom-file-label::after {  
+//     font-size: 16.5px;
+//     width: 100%;
+//     text-align: center;
+//     height: auto;
+// }
   
 .desc{
     color: $mainHeaderColor;
@@ -65,12 +67,38 @@
     height: 40px;
 }
 
+.light-shadow{
+    box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+}
+.main-shadow{
+    box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.12);
+}
 // buttons
 .btn{
     border-radius: 20px;
     padding: 5px 6%;
     color: $mainHeaderColor;
     font-weight: 450;
+}
+
+.submit-btn{
+    color: #fff;
+    background-color: #4250f2;
+    border-color: #3645f1;
+    border-radius: 0;
+    padding: 5px 15px;
+    font-size: .9rem ;
+    opacity: .8;
+    transition: $mainTransition;
+    &:hover{
+        color: #fff ;
+        border-color: #3645f1;
+        opacity: 1;
+    }
+}
+
+.brawn-color{
+    color: $brawnColor
 }
 
 .main-btn{
@@ -80,6 +108,18 @@
      
     &:hover{
         color: $mainHeaderColor;
+    }
+}
+
+.admin-btn{
+    display: block;
+    width: 170px;
+    border: 1px solid $adminBtnColor;
+    color: $adminBtnColor;
+    font-size: .9rem;
+    &:hover{
+        color: #fff !important;
+        background-color: $adminBtnColor;
     }
 }
 
@@ -311,3 +351,17 @@ input:focus, select:focus, textarea:focus{
         }
     }
 }
+
+// main admin 
+mat-sidenav{
+    .mat-expansion-panel-body {
+        padding: 0;
+    }
+    
+    .mat-expansion-indicator::after {
+        color: #000;
+        opacity: .9;
+    }
+}
+
+

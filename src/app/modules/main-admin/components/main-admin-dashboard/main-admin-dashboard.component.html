@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
+    <ul class="menu-controller-left">
+        <li>
+            <a class="navbar-brand" href="#">
+                <img class="img-fluid" src="assets/images/core/logo-english.png" alt="">
+            </a>
+        </li>
+
+        <li>
+            <button (click)="navOpened = !navOpened" class="btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </li>
+    </ul>
+      
+      <ul class="ml-auto row navbar-nav ph-40">
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+       
+      </ul>
+  </nav>
+
+<mat-sidenav-container>
+   <mat-sidenav mode="side" [(opened)]="navOpened">
+       <ul class="sidebar-content">
+          <li class="w-100 control-item mv-10">
+               <a routerLink="" routerLinkActive="active">
+                   <i class="fas fa-home mh-10"></i>    
+                        DashBoard
+                </a>
+            </li>
+
+
+            <li style="display: flex !important" class="control-item">
+              <i class="fas fa-home mh-10"></i>    
+
+              <mat-expansion-panel class="w-100 d-inline-block">
+                  <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+                      <button class="btn"> Categories </button>
+                  </mat-expansion-panel-header>
+                  
+                  <ul>
+                    <li class="sub-menu"><a routerLink="categories" routerLinkActive="active" class="btn">Categories </a> </li>
+                    <li class="sub-menu"><a routerLink="add_category" routerLinkActive="active" class="btn"> Add Category </a> </li>
+                  </ul>
+              </mat-expansion-panel>         
+           </li>
+
+           <li class="w-100 control-item mv-10">
+            <a routerLink="instructors" routerLinkActive="active">
+                <i class="fas fa-home mh-10"></i>    
+                    Instructors
+             </a>
+         </li>
+           
+       </ul>
+   </mat-sidenav>
+   
+   <mat-sidenav-content class="p-50" [ngClass]="{'toggle': navOpened}">
+     <router-outlet></router-outlet>
+      
+   </mat-sidenav-content>
+</mat-sidenav-container>
+
