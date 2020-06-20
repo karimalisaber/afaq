@@ -5,12 +5,10 @@
 >
 </app-main-admin-title>
 
-
-
 <section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background main-shadow black-color">
     <h2 class="brawn-color uppercase">instructors</h2>
 
-    <table mat-table [dataSource]="instructors" class="table-striped w-100 mat-elevation-z8">
+    <table mat-table [dataSource]="instructors" class="admin-table table-striped w-100 mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->

@@ -328,10 +328,6 @@ input:focus, select:focus, textarea:focus{
     padding: 0 !important;  
 }
 
-// mat-progress-spinner circle, .mat-spinner circle {
-//     stroke: gray;
-// }
-
 .spinner-border{
     width: 100px;
     height: 100px;
@@ -365,3 +361,39 @@ mat-sidenav{
 }
 
 
+// admin table 
+table.admin-table{
+    box-shadow: none;
+    padding: 0;
+    *{
+        color: $brawnColor !important;
+        border-color: $lightBorder !important;
+    }
+
+    td{
+        height: 80px;
+    }
+
+    th{
+        font-size: .9rem;
+    }
+
+    .action-btn{
+        padding: 3px 20px;
+        transition: $mainTransition;
+        mat-menu{
+            background-color: #fff;
+        }
+        &:hover{
+            background-color: $adminBtnColor;
+
+            i{
+                color: #fff !important;
+            }
+        }
+
+        i{
+            font-size: .7rem;
+        }
+    }
+}

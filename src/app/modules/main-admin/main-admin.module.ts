@@ -9,6 +9,10 @@ import { EdiCategoryComponent } from './components/edi-category/edi-category.com
 import { ViewInstructorsComponent } from './components/view-instructors/view-instructors.component';
 import { EditInstructorComponent } from './components/edit-instructor/edit-instructor.component';
 import { AddInstructorComponent } from './components/add-instructor/add-instructor.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { StudentListComponent } from './components/student-list/student-list.component';
+import { StudentApplicationComponent } from './components/student-application/student-application.component';
+
 
 export const mianAdminComponents = [
   MainAdminDashboardComponent,
@@ -19,13 +23,17 @@ export const mianAdminComponents = [
   EdiCategoryComponent, 
   ViewInstructorsComponent, 
   EditInstructorComponent, 
-  AddInstructorComponent
+  AddInstructorComponent,
 ]
 
 @NgModule({
-  declarations: [mianAdminComponents ],
+  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent ],
   imports: [
   SharedModule,
+  AngularEditorModule,
+  // NgxEditorModule
+  // FroalaEditorModule.forRoot(), 
+  // FroalaViewModule.forRoot()
   ],
 
   exports:[

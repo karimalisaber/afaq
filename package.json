@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
     "@fortawesome/fontawesome-free": "^5.13.0",
+    "@kolkov/angular-editor": "^1.1.2",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "angular-socialshare": "^2.3.11",
     "angular-validation-match": "^1.9.0",

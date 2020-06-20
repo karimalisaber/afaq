@@ -1,0 +1,66 @@
+@import "variables"; 
+.admin-btn{
+    height: 50px;
+    background-color: #E3EAEF;
+    border: 0;
+    color: $brawnColor;
+    
+    &:hover{
+        color: $brawnColor !important;
+    }
+
+    &.active{
+        background-color: $adminBtnColor;
+        color: #fff;
+
+        &:hover{
+            color: #fff !important;
+        }
+            
+        .fas{
+            color: #fff;
+        }
+    }
+
+}
+
+.progress{
+    height: 8px;
+}
+
+*{
+    color: $brawnColor
+}
+
+.arrow-btn{
+    background-color: #39AFD1;
+    padding: 7px 15px;
+    border-radius: 3px;
+    margin: 8px;
+
+    .fas{
+        font-size: .8rem;
+        color: #fff;
+    }
+}
+
+.in-visible{
+    height: 0;
+    overflow: hidden;
+}
+
+.fa-check-circle{
+    font-size: 2.5rem;
+    margin-bottom: 18px;
+}
+
+.submit-btn{
+    // font-size: .8rem;
+    font-weight: lighter;
+
+}
+
+input{
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}

@@ -1,1 +1,142 @@
-<p>add-instructor works!</p>
+<app-main-admin-title
+    [type]="false"
+    [title]="'Add Instructor'"
+    [link] ="false"
+>
+</app-main-admin-title>
+
+<div class="white-background main-shadow">
+    <h2 class="mh-30 pt-30 pb-20 brawn-color">Add INSTRUCTOR FORM</h2>
+
+    <section class="row no-gutters">
+        <div class="p-0 col-md-3">
+            <button id="control-1" (click)="move($event.target)" class="active btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-info"></i>
+                Basic info
+            </button>
+        </div>
+    
+        <div class="col-md-3">
+            <button id="control-2" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-lock"></i>
+                Login Credientials
+            </button>
+        </div>
+    
+        <div class="col-md-3">
+            <button id="control-3" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-wifi"></i>
+                Social information
+            </button>
+        </div>
+    
+        <div class="col-md-3">
+            <button id="control-4" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-check"></i>
+                Finish
+            </button>
+        </div>
+    </section>
+    
+        <div class="mh-20 mv-30 progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="progressStatus"></div>
+        </div>
+    
+        <form class="ph-20">
+            <section id="item-control-1" class="visible item basic-info">
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="title"> First name <span class="text-danger">*</span> </label>
+                    <input type="text" class="col-md-9 form-control" id="title" >
+                </div>
+          
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="title"> Last name <span class="text-danger">*</span> </label>
+                    <input type="text" class="col-md-9 form-control" id="title" >
+                </div>
+    
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="title"> Biography  <span class="text-danger">*</span> </label>
+                    
+                    <div class="p-0 col-md-9">
+                        <angular-editor  name="biography" [config]="editorConfig" ></angular-editor>
+                    </div>
+    
+                    <!-- <textarea name="" id="" cols="30" class="p-20 col-md-9 form-control" rows="10"></textarea> -->
+                </div>
+                <!-- img -->
+    
+                <div class="row no-gutters">
+                    <label class="col-md-3" for="title"> User image  <span class="text-danger">*</span> </label>
+                    
+                    <div class="input-group mb-3 col-md-9">
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="thumbnail">
+                        <label class="custom-file-label" for="thumbnail">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="item-control-2" class="in-visible item login-credential">
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="email"> Email <span class="text-danger">*</span> </label>
+                    <input type="email" class="col-md-9 form-control" id="email" >
+                </div>
+          
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="password"> Password <span class="text-danger">*</span> </label>
+                    <input type="password" class="col-md-9 form-control" name="password" id="password" >
+                </div>
+    
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="confirm_password"> Confirm password <span class="text-danger">*</span> </label>
+                    <input type="password" class="col-md-9 form-control" id="confirm_password" name="confirm_password" >
+                </div>
+            
+                <!-- img -->
+            </section>
+    
+            <section id="item-control-3" class="item in-visible social-information">
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="facebook"> Facebook </label>
+                    <input type="email" class="col-md-9 form-control" id="facebook" name="fassbook" >
+                </div>
+          
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="twitter"> Twitter </label>
+                    <input class="col-md-9 form-control" name="twitter" id="twitter" >
+                </div>
+    
+                <div class="mb-20 form-group row no-gutters">
+                    <label class="col-md-3" for="linkenin"> Linkendin </label>
+                    <input class="col-md-9 form-control" id="linkedin" name="linkedin" >
+                </div>        
+            </section>
+            
+            <section id="item-control-4" class="in-visible item text-center finish">
+                <div class="w-100">
+                    <i class="far fa-check-circle"></i> 
+                </div>
+    
+                <h2 class="m-0 w-100">
+                    Thank you !
+                </h2>
+    
+                <h4 class="">You are just one click away </h4>
+                
+                <div class="w-100">
+                    <button type="submit" class="main-shadow rounded ph-0 btn white-color submit-btn">Submit</button>
+                </div>
+            </section>
+            <!-- <div [froalaEditor]>Hello, Froala!</div> -->
+            
+            <!-- <button type="submit" class="ph-0 btn submit-btn">Submit</button> -->
+          </form>
+    
+          <div class="d-flex justify-content-center actions mt-20">
+                <button (click)="moveBackowrd()" class="btn arrow-btn"><i class="fas fa-arrow-left"></i></button>
+                <button (click)="moveForward()" class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
+          </div>
+</div>
+
+<!-- <ngx-editor [ngModel]="jsonDoc"></ngx-editor> -->

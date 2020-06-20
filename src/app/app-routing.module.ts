@@ -24,6 +24,8 @@ import { NgModule } from '@angular/core';
 import { ViewInstructorsComponent } from './modules/main-admin/components/view-instructors/view-instructors.component';
 import { AddInstructorComponent } from './modules/main-admin/components/add-instructor/add-instructor.component';
 import { EditInstructorComponent } from './modules/main-admin/components/edit-instructor/edit-instructor.component';
+import { StudentListComponent } from './modules/main-admin/components/student-list/student-list.component';
+import { StudentApplicationComponent } from './modules/main-admin/components/student-application/student-application.component';
 
 
 const routes: Routes = [
@@ -64,6 +66,9 @@ const routes: Routes = [
     {path: 'add_instructor', component: AddInstructorComponent},
     {path: 'edit_instructor/:id', component: EditInstructorComponent},
 
+    // students 
+    {path: 'student_list', component: StudentListComponent},
+    {path: 'student_application', component: StudentApplicationComponent},
   ]},
 
 ];

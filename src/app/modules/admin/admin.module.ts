@@ -17,7 +17,6 @@ export const InstructorAdminComponents = [
   imports: [
     CommonModule,
     SharedModule,
-  
   ],
   exports:[
     InstructorAdminComponents

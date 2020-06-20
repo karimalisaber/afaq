@@ -36,7 +36,6 @@
                 </a>
             </li>
 
-
             <li style="display: flex !important" class="control-item">
               <i class="fas fa-home mh-10"></i>    
 
@@ -58,6 +57,22 @@
                     Instructors
              </a>
          </li>
+
+         
+         <li style="display: flex !important" class="control-item">
+          <i class="fas fa-home mh-10"></i>    
+
+          <mat-expansion-panel class="w-100 d-inline-block">
+              <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+                  <button class="btn"> Students </button>
+              </mat-expansion-panel-header>
+              
+              <ul>
+                <li class="sub-menu"><a routerLink="student_list" routerLinkActive="active" class="btn">Student list </a> </li>
+                <li class="sub-menu"><a routerLink="student_application" routerLinkActive="active" class="btn"> Student application </a> </li>
+              </ul>
+          </mat-expansion-panel>         
+       </li>
            
        </ul>
    </mat-sidenav>
