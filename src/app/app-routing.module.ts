@@ -26,6 +26,9 @@ import { AddInstructorComponent } from './modules/main-admin/components/add-inst
 import { EditInstructorComponent } from './modules/main-admin/components/edit-instructor/edit-instructor.component';
 import { StudentListComponent } from './modules/main-admin/components/student-list/student-list.component';
 import { StudentApplicationComponent } from './modules/main-admin/components/student-application/student-application.component';
+import { ViewCoursesComponent } from './modules/main-admin/components/view-courses/view-courses.component';
+import { AddCourseComponent } from './modules/main-admin/components/add-course/add-course.component';
+import { EditCourseComponent } from './modules/main-admin/components/edit-course/edit-course.component';
 
 
 const routes: Routes = [
@@ -69,6 +72,12 @@ const routes: Routes = [
     // students 
     {path: 'student_list', component: StudentListComponent},
     {path: 'student_application', component: StudentApplicationComponent},
+
+    // courses
+    {path: 'courses', component: ViewCoursesComponent},
+    {path: 'add_course', component: AddCourseComponent},
+    {path: 'edit_course/:id', component: EditCourseComponent},
+
   ]},
 
 ];

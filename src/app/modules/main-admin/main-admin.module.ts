@@ -12,6 +12,10 @@ import { AddInstructorComponent } from './components/add-instructor/add-instruct
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { StudentApplicationComponent } from './components/student-application/student-application.component';
+import { ViewCoursesComponent } from './components/view-courses/view-courses.component';
+import { AddCourseComponent } from './components/add-course/add-course.component';
+import { EditCourseComponent } from './components/edit-course/edit-course.component';
+import { SummaryComponent } from './components/view-courses/summary/summary.component';
 
 
 export const mianAdminComponents = [
@@ -27,7 +31,7 @@ export const mianAdminComponents = [
 ]
 
 @NgModule({
-  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent ],
+  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent, ViewCoursesComponent, AddCourseComponent, EditCourseComponent, SummaryComponent ],
   imports: [
   SharedModule,
   AngularEditorModule,

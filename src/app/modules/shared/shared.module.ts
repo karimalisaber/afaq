@@ -14,10 +14,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
-
+import { MatSelectModule } from '@angular/material/select';
+import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog"
 const SharedComponents =[
-  FooterComponent
-]
+  FooterComponent,
+  DeleteDialogComponent
+];
+const  MaterialEntryComponents =[
+  DeleteDialogComponent
+];
 
 const SharedImportes = [
   CommonModule,
@@ -32,8 +38,10 @@ const SharedImportes = [
   MatSidenavModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatTableModule
-]
+  MatTableModule,
+  MatSelectModule,
+  MatDialogModule
+];
 
 @NgModule({
   declarations: [SharedComponents],
@@ -42,7 +50,11 @@ const SharedImportes = [
   ],
   exports:[
     SharedComponents,
-    SharedImportes
+    SharedImportes,
+    MaterialEntryComponents
+  ],
+  entryComponents: [
+    MaterialEntryComponents
   ],
   providers:[
     ApiCallService

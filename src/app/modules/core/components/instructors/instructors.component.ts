@@ -22,7 +22,6 @@ export class InstructorsComponent implements OnInit {
     this.api.getAllInstructors()
       .subscribe(
         res => this.instructros = res
-        // res => console.log(res)
       )
       ,
       ()=>{},

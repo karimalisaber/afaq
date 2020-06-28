@@ -1,0 +1,80 @@
+@import "variables";
+// summary 
+app-summary{
+    border-right: 1px solid $lightBorder;
+    color: $brawnColor;
+    &:last-child{
+        border-right: 0;
+    }
+}
+
+// inputs filter 
+label.input-group{
+    color: $textColor !important;
+}
+
+mat-select{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    border: 1px solid $lightBorder;
+}
+
+.admin-btn{
+    height: 40px;
+    max-height: 40px;
+    color: #fff !important;
+    background-color: $adminBtnColor;
+}
+
+.input-search{
+    height: 35px;
+    border: 1px solid $lightBorder;
+    border-radius: 0;
+    padding: 3px;
+    color: $textColor
+}
+
+
+// search and top pagination
+div.dataTables_wrapper div.dataTables_length label {
+    color: $textColor;
+}
+
+.custom-select-sm {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    padding-left: .5rem;
+    font-size: .875rem;
+}
+
+.custom-select {
+    width: 70px;
+    height: calc(2.2125rem + 2px);
+    padding: .45rem 1.9rem .45rem .9rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+div.dataTables_filter input {
+    margin-left: 0.5em;
+    height: 35px;
+    display: inline-block;
+    width: 250px !important;
+}
+
+
+// table 
+
+.admin-table{
+    border-top: 1px solid $lightBorder;
+}

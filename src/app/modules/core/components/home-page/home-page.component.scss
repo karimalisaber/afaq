@@ -338,8 +338,6 @@ app-course-item{
 
 }
 
-
-
 @media(max-width: 992px){
     
     #viedo-add{
@@ -359,49 +357,42 @@ app-course-item{
         }
     }
     
-    }
 
+}
 
-
-    @media(max-width: 786px){
-    
-        #viedo-add{
-            .video-wrapper{
-                .video{
-                    width: 95%;
-                    height: 400px;
-                }
-    
-            }
-        }
-        
-    }
-    
-    
-    @media(max-width: 576px){
-    
-        #viedo-add{
-            .video-wrapper{
-                .video{
-                    height: 300px !important;
-                }
-            
-                iframe{
-                    position: absolute;
-                    top: 15px;
-                    right: 15px;
-                    left: 15px;
-                    bottom: 15px;
-                    height: calc(100% - 30px);
-                    width: calc(100% - 30px);
-                    // border-radius: 15px;
-                }
+@media(max-width: 786px){
+    #viedo-add{
+        .video-wrapper{
+            .video{
+                width: 95%;
+                height: 400px;
             }
 
-
         }
-        
     }
+}
+    
+    
+@media(max-width: 576px){
+    #viedo-add{
+        .video-wrapper{
+            .video{
+                height: 300px !important;
+            }
+        
+            iframe{
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                left: 15px;
+                bottom: 15px;
+                height: calc(100% - 30px);
+                width: calc(100% - 30px);
+                // border-radius: 15px;
+            }
+        }
+    }    
+}
 
 
 .instructors{

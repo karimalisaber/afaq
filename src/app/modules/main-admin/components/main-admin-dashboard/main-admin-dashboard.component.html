@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light fixed-top">
+<!-- <nav class="navbar navbar-expand-lg bg-light fixed-top">
     <ul class="menu-controller-left">
         <li>
             <a class="navbar-brand" href="#">
@@ -24,20 +24,20 @@
         </li>
        
       </ul>
-  </nav>
-
+</nav> -->
+<!-- 
 <mat-sidenav-container>
    <mat-sidenav mode="side" [(opened)]="navOpened">
        <ul class="sidebar-content">
           <li class="w-100 control-item mv-10">
-               <a routerLink="" routerLinkActive="active">
+               <a routerLink="/admin" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
                    <i class="fas fa-home mh-10"></i>    
                         DashBoard
                 </a>
             </li>
 
             <li style="display: flex !important" class="control-item">
-              <i class="fas fa-home mh-10"></i>    
+              <i class="fas fa-project-diagram"></i>
 
               <mat-expansion-panel class="w-100 d-inline-block">
                   <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
@@ -51,7 +51,8 @@
               </mat-expansion-panel>         
            </li>
 
-           <li class="w-100 control-item mv-10">
+
+          <li class="w-100 control-item mv-10">
             <a routerLink="instructors" routerLinkActive="active">
                 <i class="fas fa-home mh-10"></i>    
                     Instructors
@@ -74,6 +75,15 @@
           </mat-expansion-panel>         
        </li>
            
+       
+       <li class="w-100 control-item mv-10">
+        <a routerLink="courses" routerLinkActive="active">
+          <i class="fab fa-fonticons-fi"></i>    
+                Courses
+        </a>
+      </li>
+
+
        </ul>
    </mat-sidenav>
    
@@ -81,5 +91,137 @@
      <router-outlet></router-outlet>
       
    </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
 
+
+<div class="main-container">
+  
+
+    <div style="background: url('assets/images/admin/waves.png');" class="navbar light-shadow">
+    <ul class="sidebar-content">
+      <div  class="text-center img-wrapper mt-30">
+        <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
+
+        <span class="d-block name" >kairm saber</span>
+      </div>
+      <li class="w-100 control-item mv-10">
+           <a routerLink="/admin" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+               <i class="fas fa-home mh-10"></i>    
+                    DashBoard
+            </a>
+        </li>
+
+        <li style="display: flex !important" class="control-item">
+          <i class="fas fa-project-diagram"></i>
+
+          <mat-expansion-panel class="w-100 d-inline-block">
+              <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+                  <button class="btn"> Categories </button>
+              </mat-expansion-panel-header>
+              
+              <ul>
+                <li class="sub-menu"><a routerLink="categories" routerLinkActive="active" class="btn">Categories </a> </li>
+                <li class="sub-menu"><a routerLink="add_category" routerLinkActive="active" class="btn"> Add Category </a> </li>
+              </ul>
+          </mat-expansion-panel>         
+       </li>
+
+
+      <li class="w-100 control-item mv-10">
+        <a routerLink="instructors" routerLinkActive="active">
+            <i class="fas fa-home mh-10"></i>    
+                Instructors
+         </a>
+     </li>
+
+     
+     <li style="display: flex !important" class="control-item">
+      <i class="fas fa-home mh-10"></i>    
+
+      <mat-expansion-panel class="w-100 d-inline-block">
+          <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+              <button class="btn"> Students </button>
+          </mat-expansion-panel-header>
+          
+          <ul>
+            <li class="sub-menu"><a routerLink="student_list" routerLinkActive="active" class="btn">Student list </a> </li>
+            <li class="sub-menu"><a routerLink="student_application" routerLinkActive="active" class="btn"> application </a> </li>
+          </ul>
+      </mat-expansion-panel>         
+   </li>
+       
+   
+   <li class="w-100 control-item mv-10">
+    <a routerLink="courses" routerLinkActive="active">
+      <i class="fab fa-fonticons-fi"></i>    
+            Courses
+    </a>
+  </li>
+   </ul>
+  </div>
+
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<!-- 
+<div class="wrapper">
+  <div class="navbar">
+    <ul class="sidebar-content">
+      <li class="w-100 control-item mv-10">
+           <a routerLink="/admin" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active">
+               <i class="fas fa-home mh-10"></i>    
+                    DashBoard
+            </a>
+        </li>
+
+        <li style="display: flex !important" class="control-item">
+          <i class="fas fa-project-diagram"></i>
+
+          <mat-expansion-panel class="w-100 d-inline-block">
+              <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+                  <button class="btn"> Categories </button>
+              </mat-expansion-panel-header>
+              
+              <ul>
+                <li class="sub-menu"><a routerLink="categories" routerLinkActive="active" class="btn">Categories </a> </li>
+                <li class="sub-menu"><a routerLink="add_category" routerLinkActive="active" class="btn"> Add Category </a> </li>
+              </ul>
+          </mat-expansion-panel>         
+       </li>
+
+
+      <li class="w-100 control-item mv-10">
+        <a routerLink="instructors" routerLinkActive="active">
+            <i class="fas fa-home mh-10"></i>    
+                Instructors
+         </a>
+     </li>
+
+     
+     <li style="display: flex !important" class="control-item">
+      <i class="fas fa-home mh-10"></i>    
+
+      <mat-expansion-panel class="w-100 d-inline-block">
+          <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+              <button class="btn"> Students </button>
+          </mat-expansion-panel-header>
+          
+          <ul>
+            <li class="sub-menu"><a routerLink="student_list" routerLinkActive="active" class="btn">Student list </a> </li>
+            <li class="sub-menu"><a routerLink="student_application" routerLinkActive="active" class="btn"> Student application </a> </li>
+          </ul>
+      </mat-expansion-panel>         
+   </li>
+       
+   
+   <li class="w-100 control-item mv-10">
+    <a routerLink="courses" routerLinkActive="active">
+      <i class="fab fa-fonticons-fi"></i>    
+            Courses
+    </a>
+  </li>
+   </ul>
+  </div>
+</div> -->

@@ -1,0 +1,25 @@
+@import "variables";
+// summary
+.summary{
+    .icon{
+        font-size: 1.6rem;
+        color: #98a6ad !important;
+        font-weight: 400;
+    }
+
+    .type{
+        font-size: 1rem;
+        color: #98a6ad !important;
+        font-weight: lighter;
+    }
+
+    .number{
+        margin: 15px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        transition: $mainTransition;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+}

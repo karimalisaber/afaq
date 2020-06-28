@@ -31,7 +31,6 @@ import { MainAdminModule } from './modules/main-admin/main-admin.module';
     NgbModule,
     MatProgressSpinnerModule,
   ],
-  
   providers: [],
   bootstrap: [AppComponent]
 })

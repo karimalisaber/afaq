@@ -1,4 +1,6 @@
 @import "variables";
+
+
 .card-title{
     margin: 10px 0;
     font-weight: 600;
@@ -14,14 +16,14 @@
 
 .card:hover{
     .action{
-        height: auto;
+        // height: auto;
 
     }
 }
 
 .action{
     justify-content: space-between;
-    height: 0;
+    // height: 0;
     overflow: hidden;
     transition: hight $mainTransition;
     .btn{

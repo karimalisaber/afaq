@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallService } from './../../../shared/services/api-call.service';
 import { Categories } from './../../../../interfaces/categories';
+import { AssetsService } from './../../../shared/services/assets.service';
 
 @Component({
   selector: 'app-view-categories',
@@ -10,7 +11,7 @@ import { Categories } from './../../../../interfaces/categories';
 export class ViewCategoriesComponent implements OnInit {
 categories: Categories;
 isLoading = false;
-  constructor(private api: ApiCallService) { }
+  constructor(private api: ApiCallService, private assets: AssetsService) { }
 
   ngOnInit(): void {
     this.getAllCategories();
@@ -26,6 +27,10 @@ isLoading = false;
         ()=>{},
         ()=> this.isLoading = false
       );
+  }
+
+  deleteAlert(id){
+    this.assets.deleteAlert();
   }
 
 }
