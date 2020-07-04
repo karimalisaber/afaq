@@ -402,6 +402,23 @@ table.admin-table{
     }
 }
 
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
 .confirm-dialog-container{
     // z-index: 100000000000000000000 !important;
+}
+
+mat-select{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    border: 1px solid $lightBorder;
+}
+
+
+.angular-editor-textarea:focus{
+    outline: 0 !important;
 }

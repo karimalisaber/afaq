@@ -1,12 +1,16 @@
 <app-main-admin-title [title]="'Courses'" [type]="'Course'" [link]="'/admin/add_course'">
 </app-main-admin-title>
 
-<div class="light-shadow no-gutters white-background numbers row mb-40">
-    <app-summary class="col"></app-summary>
-    <app-summary class="col"></app-summary>
-    <app-summary class="col"></app-summary>
-    <app-summary class="col"></app-summary>
+<div class="light-shadow no-gutters white-background numbers mb-50 row">
+    <app-summary [title]="'All courses'" class="col"></app-summary>
+    <app-summary [title]="'Free courses'" class="col"></app-summary>
+    <app-summary [title]="'Paid courses'" class="col"></app-summary>
+    <app-summary [title]="'All events'" class="col"></app-summary>
+    <app-summary [title]="'Paid events'" class="col"></app-summary>
+    <app-summary [title]="'free events'" class="col"></app-summary>
+    <!-- <app-summary class="col"></app-summary> -->
 </div>
+
 
 <section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background black-color">
     <h2 class="brawn-color uppercase">COURSE LIST</h2>
@@ -26,16 +30,17 @@
             </div>
 
             <div class="input-group  col-md-2">
-                <label class="input-group" for="inputGroupSelect01"> Status</label>
-                <mat-select value="10">
-                    <mat-option selected value="10">
+                <label class="input-group" for="inputGroupSelect01"> Type</label>
+                <mat-select value="1">
+                    <mat-option selected value="1">
                         All
                     </mat-option>
-                    <mat-option selected value="51">
-                        Active
+
+                    <mat-option selected value="1">
+                        Courses
                     </mat-option>
-                    <mat-option selected value="41">
-                        Pending
+                    <mat-option selected value="2">
+                        Events
                     </mat-option>
                 </mat-select>
             </div>

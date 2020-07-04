@@ -1,0 +1,44 @@
+@import "variables"; 
+
+input{
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
+.input-search{
+    height: 35px;
+    border: 1px solid $lightBorder;
+    border-radius: 0;
+    padding: 3px;
+    color: $textColor
+}
+
+
+.fa-plus, .fa-minus{
+    color: white;
+    height: 100%;
+    padding: 0 15px;
+    background-color: #0acf97;
+    border-color: #0acf97;
+    box-shadow: 0 2px 6px 0 rgba(10,207,151,.5);
+
+    &:hover{
+        color: #fff;
+        background-color: #08ab7c;
+        border-color: #089e74;
+    }
+        
+}
+
+
+.fa-minus{
+    background-color: #fa5c7c;
+    border-color: #fa5c7c;
+    box-shadow: 0 2px 6px 0 rgba(250,92,124,.5);
+    &:hover{
+        color: #fff;
+        background-color: #f9375e;
+        border-color: #f82b54;
+    }
+        
+}

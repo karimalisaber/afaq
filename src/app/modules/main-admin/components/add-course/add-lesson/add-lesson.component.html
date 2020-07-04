@@ -1,0 +1,33 @@
+<div *ngFor="let outcome of outcomesArray; index as i" class="row">
+    <div class="col-md-2">
+        <label [hidden]="i !==0" for="requirements"> Add Lessons </label>
+    </div>
+
+    <div class="d-flex flex-wrap col-md-10 mb-20 justify-content-between">
+        <div class="d-flex w-100">
+            <input placeholder="provide outcomes" type="requirements" class=" form-control" [id]="'outcome-' + i">
+
+            <button (click)="addOutcome()" *ngIf="i=== 0" class="btn ml-30 p-0 d-flex align-items-center">
+                <i class="d-flex align-items-center rounded fas fa-plus"></i>
+            </button>
+
+            <button (click)="removeOutcome(i)" *ngIf="i > 0" class="btn  ml-30 p-0 d-flex align-items-center">
+                <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
+            </button>
+        </div>
+
+        <div class="break"></div>
+
+
+        <div class="d-flex w-100 mt-10">
+            <div class="custom-file mb-10">
+                <input type="file" class="custom-file-input" id="thumbnail">
+                <label class="custom-file-label" for="thumbnail">Choose Viedo For Lesson {{i +1 }}</label>
+            </div>
+
+            <button class="btn  ml-30 p-0 d-flex align-items-center hidden">
+                <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+</div>

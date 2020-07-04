@@ -16,6 +16,7 @@ import { ViewCoursesComponent } from './components/view-courses/view-courses.com
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { SummaryComponent } from './components/view-courses/summary/summary.component';
+import { AddLessonComponent } from './components/add-course/add-lesson/add-lesson.component';
 
 
 export const mianAdminComponents = [
@@ -31,7 +32,7 @@ export const mianAdminComponents = [
 ]
 
 @NgModule({
-  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent, ViewCoursesComponent, AddCourseComponent, EditCourseComponent, SummaryComponent ],
+  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent, ViewCoursesComponent, AddCourseComponent, EditCourseComponent, SummaryComponent, AddLessonComponent ],
   imports: [
   SharedModule,
   AngularEditorModule,

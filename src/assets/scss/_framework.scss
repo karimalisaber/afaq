@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Tajawal:400,500,700&display=swap');
+$mainTransition: all .5s;
 
 // globals
 
@@ -673,6 +674,17 @@ a:focus
 //           helpers
 // ---------------------------------------
 
+.h-0{
+  max-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.max-height-transition{
+  -moz-transition: max-height .7s ease;
+  -webkit-transition: max-height .7s ease;
+  -o-transition: max-height .7s ease;
+  transition: max-height .7s ease;
+}
 
 .rounded-small-img{
   width: 50px;
