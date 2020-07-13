@@ -1,0 +1,28 @@
+<app-main-admin-title [title]="'FAQ\'s'" [type]="'New Question'" [link]="'/admin/add_faq'">
+</app-main-admin-title>
+
+<section class="pv-50 ph-30 white-background">
+    <div class="container">
+        <div class="some-margin faq-wrapper">
+            <mat-expansion-panel style="border-radius: 0" *ngFor="let i of [1,2,1,3,1,3,1,5]" class="question">
+                <mat-expansion-panel-header>
+                    <h2 class="main-title mv-20 w-100 d-flex justify-content-space-between">Lorem ipsum dolor sit, amet
+                        consectetur adipisicing elit ? </h2>
+                </mat-expansion-panel-header>
+
+                <p class="gray-color desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel eveniet
+                    praesentium illo rerum recusandae modi minus, alias debitis mollitia suscipit illum dolorem, aliquid
+                    laudantium? Sit voluptas quis doloribus unde sed.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt voluptates corrupti omnis tenetur
+                    delectus. Commodi quasi porro dolores eum vero impedit facilis optio repellat ipsa, minima ipsum
+                    quia eaque architecto.
+                </p>
+
+                <div style="width: 200px;" class="mv-20 action d-flex">
+                    <a (click)="editFAQ(1)" class="rounded-0 btn btn-primary"><i class="fas fa-wrench"></i> edit</a>
+                    <a (click)="deleteAlert(1)" class="btn btn-danger rounded-0"><i class="fas fa-trash"></i> delete</a> 
+                </div>
+            </mat-expansion-panel>
+        </div>
+    </div>
+</section>

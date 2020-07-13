@@ -1,0 +1,29 @@
+<app-main-admin-title
+    [type]="false"
+    [title]="'Add New FAQ'"
+    [link] ="false"
+>
+</app-main-admin-title>
+
+<section class="pv-20 ph-30 cat-form white-background main-shadow black-color">
+        <form>
+            <h2 class="brawn-color">Add FAQ FORM</h2>
+
+            <div class="form-group">
+              <label class="main-label" for="question"> Question <span class="text-danger">*</span> </label>
+              <input type="text" class="form-control" id="question" >
+            </div>
+                        
+            <div class="form-group">
+                <label class="main-label" for="answer">Answer <span class="text-danger">*</span> </label>
+                <textarea rows="7" type="email" class="form-control" id="answer" placeholder="answer"> </textarea>
+            </div>
+        
+            <button type="submit" class="ph-0 btn submit-btn">Submit</button>
+            
+            <div class="action d-inline mh-20">
+                <button class="btn btn-danger rounded-0"> Cancel</button> 
+            </div>
+
+          </form>
+</section>

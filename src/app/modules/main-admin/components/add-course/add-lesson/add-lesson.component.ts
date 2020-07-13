@@ -6,10 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-lesson.component.scss']
 })
 export class AddLessonComponent implements OnInit {
-  outcomesArray = [1];
-  outcomesArrayNumber = 1;
-  chaptersArray = [1];
-  chaptersArrayNumber = 1;
+  lessonsArray = [1];
+  lessonsArrayNumber = 1;
+
   
   constructor() { }
 
@@ -17,31 +16,20 @@ export class AddLessonComponent implements OnInit {
   }
 
   
-  addOutcome(){
-    this.outcomesArrayNumber ++;
-
-    this.outcomesArray.push(this.outcomesArrayNumber);
+  addLesson(i){
+    this.lessonsArrayNumber ++;
+    
+    this.lessonsArray.splice(i+1, 0, i+1);
+    this.lessonsArray = this.lessonsArray.fill(1).map((x,index)=> {return index+1});
   }
 
-  removeOutcome(i){
-    if(this.outcomesArrayNumber <= 1) return;
+  removeLesson(i) {
+    if(this.lessonsArrayNumber <= 1) return;
 
-    this.outcomesArrayNumber --;
-    this.outcomesArray.splice(i, 1);
+    this.lessonsArrayNumber --;
+    this.lessonsArray.splice(i, 1);
   }
 
   
-  addChapter(){
-    this.chaptersArrayNumber ++;
-
-    this.chaptersArray.push(this.chaptersArrayNumber);
-  }
-
-  removeChapter(i){
-    if(this.chaptersArrayNumber <= 1) return;
-
-    this.chaptersArrayNumber --;
-    this.chaptersArray.splice(i, 1);
-  }
 
 }

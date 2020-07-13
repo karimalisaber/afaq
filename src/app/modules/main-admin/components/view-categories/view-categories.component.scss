@@ -20,39 +20,3 @@
 
     }
 }
-
-.action{
-    justify-content: space-between;
-    // height: 0;
-    overflow: hidden;
-    transition: hight $mainTransition;
-    .btn{
-
-        background: transparent;
-        padding: .28rem .8rem;
-        font-size: .9rem;
-        
-        &.btn-primary{
-            color: #39afd1;
-            border-color: #39afd1;
-               
-            &:hover{
-                background-color: #39afd1 !important; 
-                color: #fff;
-            }
-        }
-    
-        
-    
-        &.btn-danger{
-            color: #fa5c7c;
-            border-color: #fa5c7c; 
-    
-            &:hover{
-                background-color: #fa5c7c; 
-                color: #fff;
-            }
-        }
-        
-    }
-}

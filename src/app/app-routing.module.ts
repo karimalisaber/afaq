@@ -29,6 +29,14 @@ import { StudentApplicationComponent } from './modules/main-admin/components/stu
 import { ViewCoursesComponent } from './modules/main-admin/components/view-courses/view-courses.component';
 import { AddCourseComponent } from './modules/main-admin/components/add-course/add-course.component';
 import { EditCourseComponent } from './modules/main-admin/components/edit-course/edit-course.component';
+import { EditFaqComponent } from './modules/main-admin/components/edit-faq/edit-faq.component';
+import { AddFaqComponent } from './modules/main-admin/components/add-faq/add-faq.component';
+import { EditAboutComponent } from './modules/main-admin/components/edit-about/edit-about.component';
+import { EditContactInfoComponent } from './modules/main-admin/components/edit-contact-info/edit-contact-info.component';
+import { ChatComponent } from './modules/main-admin/components/chat/chat.component';
+import { AllChatsComponent } from './modules/main-admin/components/all-chats/all-chats.component';
+import { UserChatsComponent } from './modules/main-admin/components/user-chats/user-chats.component';
+import { SpecificUserChatComponent } from './modules/main-admin/components/specific-user-chat/specific-user-chat.component';
 
 
 const routes: Routes = [
@@ -77,6 +85,19 @@ const routes: Routes = [
     {path: 'courses', component: ViewCoursesComponent},
     {path: 'add_course', component: AddCourseComponent},
     {path: 'edit_course/:id', component: EditCourseComponent},
+    {path: 'messages', component: ChatComponent, children:[
+      {path: '', component: AllChatsComponent},
+      {path: ':userOneId', component: UserChatsComponent ,children:[
+        {path: ':userTwoId', component: SpecificUserChatComponent},
+      ]},
+
+    ]},
+
+    // static pages
+    {path: 'faq', component: EditFaqComponent},
+    {path: 'add_faq', component: AddFaqComponent},
+    {path: 'about', component: EditAboutComponent},
+    {path: 'contacts', component: EditContactInfoComponent},
 
   ]},
 

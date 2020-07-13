@@ -17,6 +17,15 @@ import { AddCourseComponent } from './components/add-course/add-course.component
 import { EditCourseComponent } from './components/edit-course/edit-course.component';
 import { SummaryComponent } from './components/view-courses/summary/summary.component';
 import { AddLessonComponent } from './components/add-course/add-lesson/add-lesson.component';
+import { EditFaqComponent } from './components/edit-faq/edit-faq.component';
+import { AddFaqComponent } from './components/add-faq/add-faq.component';
+import { EditFaqDialogComponent } from './components/edit-faq/edit-faq-dialog/edit-faq-dialog.component';
+import { EditAboutComponent } from './components/edit-about/edit-about.component';
+import { EditContactInfoComponent } from './components/edit-contact-info/edit-contact-info.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { UserChatsComponent } from './components/user-chats/user-chats.component';
+import { AllChatsComponent } from './components/all-chats/all-chats.component';
+import { SpecificUserChatComponent } from './components/specific-user-chat/specific-user-chat.component';
 
 
 export const mianAdminComponents = [
@@ -29,10 +38,17 @@ export const mianAdminComponents = [
   ViewInstructorsComponent, 
   EditInstructorComponent, 
   AddInstructorComponent,
+  EditCourseComponent, 
+  SummaryComponent, 
+  AddLessonComponent, 
+  EditFaqComponent, 
+  AddFaqComponent, 
+  EditFaqDialogComponent, 
+  EditAboutComponent
 ]
 
 @NgModule({
-  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent, ViewCoursesComponent, AddCourseComponent, EditCourseComponent, SummaryComponent, AddLessonComponent ],
+  declarations: [mianAdminComponents, StudentListComponent, StudentApplicationComponent, ViewCoursesComponent, AddCourseComponent, EditContactInfoComponent, ChatComponent, UserChatsComponent, AllChatsComponent, SpecificUserChatComponent,  ],
   imports: [
   SharedModule,
   AngularEditorModule,
@@ -40,7 +56,9 @@ export const mianAdminComponents = [
   // FroalaEditorModule.forRoot(), 
   // FroalaViewModule.forRoot()
   ],
-
+  entryComponents:[
+    EditFaqDialogComponent
+  ],
   exports:[
     mianAdminComponents
   ]

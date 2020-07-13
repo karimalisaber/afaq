@@ -130,7 +130,7 @@
                         <!-- confirm password -->
                         <div class="col-md-12 form-group">
                             <input required 
-                            [ngClass]="{ 'is-invalid': confirm_password.touched && (confirmPasswordError(confirm_password.value) || !isPasswordMatches(password.value, confirm_password.value)) , 'is-valid': confirm_password.touched && !confirmPasswordError(confirm_password.value) && isPasswordMatches(password.value, confirm_password.value)}"
+                                [ngClass]="{ 'is-invalid': confirm_password.touched && (confirmPasswordError(confirm_password.value) || !isPasswordMatches(password.value, confirm_password.value)) , 'is-valid': confirm_password.touched && !confirmPasswordError(confirm_password.value) && isPasswordMatches(password.value, confirm_password.value)}"
                                 name="confirm_password" ngModel #confirm_password="ngModel" placeholder="Confirm password" type="password" class="form-control" id="confirm_password">
                                     
                             <div class="alert alert-danger" *ngIf="!isPasswordMatches(password.value, confirm_password.value)  && confirm_password.touched && !confirmPasswordError(confirm_password.value)"> <small> passwords must be identical </small> </div>
@@ -165,9 +165,8 @@
                     <div class="spinner-border" role="status">
                       <span class="sr-only">Loading...</span>
                     </div>
-                  </div>
+                </div>
             </div>
-
 
             <div  class="d-none d-lg-block col-md-6 p-0">
                 <img class="img-fluid" src="assets/images/auth/auth.png" alt="">

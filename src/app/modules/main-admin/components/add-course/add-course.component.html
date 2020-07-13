@@ -25,34 +25,27 @@
     
         <div class="col-md">
             <button id="control-3" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
-                <i class="mh-10 fas fa-wifi"></i>
-                Outcomes
-            </button>
-        </div>
-    
-        <div class="col-md">
-            <button id="control-4" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Pricing
             </button>
         </div>
 
         <div class="col-md">
-            <button id="control-5" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+            <button id="control-4" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Media
             </button>
         </div>
-
+<!-- 
         <div class="col-md">
-            <button id="control-6" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+            <button id="control-5" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Preview
             </button>
-        </div>
+        </div> -->
 
         <div class="col-md">
-            <button id="control-7" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+            <button id="control-5" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Finish
             </button>
@@ -125,16 +118,38 @@
                         </mat-select>
                     </div>
                 </div>
+
+                <!-- start date -->
+                <div class="mb-20 mt-20 form-group row no-gutters">
+                    <label class="col-md-3" for="title"> Start Date <span class="text-danger">*</span> </label>
+                    
+                    <div class="p-0 date-wrapper d-flex col-md-9">
+                        <input class="form-control" matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div>    
+                </div>
+
+                  <!-- end date -->
+                <div class="mb-20 mt-20 form-group row no-gutters">
+                   <label class="col-md-3" for="title"> End Date <span class="text-danger">*</span> </label>
+                    
+                   <div class="p-0 date-wrapper d-flex col-md-9">
+                       <input class="form-control" matInput [matDatepicker]="endDatePicker">
+                       <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                       <mat-datepicker #endDatePicker></mat-datepicker>
+                   </div>    
+                </div>
             </section>
             
             <!-- control item 2 -->
             <section id="item-control-2" class="in-visible item">
                 <div *ngFor ="let req of requirementsArray; index as i" class="form-group row no-gutters">
-                   <div class="col-md-3">
-                        <label [hidden]="i !==0" for="requirements"> Outcomes</label>
+                   <!-- <div class="col-md-3">
+                        <label [hidden]="i !==0" for="requirements"> Requirements</label>
                    </div>
                     
-                    <div class="d-flex col-md-9 mb-20 justify-content-between">
+                    <div class="d-flex col-md-9 mb-10 justify-content-between">
                         <input placeholder="provide requirements" type="requirements" class=" form-control" [id]="'requirements-' + i">
 
                         <button (click)="addRequirement()" *ngIf="i=== 0" class="btn ml-30 p-0 d-flex align-items-center">
@@ -143,34 +158,21 @@
 
                         <button (click)="removeRequirement(i)" *ngIf="i > 0" class="btn  ml-30 p-0 d-flex align-items-center">
                             <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
-                        </button>                    
+                        </button>
+                    </div> -->
+
+                    <div class="mb-20 form-group row no-gutters">
+                        <label class="col-md-3" for="title"> Description <span class="text-danger">*</span> </label>
+                        
+                        <div class="p-0 col-md-9">
+                            <angular-editor  name="biography" [config]="editorConfig" ></angular-editor>
+                        </div>    
                     </div>
                 </div>
             </section>
             
             <!-- control item 3 -->
-            <section id="item-control-3" class="item in-visible">
-                <div *ngFor ="let outcome of outcomesArray; index as i" class="form-group row no-gutters">
-                    <div class="col-md-3">
-                         <label [hidden]="i !==0" for="requirements"> Requirements </label>
-                    </div>
-                     
-                     <div class="d-flex col-md-9 mb-20 justify-content-between">
-                            <input placeholder="provide outcomes" type="requirements" class=" form-control" [id]="'outcome-' + i">
-
-                            <button (click)="addOutcome()" *ngIf="i=== 0" class="btn ml-30 p-0 d-flex align-items-center">
-                                <i class="d-flex align-items-center rounded fas fa-plus"></i>
-                            </button>
-
-                            <button (click)="removeOutcome(i)" *ngIf="i > 0" class="btn  ml-30 p-0 d-flex align-items-center">
-                                <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
-                            </button>                    
-                     </div>
-                 </div>
-            </section>
-            
-            <!-- control item 4 -->
-            <section id="item-control-4" class="main-transition in-visible item pricing">
+            <section id="item-control-3" class="main-transition in-visible item pricing">
                 <div class="mb-20 form-group row no-gutters">
                    <div class="col-md-3"></div>
 
@@ -191,8 +193,8 @@
                 </div>
             </section>
 
-            <!-- item control 5 -->
-            <section id="item-control-5" class="in-visible item">
+            <!-- item control 4 -->
+            <section id="item-control-4" class="in-visible item">
                 <div class="row no-gutters mb-30">
                     <label class="col-md-3" for="title"> Course thumbnail <span>(image or viedo) </span> <span class="text-danger">*</span> </label>
                     
@@ -203,6 +205,13 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="mb-20 form-group row no-gutters">
+                    <div class="col-md-3"></div>
+ 
+                     <input #adobeConnect style="width: 15px; height: 15px;" type="checkbox" class="mr-10" id="adobeConnect" >
+                     <label class="col-md-3" for="adobeConnect">Check if You Are Using Adobe Connect</label>
+                 </div>
 
                 <div *ngFor ="let outcome of chaptersArray; index as i" class="row no-gutters mt-50">
                     <div class="col-md-3">
@@ -227,26 +236,8 @@
                  </div>
             </section>
 
-            <!-- control item 6 -->
-            <section id="item-control-6" class="in-visible item">
-                <div class="mb-20 form-group row no-gutters">
-                    <label class="col-md-3" for="email"> Email <span class="text-danger">*</span> </label>
-                    <input type="email" class="col-md-9 form-control" id="email" >
-                </div>
-          
-                <div class="mb-20 form-group row no-gutters">
-                    <label class="col-md-3" for="password"> Password <span class="text-danger">*</span> </label>
-                    <input type="password" class="col-md-9 form-control" name="password" id="password" >
-                </div>
-    
-                <div class="mb-20 form-group row no-gutters">
-                    <label class="col-md-3" for="confirm_password"> Confirm password <span class="text-danger">*</span> </label>
-                    <input type="password" class="col-md-9 form-control" id="confirm_password" name="confirm_password" >
-                </div>
-            </section>
-
-            <!-- control item 7 -->
-            <section id="item-control-7" class="in-visible item text-center finish">
+            <!-- control item 5 -->
+            <section id="item-control-5" class="in-visible item text-center finish">
                 <div class="w-100">
                     <i class="far fa-check-circle"></i> 
                 </div>
@@ -261,12 +252,10 @@
                     <button type="submit" class="main-shadow rounded ph-0 btn white-color submit-btn">Add Coures</button>
                 </div>
             </section>
-          </form>
+        </form>
     
         <div class="d-flex justify-content-center actions pb-30 mt-20">
             <button (click)="moveBackowrd()" class="btn arrow-btn"><i class="fas fa-arrow-left"></i></button>
             <button (click)="moveForward()" class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
         </div>
 </div>
-
-<!-- <ngx-editor [ngModel]="jsonDoc"></ngx-editor> -->

@@ -16,7 +16,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatTableModule} from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog"
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 const SharedComponents =[
   FooterComponent,
   DeleteDialogComponent
@@ -40,7 +43,9 @@ const SharedImportes = [
   MatProgressSpinnerModule,
   MatTableModule,
   MatSelectModule,
-  MatDialogModule
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ];
 
 @NgModule({

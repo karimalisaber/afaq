@@ -75,28 +75,26 @@ passwordError(pass: string) : boolean {
       return true;
 
       else return false
-  }
+}
 
-  isPasswordMatches(pass, confirmPass): boolean{ 
-    if (pass !== confirmPass) return false;
+isPasswordMatches(pass, confirmPass): boolean{ 
+  if (pass !== confirmPass) return false;
 
-    return true
-  }
+  return true
+}
 
-  confirmPasswordError(pass: string) : boolean {
-    this.confirmPasswordErrorMessage = "password must have at least";
-    this.confirmPasswordErrorMessage += pass?.length > 10? "" : "10 letters" ;  
-    this.confirmPasswordErrorMessage += pass?.match('.*\\d.*')? "" :", 1 decimal number";
-    this.confirmPasswordErrorMessage += pass?.match('.*[a-z].*')? "" :", 1 lower case letter";
-    this.confirmPasswordErrorMessage += pass?.match('.*[A-Z].*')? "" :", 1 upper case letter";
-    this.confirmPasswordErrorMessage += pass?.match(".*[!@#$%^&*(),.?\":{}|<>].*")? "" : ", 1 spacial letter [ !@#$%^&*(),.?\":{}|<> ] "; 
-
-    // console.log(this.confirmPasswordErrorMessage);
+confirmPasswordError(pass: string) : boolean {
+  this.confirmPasswordErrorMessage = "password must have at least";
+  this.confirmPasswordErrorMessage += pass?.length > 10? "" : "10 letters" ;  
+  this.confirmPasswordErrorMessage += pass?.match('.*\\d.*')? "" :", 1 decimal number";
+  this.confirmPasswordErrorMessage += pass?.match('.*[a-z].*')? "" :", 1 lower case letter";
+  this.confirmPasswordErrorMessage += pass?.match('.*[A-Z].*')? "" :", 1 upper case letter";
+  this.confirmPasswordErrorMessage += pass?.match(".*[!@#$%^&*(),.?\":{}|<>].*")? "" : ", 1 spacial letter [ !@#$%^&*(),.?\":{}|<> ] "; 
     
-    if (this.confirmPasswordErrorMessage !== "password must have at least")
-      return true;
+   if (this.confirmPasswordErrorMessage !== "password must have at least")
+    return true;
 
-      else return false
-  }
+    else return false
+}
 
  }

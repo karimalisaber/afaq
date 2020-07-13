@@ -95,9 +95,7 @@
 
 
 <div class="main-container">
-  
-
-    <div style="background: url('assets/images/admin/waves.png');" class="navbar light-shadow">
+    <div style="background: url('assets/images/admin/waves.png');" class="navbar pl-0 pr-0 light-shadow">
     <ul class="sidebar-content">
       <div  class="text-center img-wrapper mt-30">
         <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
@@ -151,12 +149,37 @@
    </li>
        
    
-   <li class="w-100 control-item mv-10">
-    <a routerLink="courses" routerLinkActive="active">
-      <i class="fab fa-fonticons-fi"></i>    
+      <li class="w-100 control-item mv-10">
+        <a routerLink="courses" routerLinkActive="active">
+         <i class="fab fa-fonticons-fi"></i>    
             Courses
-    </a>
-  </li>
+        </a>
+      </li>
+
+      
+      <li class="w-100 control-item mv-10">
+        <a routerLink="messages" routerLinkActive="active">
+         <i class="fab fa-fonticons-fi"></i>    
+            Messages
+        </a>
+      </li>
+
+
+      <li style="display: flex !important" class="control-item">
+        <i class="fas fa-home mh-10"></i>    
+
+        <mat-expansion-panel class="w-100 d-inline-block">
+            <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+                <button class="btn"> Static Pages </button>
+            </mat-expansion-panel-header>
+            
+            <ul>
+              <li class="sub-menu"><a routerLink="faq" routerLinkActive="active" class="d-block text-left btn">FAQ </a> </li>
+              <li class="sub-menu"><a routerLink="about" routerLinkActive="active" class="d-block text-left btn">About </a> </li>
+              <li class="sub-menu"><a routerLink="contacts" routerLinkActive="active" class="d-block text-left btn">Contacts </a> </li>
+            </ul>
+        </mat-expansion-panel>         
+      </li>
    </ul>
   </div>
 

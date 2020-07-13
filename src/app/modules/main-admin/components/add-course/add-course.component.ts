@@ -16,8 +16,6 @@ export class AddCourseComponent implements OnInit {
   
   requirementsArrayNumber = 1;
   requirementsArray = [1];
-  outcomesArray = [1];
-  outcomesArrayNumber = 1;
   chaptersArray = [1];
   chaptersArrayNumber = 1;
   constructor(private api: ApiCallService) {     
@@ -50,20 +48,6 @@ export class AddCourseComponent implements OnInit {
 
     this.requirementsArrayNumber --;
     this.requirementsArray.splice(i, 1);
-  }
-
-  
-  addOutcome(){
-    this.outcomesArrayNumber ++;
-
-    this.outcomesArray.push(this.outcomesArrayNumber);
-  }
-
-  removeOutcome(i){
-    if(this.outcomesArrayNumber <= 1) return;
-
-    this.outcomesArrayNumber --;
-    this.outcomesArray.splice(i, 1);
   }
 
   addChapter(){
@@ -102,7 +86,7 @@ export class AddCourseComponent implements OnInit {
     
     let nextItemId = 'control-' + nextIdNumber
 
-    if( nextIdNumber > 7 ) return false;
+    if( nextIdNumber > 5 ) return false;
 
     document.querySelector('.admin-btn.active')?.classList.remove('active');
     document.querySelector('#'+ nextItemId)?.classList.add('active');
@@ -144,6 +128,6 @@ export class AddCourseComponent implements OnInit {
   
 
   private calcProgressWidth(i){
-    this.progressStatus  =  (100 * (i/7)).toString() + '%';
+    this.progressStatus  =  (100 * (i/5)).toString() + '%';
   }
 }
