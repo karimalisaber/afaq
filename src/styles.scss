@@ -111,12 +111,14 @@
 }
 
 .second-btn{
-    background-color: #17517F;
+    background-color: #17517F !important;
     color: #fff;
     padding: 7px 4%;
     transition: $mainTransition;
     &:hover{
         color: $mainColor;
+        color: #fff;
+
     }
 }
 
@@ -588,4 +590,220 @@ mat-select{
     }
 
 
+}
+
+
+td{
+    line-height: 1.9; 
+}
+
+
+.dashboard-search{
+    // search and top pagination
+    div.dataTables_wrapper div.dataTables_length label {
+        color: $textColor;
+    }
+    
+    
+    .custom-select-sm {
+        padding-top: .25rem;
+        padding-bottom: .25rem;
+        padding-left: .5rem;
+        font-size: .875rem;
+    }
+    
+    .custom-select {
+        width: 70px;
+        height: calc(2.2125rem + 2px);
+        padding: .45rem 1.9rem .45rem .9rem;
+        font-size: .875rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        vertical-align: middle;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: .25rem;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    
+    div.dataTables_filter input {
+        margin-left: 0.5em;
+        height: 35px;
+        display: inline-block;
+        width: 250px !important;
+    }
+    
+}
+    
+    
+.mat-snack-bar-container{
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+span.admin-btn-color{
+    color: $adminBtnColor !important;
+
+}
+
+.admin-btn-color{
+    color: $adminBtnColor !important;
+
+}
+
+
+.add-course{
+    
+#non-free-course{
+    max-height: 300px;    
+}
+
+.expand{
+    max-height: 330px !important;
+}
+
+.admin-btn{
+    height: 50px;
+    background-color: #E3EAEF;
+    border: 0;
+    color: $brawnColor;
+    
+    &:hover{
+        color: $brawnColor !important;
+    }
+
+    &.active{
+        background-color: $adminBtnColor;
+        color: #fff;
+
+        &:hover{
+            color: #fff !important;
+        }
+            
+        .fas{
+            color: #fff;
+        }
+    }
+
+}
+
+
+.next-step-btn{
+    display: block;
+    width: 170px;
+    border: 1px solid $adminBtnColor;
+    color: $adminBtnColor;
+    font-size: 1.2rem;
+    &:hover{
+        color: #fff !important;
+        background-color: $adminBtnColor !important;
+    }
+}
+
+
+.progress{
+    height: 8px;
+}
+
+*{
+    color: $brawnColor
+}
+
+.arrow-btn{
+    background-color: #39AFD1;
+    padding: 7px 15px;
+    border-radius: 3px;
+    margin: 8px;
+
+    .fas{
+        font-size: .8rem;
+        color: #fff;
+    }
+}
+
+.in-visible{
+    height: 0;
+    overflow: hidden;
+}
+
+
+.submit-btn{
+    // font-size: .8rem;
+    font-weight: lighter;
+
+}
+
+input{
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
+.input-search{
+    height: 35px;
+    border: 1px solid $lightBorder;
+    border-radius: 0;
+    padding: 3px;
+    color: $textColor
+}
+
+
+.fa-plus, .fa-minus{
+    color: white;
+    height: 100%;
+    padding: 0 15px;
+    background-color: #0acf97;
+    border-color: #0acf97;
+    box-shadow: 0 2px 6px 0 rgba(10,207,151,.5);
+
+    &:hover{
+        color: #fff;
+        background-color: #08ab7c;
+        border-color: #089e74;
+    }
+        
+}
+
+
+.fa-minus{
+    background-color: #fa5c7c;
+    border-color: #fa5c7c;
+    box-shadow: 0 2px 6px 0 rgba(250,92,124,.5);
+    &:hover{
+        color: #fff;
+        background-color: #f9375e;
+        border-color: #f82b54;
+    }
+        
+}
+}
+
+
+// for pagination
+.pagination-wrapper{
+    .number{
+        font-size: 20px;
+        align-items: center;
+        background-color: $adminBtnColor;
+        width: 30px;
+        height: 30px;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .fa-angle-double-right, .fa-angle-double-left{
+        display: flex;
+        justify-content: center;
+        width: 30px;
+        font-size: 1.4rem;
+    
+        &.disabled{
+            opacity: .4;
+        }
+    }
 }

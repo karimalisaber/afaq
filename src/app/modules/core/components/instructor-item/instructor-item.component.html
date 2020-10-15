@@ -1,5 +1,5 @@
 <div *ngIf="instructor" class="d-inline-block instructor">
-    <img class="img-fluid" src="assets/images/5.jpg" alt="">
+    <img class="img-fluid" [src]="'//devmode.fv.academy/public/files/' + instructor.image" alt="">
 
     <a [routerLink]="['/instructor', instructor.id]" class="details row no-gutters">
         <div class="mr-auto">

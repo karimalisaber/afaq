@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { editorConfig } from 'src/app/interfaces/editConfig';
-import { Instructor } from 'src/app/interfaces/instructors';
 import { UserData } from './../../../../interfaces/instructors';
+import { ApiCallService } from 'src/app/modules/shared/services/api-call.service';
+import { AssetsService } from 'src/app/modules/shared/services/assets.service';
 
 @Component({
   selector: 'app-add-instructor',
@@ -18,6 +19,8 @@ export class AddInstructorComponent implements OnInit {
   confirmPasswordErrorMessage: string;
   passwordValid: boolean = false;
 
+  imageFile: any;
+
   editorConfig: AngularEditorConfig = editorConfig;
   progressStatus = "25%";
   isLoading: boolean = false;
@@ -25,30 +28,56 @@ export class AddInstructorComponent implements OnInit {
   hasError: boolean = false;
   instructor: UserData = {
     id: 10,
-    first_name: 'fdsaf' ,
-    last_name: 'ahmed', 
-    title: 'prof',
-    job: 'prof',
-    phone: '01421357464',
-    email: 'kairm@gmail.com',
-    biography: 'tesssssssssssssst',
-    img: '',
-    facebook: 'kokoiuew',
-    twitter: 'kjsoadfoij',
-    linkedin: 'koiko8i',
- 
+    first_name: '' ,
+    last_name: '', 
+    title: '',
+    job: '',
+    phone: '',
+    email: '',
+    image: '',
+    lang : '0',
+    password: '',
+    id_number: '',
+    medical_number: '',
+    gender: 'male'
   }
-  constructor() { }
+
+  instructorForm= new FormData();
+
+  constructor(private api: ApiCallService, private assets: AssetsService) { }
 
   ngOnInit(): void {
   }
 
 
   addInstructor(instructorForm){
-
-    console.log(instructorForm);
+    this.populateInstructorFormData(instructorForm);
+    
+    this.api.addInstructor(this.instructorForm).subscribe(
+      res=>{
+        this.assets.addSuccess().afterDismissed().subscribe(re=>{location.reload()})
+      },err=>{
+        this.assets.addError();
+        
+      }
+    )
   }
 
+  private populateInstructorFormData(instructorForm){
+    this.instructorForm.append("first_name", instructorForm.first_name);
+    this.instructorForm.append("last_name", instructorForm.last_name);
+    this.instructorForm.append("title", instructorForm.title);
+    this.instructorForm.append("job", instructorForm.job);
+    this.instructorForm.append("id_number", instructorForm.id_number);
+    this.instructorForm.append("medical_number", instructorForm.medical_number);
+    this.instructorForm.append("phone", instructorForm.phone);
+    this.instructorForm.append("gender", instructorForm.gender);
+    this.instructorForm.append("email", instructorForm.email);
+    this.instructorForm.append("password", instructorForm.password);
+    this.instructorForm.append("image", this.imageFile, this.imageFile.name);
+    this.instructorForm.append("lang", instructorForm.lang);
+    this.instructorForm.append("category_id", '1');
+  }
 
 
 
@@ -59,8 +88,8 @@ export class AddInstructorComponent implements OnInit {
   // for img
   uploadImage = (imgValue) => {
     if(imgValue.files[0]) 
-      this.instructor.img = imgValue.files[0].name
-    
+      this.imageFile = imgValue.files[0]
+      this.instructor.image = imgValue.files[0].name
   };
 
   // for password
@@ -120,7 +149,7 @@ confirmPasswordError(pass: string) : boolean {
     
     let nextItemId = 'control-' + nextIdNumber
 
-    if( nextIdNumber > 4 ) return false;
+    if( nextIdNumber > 3 ) return false;
 
     document.querySelector('.admin-btn.active')?.classList.remove('active');
     document.querySelector('#'+ nextItemId)?.classList.add('active');
@@ -162,6 +191,6 @@ confirmPasswordError(pass: string) : boolean {
   
 
   private calcProgressWidth(i){
-    this.progressStatus  =  (100 * (i/4)).toString() + '%';
+    this.progressStatus  =  (100 * (i/3)).toString() + '%';
   }
 }

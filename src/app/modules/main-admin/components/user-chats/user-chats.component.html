@@ -1,9 +1,9 @@
 <div class="row chat-users pt-30 pb-50">
     <div class="col-md-3">
       <!-- main user -->
-      <a routerLink="../" class="mb-30 d-flex align-items-center user-wrapper rounded btn w-100 users btn-success">           
+      <a routerLink="../../" class="mb-30 d-flex align-items-center user-wrapper rounded btn w-100 users btn-success">           
         <i class="white-color justify-selft-start fas fa-chevron-left"></i>
-        <h2 class="m-0 name white-color justify-selft-center m-auto d-inline-block">karimfdsaf ali saber</h2>
+        <h2 class="m-0 name white-color justify-selft-center m-auto d-inline-block">{{user.name}}</h2>
      </a>
      <!-- end main user -->
 
@@ -13,70 +13,24 @@
           <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
        </div> 
     
-       <input  type="text" class="form-control" placeholder="name">
+       <input (keyup)="search($event.target.value)"  type="text" class="form-control" placeholder="name">
     </div>
     <!-- end of search box -->
 
-
         <!-- participants -->
-        <div class="users-wrapper">
-            <a routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper active rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a>
-
-            <a routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a>
-
-            <a routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a>
-
-            <a routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a>
-            <a routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a>
-            <a routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> 
-            <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> 
-            <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> 
-            <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> 
-            <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a> <a routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </a>
+        <div *ngIf="isLoading" class="users-wrapper">
+            <div class="row">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+             </div>
         </div>
 
+         <div *ngIf="!isLoading" class="users-wrapper">
+            <a *ngFor="let student of filteredstudents" routerLinkActive="active"  [routerLink]="student.id + '/' + student.first_name + '/' + student.chatRoomId" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
+                <h2 class="m-0 name">{{student.first_name}}</h2>
+            </a>
+        </div>
     </div>
     
     <div class="chat col-md-9">

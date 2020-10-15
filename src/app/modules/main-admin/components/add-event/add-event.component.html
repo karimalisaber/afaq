@@ -1,0 +1,289 @@
+<app-main-admin-title [type]="false" [title]="'Add Instructor'" [link]="false">
+</app-main-admin-title>
+
+<div class="white-background main-shadow">
+    <h2 class="mh-30 pt-30 pb-20 brawn-color">EVENT ADDING FORM</h2>
+
+    <form #eventForm="ngForm" (ngSubmit)="addEvent(eventForm.value)" class="ph-100">
+        <div class="mb-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="title"> Event Title <span class="text-danger">*</span> </label>
+            <input
+                [ngClass]="{ 'is-invalid': title.invalid && title.touched, 'is-valid': !title.invalid && title.touched}"
+                name="title" ngModel #title="ngModel" required minlength="3" type="text" class="col-md-9 form-control"
+                id="title">
+
+            <div *ngIf="!title.valid && title.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="title.errors.required"> <small> *Your title is required </small></div>
+
+                <div class="alert alert-danger" *ngIf="title.errors.minlength"> 
+                    <small> *Your title must be at least 3 characters </small> 
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters justify-content-end mb-20">
+            <label class="col-md-3" for="thumbnail"> Thumbnail image <span class="text-danger">*</span> </label>
+
+            <div class="input-group col-md-9">
+                <div class="custom-file">
+                    <input (change)="uploadImage($event.target)"
+                        [ngClass]="{ 'is-invalid': main_image.invalid && main_image.touched, 'is-valid': !main_image.invalid && main_image.touched}"
+                        name="main_image" required ngModel #main_image="ngModel" type="file" class="custom-file-input"
+                        id="thumbnail" accept="image/*">
+
+                    <label class="custom-file-label" for="thumbnail">{{imgName}}</label>
+                </div>
+            </div>
+
+            <div *ngIf="!main_image && main_image.touched" class="col-md-9 alert alert-danger">
+                <small> *this field is required </small>
+            </div>
+        </div>
+
+        <div class="mb-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="event_url">upload video <span class="text-danger">*</span> </label>
+            <div class="input-group col-md-9">
+                <div class="custom-file">
+                    <input (change)="uploadvideo($event.target)"
+                        [ngClass]="{ 'is-invalid': event_url.invalid && event_url.touched, 'is-valid': !event_url.invalid && event_url.touched}"
+                        name="event_url" required ngModel #event_url="ngModel" type="file" class="custom-file-input"
+                        id="thumbnail">
+
+                    <label class="custom-file-label" for="thumbnail">{{videoName}}</label>
+                </div>
+            </div>
+
+            <div *ngIf="!event_url && event_url.touched" class="col-md-9 alert alert-danger">
+                <small> *this field is required </small>
+            </div>
+
+            <!-- <input
+                [ngClass]="{ 'is-invalid': event_url.invalid && event_url.touched, 'is-valid': !event_url.invalid && event_url.touched}"
+                name="event_url" ngModel #event_url="ngModel" required url type="url" pattern="https?://.+" class="col-md-9 form-control"
+                id="event_url">
+
+            <div *ngIf="!event_url.valid && event_url.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="event_url.errors.required"> <small> *Url is required </small></div>
+                <div class="alert alert-danger" *ngIf="event_url.errors.pattern"> <small> *enter a valid url , valid url starts with https:// or http:// </small></div>
+            </div> -->
+
+
+        </div>
+
+        <div class="mb-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="description"> Short description <span class="text-danger">*</span> </label>
+            <div class="p-0 col-md-9">
+                <angular-editor
+                    [ngClass]="{ 'is-invalid': description.invalid && description.touched, 'is-valid': !description.invalid && description.touched}"
+                    name="description" id="description" ngModel #description="ngModel" required minlength="20" [config]="editorConfig">
+                </angular-editor>
+            </div>
+
+
+            <div *ngIf="!description.valid && description.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="description.errors.required"> <small> *description is required
+                    </small> </div>
+                <div class="alert alert-danger" *ngIf="description.errors.minlength"> <small> *description must be at
+                        least 20 characters </small> </div>
+            </div>
+        </div>
+
+        <div class="mb-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="details"> Details <span class="text-danger">*</span> </label>
+
+            <div class="p-0 col-md-9">
+                <angular-editor
+                    [ngClass]="{ 'is-invalid': details.invalid && details.touched, 'is-valid': !details.invalid && details.touched}"
+                    name="details" id="details" ngModel #details="ngModel" required minlength="50" [config]="editorConfig">
+                </angular-editor>
+            </div>
+
+
+            <div *ngIf="!details.valid && details.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="details.errors.required"> <small> *details is required </small>
+                </div>
+                <div class="alert alert-danger" *ngIf="details.errors.minlength"> <small> *details must be at least 50
+                        characters </small> </div>
+            </div>
+        </div>
+
+        <!-- category  -->
+        <div class="mb-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="category_id"> Category <span class="text-danger">*</span> </label>
+
+            <div class="p-0 col-md-9">
+                <mat-select
+                    [ngClass]="{ 'is-invalid': category_id.invalid && category_id.touched, 'is-valid': !category_id.invalid && category_id.touched}"
+                    name="category_id" id="category_id" ngModel #category_id="ngModel" required>
+
+                    <div class="p-10 w-100">
+                        <input (keyup)="filterCategories($event.target.value)" type="text" class="w-100 input-search">
+                    </div>
+
+                    <mat-option *ngFor="let cat of filteredCategories" [value]="cat.id">
+                        {{cat.name}}
+                    </mat-option>
+                </mat-select>
+            </div>
+
+            <div *ngIf="!category_id.valid && category_id.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="category_id.errors.required"> <small> *category is required
+                    </small> </div>
+            </div>
+        </div>
+
+
+        <!-- instructor  -->
+        <div class="mb-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="instractuer_id"> Instructor <span class="text-danger">*</span> </label>
+
+            <div class="p-0 col-md-9">
+                <mat-select id="instractuer_id"
+                    [ngClass]="{ 'is-invalid': instractuer_id.invalid && instractuer_id.touched, 'is-valid': !instractuer_id.invalid && instractuer_id.touched}"
+                    name="instractuer_id" ngModel #instractuer_id="ngModel" required >
+
+                    <div class="p-10 w-100">
+                        <input type="text" class="w-100 input-search">
+                    </div>
+
+                    <mat-option *ngFor="let instructor of instructros" selected [value]="instructor.user_data.id">
+                        {{instructor.user_data?.first_name}}   {{instructor.user_data?.last_name}}
+                    </mat-option>
+                </mat-select>
+            </div>
+
+            <div *ngIf="!instractuer_id.valid && instractuer_id.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="instractuer_id.errors.required"> <small> *instructor is required
+                    </small> </div>
+            </div>
+        </div>
+
+        <!-- level -->
+        <div class="row justify-content-end no-gutters">
+            <label class="col-md-3" for="level"> Level <span class="text-danger">*</span> </label>
+
+            <div class="p-0 col-md-9">
+                <mat-select name="level" id="level" ngModel="beginner" #level="ngModel">
+
+                    <mat-option value="beginner">
+                        beginner
+                    </mat-option>
+
+                    <mat-option value="beginner">
+                        Intermediate
+                    </mat-option>
+
+                    <mat-option value="beginner">
+                        Advanced
+                    </mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+        <!-- price  -->
+        <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="price"> price <span class="text-danger">*</span> </label>
+            <input
+                [ngClass]="{ 'is-invalid': price.invalid && price.touched, 'is-valid': !price.invalid && price.touched}"
+                name="price" ngModel #price="ngModel" required minlength="3" type="number" class="col-md-9 form-control"
+                id="price">
+
+            <div *ngIf="!price.valid && price.touched" class="col-md-9">
+                <div class="alert alert-danger" *ngIf="price.errors.required"> <small> *price is required </small>
+                </div>
+            </div>
+        </div>
+        <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="discount"> discount <span class="text-danger">*</span> </label>
+            <input 
+                [ngClass]="{ 'is-invalid': discount.invalid && discount.touched, 'is-valid': !discount.invalid && discount.touched}"
+
+                name="discount" ngModel #discount="ngModel" required minlength="3"
+                type="number" class="col-md-9 form-control" id="discount" >
+        
+            <div *ngIf="!discount.valid && discount.touched" class="col-md-9" >
+                <div class="alert alert-danger" *ngIf="discount.errors.required"> <small> *discount is required </small> </div>
+                <!-- <div class="alert alert-danger" *ngIf="price.errors.pattern"> <small> *add discount from 0 to 1 (it is percentage) </small> </div> -->
+            </div>
+        </div>
+
+
+        <div class="row justify-content-end no-gutters">
+            <label class="col-md-3" for="title"> Lang  <span class="text-danger">*</span> </label>
+
+            <div class="p-0 col-md-9">
+                <mat-select name="lang" ngModel="0" #lang="ngModel">
+                    <mat-option value="0">
+                        English
+                    </mat-option>
+                    <mat-option value="1">
+                        Arabic
+                    </mat-option>
+                </mat-select>
+            </div>
+        </div>
+
+
+           <!-- start date -->
+           <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="start_date"> Start Date <span class="text-danger">*</span> </label>
+            
+            <div class="p-0 date-wrapper d-flex col-md-9">
+                <input  (focus)="picker.open()"
+                    [ngClass]="{ 'is-invalid': start_date.invalid && start_date.touched, 'is-valid': !start_date.invalid && start_date.touched}"
+
+                    required ngModel #start_date = "ngModel" name="start_date" id="start_date"
+
+                    class="form-control" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </div>    
+        </div>
+
+          <!-- end date -->
+        <div class="mb-20 mt-20 form-group row no-gutters">
+           <label class="col-md-3" for="end_date"> End Date <span class="text-danger">*</span> </label>
+            
+           <div class="p-0 date-wrapper d-flex col-md-9">
+               <input (focus)="endDatePicker.open()"
+               [ngClass]="{ 'is-invalid': end_date.invalid && end_date.touched, 'is-valid': !end_date.invalid && end_date.touched}"
+                
+               required ngModel #end_date = "ngModel" name="end_date" id="end_date"
+                class="form-control" matInput [matDatepicker]="endDatePicker">
+             
+                <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+               <mat-datepicker #endDatePicker></mat-datepicker>
+           </div>
+        </div>
+
+
+        <!-- time -->
+        <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+            <label class="col-md-3" for="time"> Time <span class="text-danger">*</span> </label>
+
+            <div class="p-0 date-wrapper d-flex col-md-8">
+                <input
+                    [ngClass]="{ 'is-invalid': time.invalid && time.touched, 'is-valid': !time.invalid && time.touched}"
+                    name="time" ngModel id="time" #time="ngModel" required minlength="30" class="form-control" type="number">
+            </div>
+
+            <h2 class="col-md-1 ph-10">
+                Hrs
+            </h2>
+
+            <div *ngIf="!time.valid && time.touched" class="col-md-8">
+                <div class="alert alert-danger" *ngIf="time.errors.required"> <small> *time is required </small> </div>
+            </div>
+
+            <div class="col-md-1"></div>
+        </div>
+
+      
+        <div class="d-flex justify-content-center actions pb-30 mt-40">
+            <button [disabled]="eventForm.invalid" type="submit" class="admin-btn next-step-btn">
+                submit
+            </button>
+        </div>
+    </form>
+
+</div>

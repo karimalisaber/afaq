@@ -4,14 +4,16 @@ import { Instructor } from './instructors';
 export interface Courses {
     current_page: number,
     data: Array<Course>,
-    instuctor?: Instructor
+    instuctor?: Instructor,
+    last_page?: number
 }
 
 export interface Course {
     id: number,
     name: string,
     details: string,
-    image: string,
+    description: string,
+    main_image: string,
     price: string,
     trend: number,
     lang: number,
@@ -22,8 +24,9 @@ export interface Course {
     instractuer_id: number,
     created_at: string,
     updated_at: string,
-
+    rate: any;
     category?: Category,
-    instructor?: Instructor
-
+    instructor?: Instructor,
+    is_purchased?: number,
+    is_wishlist
 }

@@ -12,9 +12,8 @@ export class LoginComponent implements OnInit {
   loginError=false;
   errorMessage:string ="";
   validInput: boolean = true;
-  passwordVisibile: boolean = true;
   isLoading: boolean = false;
-
+  passwordVisibile;
   @ViewChild('userForm') userForm: FormGroup;
   
   constructor(private api : ApiCallService, private router: Router) { }
@@ -35,8 +34,10 @@ export class LoginComponent implements OnInit {
 
     this.api.login(credientials)
       .subscribe(
-        res=> {
-          this.router.navigateByUrl('/dashboard')
+        (res:any)=> {
+          localStorage.setItem('user', JSON.stringify(res.data));
+          localStorage.setItem('token', res.data.token);
+        
           this.isLoading = false;
         },
 
@@ -57,4 +58,5 @@ export class LoginComponent implements OnInit {
     if (passwordItem.type === "text") passwordItem.type = "password";
     else passwordItem.type = "text"
   }
+  
 }

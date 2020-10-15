@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EdiCategoryComponent } from './edi-category.component';
+import { AdminLoginComponent } from './admin-login.component';
 
-describe('EdiCategoryComponent', () => {
-  let component: EdiCategoryComponent;
-  let fixture: ComponentFixture<EdiCategoryComponent>;
+describe('AdminLoginComponent', () => {
+  let component: AdminLoginComponent;
+  let fixture: ComponentFixture<AdminLoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EdiCategoryComponent ]
+      declarations: [ AdminLoginComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EdiCategoryComponent);
+    fixture = TestBed.createComponent(AdminLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

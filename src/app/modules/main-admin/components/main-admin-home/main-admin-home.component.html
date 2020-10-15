@@ -1,0 +1,24 @@
+<app-main-admin-title
+    [type]="false"
+    [title]="'Dashboard'"
+    [link] ="false"
+>
+</app-main-admin-title>
+
+<section class="white-background light-shadow ph-20">
+    <h3 class="mh-0 pt-30 pb-20 brawn-color">ADMIN REVENUE THIS YEAR    </h3>
+
+    <div style="display: block; width: 100%; height: 420px; overflow: hidden;" class="">
+        <canvas  id="myChart" style="height: 400px; width: 100%;"></canvas>
+    </div>
+</section>
+
+
+<section class="light-shadow no-gutters white-background numbers mb-50 row mt-30" >
+    <app-summary [title]="'Number of courses'" class="col"></app-summary>
+    <app-summary [title]="'Number of courses'" class="col"></app-summary>
+    <app-summary [title]="'Number of enrolment'" class="col"></app-summary>
+    <app-summary [title]="'Number of student'" class="col"></app-summary>
+    <app-summary [title]="'Number of instructors'" class="col"></app-summary>
+    <!-- <app-summary class="col"></app-summary> -->
+</section>

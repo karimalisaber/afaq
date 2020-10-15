@@ -1,0 +1,74 @@
+<app-main-admin-title
+    [type]="false"
+    [title]="'Manage Profile'"
+    [link] ="false"
+>
+</app-main-admin-title>
+
+
+<section class=" d-flex main-wrapper">
+    <div class="white-background light-shadow  ph-20 pb-30 basic-info">
+    <h3 class="pt-30 pb-20 brawn-color">BASIC INFO</h3>
+
+        
+        <form action="">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <input class="form-control" id="first_name">
+            </div>
+            
+            <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="password" class="form-control" id="new_password">
+            </div>
+
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label class="d-block w-100" for="thumbnail">Photo <small>(The image size should be any square image) </small> </label>
+
+                <div class="custom-file">
+                    <input (change)="uploadImage($event.target)"
+                        [ngClass]="{ 'is-invalid': main_image.invalid && main_image.touched, 'is-valid': !main_image.invalid && main_image.touched}"
+                        name="main_image" required ngModel #main_image="ngModel" type="file" class="custom-file-input"
+                        id="thumbnail" accept="image/*">
+
+                    <label class="custom-file-label" for="thumbnail">{{imgName}}</label>
+                </div>
+            </div>
+
+            <button class="submit-btn btn rounded">update profile</button>
+        </form>
+
+    </div>
+
+    <div class="pl-40 password-wrapper">
+        <div class="white-background light-shadow p-20 ">
+            <h3 class="pb-20 brawn-color">update Password</h3>
+
+            <form action="">
+                <div class="form-group">
+                    <label for="current_password">Current Password</label>
+                    <input type="password" class="form-control" id="current_password" aria-describedby="emailHelp">
+                </div>
+                
+                <div class="form-group">
+                  <label for="new_password">New Password</label>
+                  <input type="password" class="form-control" id="new_password">
+                </div>
+
+                
+                <div class="form-group">
+                    <label for="confirm_new_password">Confirm New Password</label>
+                    <input type="password" class="form-control" id="confim_new_password">
+                </div>
+
+                <button class="submit-btn btn rounded">update password</button>
+            </form>
+        </div>
+    </div>
+</section>

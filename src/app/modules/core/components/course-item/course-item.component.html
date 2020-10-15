@@ -1,29 +1,28 @@
 <div class="card-wrapper">
 <div *ngIf="course" class="card" [ngClass]="{'mh-10': home}" >
-    <button class="btn event course">course</button>
-    <img src="assets/images/course.jpg" class="card-img-top" alt="course-number">
-    <div class="card-body">
+    <!-- <button class="btn event course text-weight-lighter">course</button> -->
+    <img [src]="'//devmode.fv.academy/public/files/' + course.main_image" class="card-img-top" alt="course-number">
+    <div class="card-body"> 
       <div class="card-date row no-gutters">
-        <p class="date"> 06 Apr 2020  <span>To</span>  07 Apr 2020 </p>
-        <button class="main-btn red btn mh-0">Free</button>
+        <!-- <p class="date"> 06 Apr 2020  <span>To</span>  07 Apr 2020 </p> -->
+        <h3 class="time"> {{course.time}} <span>Hrs</span>   </h3>
+        <button *ngIf="course.price=='0'" class="main-btn red btn mh-0">Free</button>
+        <button *ngIf="!(course.price=='0')" class="main-btn red btn mh-0">{{course.price}}</button>
+      
       </div>
 
       <a [routerLink]="['/course', course.id]" class="d-block desc">{{course.name}}</a>
 
       <div class="rate row no-gutters">
-        <div class="stars row no-gutters">
+        <div *ngIf="course.rate[0]" class="stars row no-gutters">
             <div class="d-inline fill-starts">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i *ngFor="let rate of course.rate" class="fas fa-star"></i>
             </div>
 
             <p class="numbers text-light-color">(105151)</p>
         </div>
 
-        <p class="views text-light-color ml-auto">
+        <p class="views text-light-color" [ngClass]="{'ml-auto': course.rate[0]}">
             2,1545154 views
         </p>
       </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiCallService } from 'src/app/modules/shared/services/api-call.service';
 
 @Component({
   selector: 'app-forget-password',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgetPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api : ApiCallService) { }
 
   ngOnInit(): void {
   }
 
-  submit(email){
-    console.log(email);
+  forgetPassword(phone){
+    console.log(phone);
+    
     
   }
 }

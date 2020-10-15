@@ -1,19 +1,19 @@
-<app-component-title 
+<app-component-title *ngIf="instructor"
 [title]="'our instructors'" 
-[sub-title]="'instructor'" 
+[sub-title]="'instructor/ ' + instructor.user_data.first_name + ' ' + instructor.user_data.last_name " 
 src="'assets/images/core/about-slider.png'">
 </app-component-title>
 
-<section class="main-section main-background">
+<section *ngIf="instructor" class="main-section main-background">
     <div class="container">
 
-        <h2 class="m-0 main-header-color text-capitalize">dr manal mohamed hassan</h2>
-        <h3 class="m-0 mb-10 second-header-color text-capitalize">cardiovascular pharmacology london university</h3>
+        <h2 class="m-0 main-header-color text-capitalize"> <span class=" second-header-color">{{instructor.user_data.title}} </span>  {{instructor.user_data.first_name}} {{instructor.user_data.last_name}}</h2>
+        <h3 class="m-0 mb-10 second-header-color text-capitalize">{{instructor.user_data.title}}</h3>
     
         <div class="row">
             <div class="col-xl-9 row">
                 <div class="col-md-5">
-                    <img class="img-fluid img-rounded" src="assets/images/core/instructor.png" alt="">
+                    <img class="img-fluid img-rounded" [src]="'//devmode.fv.academy/public/files/' + instructor.image" alt="">
                 </div>
 
                 <div class="col-md-7">
@@ -27,9 +27,9 @@ src="'assets/images/core/about-slider.png'">
 
             <!-- reviews -->
 
-            <div class="col-xl-3">
+            <div class="col-xl-3 p-0">
               <div class="pv-30 reviews-wrapper mt-30">
-                <p class="email">karimali@gmail.com</p>
+                <p class="email">{{instructor.user_data.email }}</p>
 
                 <p class="rate">
                     <i class="far fa-star main-color"></i>
@@ -110,6 +110,5 @@ src="'assets/images/core/about-slider.png'">
         </div>
         </form>
     </div>
-  
     </div>
 </section>

@@ -5,42 +5,59 @@
     <app-summary [title]="'All courses'" class="col"></app-summary>
     <app-summary [title]="'Free courses'" class="col"></app-summary>
     <app-summary [title]="'Paid courses'" class="col"></app-summary>
-    <app-summary [title]="'All events'" class="col"></app-summary>
-    <app-summary [title]="'Paid events'" class="col"></app-summary>
-    <app-summary [title]="'free events'" class="col"></app-summary>
     <!-- <app-summary class="col"></app-summary> -->
 </div>
 
-
 <section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background black-color">
-    <h2 class="brawn-color uppercase">COURSE LIST</h2>
+  
+  
+   <!-- start search  -->
+   <div class="row mb-30 mt-20 d-flex justify-content-between no-gutters dashboard-search">
+    <!-- <div class="col-sm-12 col-md-6">
+        <div class="dataTables_length" id="course-datatable-server-side_length">
+            <div class="d-flex"> 
+                <label class="p-0 mb-0 d-flex align-items-center" for=""> Show</label>  
+                
+                <select class="mh-10 custom-select custom-select-sm form-control form-control-sm">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select> 
+
+                <label  class="mb-0 p-0 d-flex align-items-center mh-10" for="">entries</label>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="col-md-6">
+        <h2 class="brawn-color uppercase">COURSE LIST</h2>
+    </div>
+
+    <div class="">
+        <div id="course-datatable-server-side_filter" class="d-flex dataTables_filter">
+            <label class="d-flex align-items-center mb-0 mh-10">Search: </label>
+                <input type="search" class="form-control form-control-sm" >
+        </div>
+    </div>
+</div>
+<!-- end search -->
+
+
     <div class="filter-section">
         <div class="row mb-50">
-            <div class="input-group col-md-3">
+            <div class="input-group col-md-4">
                 <label class="input-group" for="inputGroupSelect01">Categories</label>
 
                 <mat-select value="10">
+                    <div class="p-10 w-100">
+                        <input (keyup)="filterCategories($event.target.value)" type="search" class="w-100 input-search">
+                    </div>
                     <mat-option selected value="10">
                         All
                     </mat-option>
-                    <mat-option *ngFor="let cat of categories" selected [value]="cat.id">
+                    <mat-option *ngFor="let cat of filteredCategories" selected [value]="cat.id">
                         {{cat.name}}
-                    </mat-option>
-                </mat-select>
-            </div>
-
-            <div class="input-group  col-md-2">
-                <label class="input-group" for="inputGroupSelect01"> Type</label>
-                <mat-select value="1">
-                    <mat-option selected value="1">
-                        All
-                    </mat-option>
-
-                    <mat-option selected value="1">
-                        Courses
-                    </mat-option>
-                    <mat-option selected value="2">
-                        Events
                     </mat-option>
                 </mat-select>
             </div>
@@ -62,7 +79,7 @@
                 </mat-select>
             </div>
 
-            <div class="input-group  col-md-2">
+            <div class="input-group  col-md-3">
                 <label class="input-group" for="inputGroupSelect01">Price</label>
 
                 <mat-select value="10">
@@ -78,93 +95,62 @@
                 </mat-select>
             </div>
 
+
             <div class="col-md-2 d-flex flex-column justify-content-end">
                 <button class="admin-btn btn rounded-0 w-100 main-shadow">Filter</button>
             </div>
         </div>
     </div>
 
-
-    <!-- start search  -->
-    <div class="row mb-30 d-flex justify-content-between no-gutters">
-        <div class="col-sm-12 col-md-6">
-            <div class="dataTables_length" id="course-datatable-server-side_length">
-                <div class="d-flex"> 
-                    <label class="p-0 mb-0 d-flex align-items-center" for=""> Show</label>  
-                    
-                    <select class="mh-10 custom-select custom-select-sm form-control form-control-sm">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </select> 
-
-                    <label  class="mb-0 p-0 d-flex align-items-center mh-10" for="">entries</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="">
-            <div id="course-datatable-server-side_filter" class="d-flex dataTables_filter">
-                <label class="d-flex align-items-center mb-0 mh-10">Search: </label>
-                    <input type="search" class="form-control form-control-sm" >
-            </div>
-        </div>
-    </div>
-    <!-- end search -->
-
+   
     
     <table mat-table [dataSource]="courses" class="admin-table table-striped w-100 mat-elevation-z8">
         <!-- # Column -->
         <ng-container matColumnDef="#">
             <th mat-header-cell *matHeaderCellDef> # </th>
-            <td mat-cell *matCellDef="let element"> 1 </td>
+            <td mat-cell *matCellDef="let element">  </td>
         </ng-container>
 
         <!-- Title -->
         <ng-container matColumnDef="photo">
-            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <th mat-header-cell *matHeaderCellDef> Name </th>
             <td mat-cell *matCellDef="let element">
-                <h4 class="title">WordPress Theme Development with Bootstrap</h4>
-                <h5 class="instructor-name">Instructor: John Doe</h5>
+                <h4 class="title m-0">{{element.name}}</h4>
+                <h5 class="instructor-name m-0"><span class="font-weight-bold"> Instructor: </span>  <span class="admin-btn-color"> {{element.instructor?.first_name}} {{element.instructor?.last_name}} </span> </h5>
             </td>
         </ng-container>
 
         <!-- Lessons and actions Column -->
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Category	 </th>
-            <td mat-cell *matCellDef="let element"> anything </td>
+            <td mat-cell *matCellDef="let element"> {{element.category?.name}} </td>
         </ng-container>
 
         <!-- emil Column -->
         <ng-container matColumnDef="email">
             <th mat-header-cell *matHeaderCellDef> 	Lesson and section </th>
-            <td mat-cell *matCellDef="let element"> 	Total section: 7 <br> Total lesson: 24 </td>
+            <td mat-cell *matCellDef="let element"> 	Total section: not finished yet <br> Total lesson: not finished yet </td>
         </ng-container>
 
         <!-- courses Column -->
         <ng-container matColumnDef="courses">
             <th mat-header-cell *matHeaderCellDef> Enrolled student	 </th>
-            <td mat-cell *matCellDef="let element"> 10 </td>
+            <td mat-cell *matCellDef="let element"> not finished yet </td>
         </ng-container>
-
         
         <!-- courses Column -->
         <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef> Price	 </th>
-            <td mat-cell *matCellDef="let element"> 10 </td>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
         </ng-container>
 
-        
         <!-- courses Column -->
         <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef> Status	 </th>
-            <td mat-cell *matCellDef="let element"> 10 </td>
+            <th mat-header-cell *matHeaderCellDef> Level </th>
+            <td mat-cell *matCellDef="let element"> {{element.level}} </td>
         </ng-container>
 
-
         <!-- action Column -->
-
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let element">
@@ -173,9 +159,9 @@
                 </button>
 
                 <mat-menu panelClass="white-background" #menu="matMenu">
-                    <button mat-menu-item>View courses</button>
+                    <button mat-menu-item>View course</button>
                     <button mat-menu-item>Edit</button>
-                    <button mat-menu-item>Delete</button>
+                    <button (click)="deleteAlert(element.id)" mat-menu-item>Delete</button>
                 </mat-menu>
             </td>
         </ng-container>
@@ -183,6 +169,16 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    
+        
+    <div class="align-items-center d-flex pagination-wrapper justify-content-center mt-30">
+        <button [disabled] = "this.pages.current_page == 1" (click)="prev()" class="p-0 d-inline-block left btn "><i class="fas fa-angle-double-left"></i></button>
+
+        <div class="number">{{pages.current_page}}</div>
+
+        <button [disabled] = "this.pages.current_page >= this.pages.last_page" (click)="next()" class="p-0 d-inline-block left btn"><i class="fas fa-angle-double-right"></i></button>
+    </div>
 </section>
 
 <div class="row">

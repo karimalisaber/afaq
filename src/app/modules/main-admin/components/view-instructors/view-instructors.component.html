@@ -8,24 +8,37 @@
 <section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background main-shadow black-color">
     <h2 class="brawn-color uppercase">instructors</h2>
 
+    <!-- start search  -->
+    <div class="row mb-30 d-flex justify-content-between no-gutters dashboard-search">
+      <div class="col-md-6"></div>
+
+      <div class="">
+          <div id="course-datatable-server-side_filter" class="d-flex dataTables_filter">
+              <label class="d-flex align-items-center mb-0 mh-10">Search: </label>
+                  <input type="search" class="form-control form-control-sm" >
+          </div>
+      </div>
+  </div>
     <table mat-table [dataSource]="instructors" class="admin-table table-striped w-100 mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
       
-        <!-- # Column -->
-        <ng-container matColumnDef="#">
-          <th mat-header-cell *matHeaderCellDef> # </th>
-          <td mat-cell *matCellDef="let element"> 1 </td>
-        </ng-container>
-      
+              
         <!-- img -->
         <ng-container matColumnDef="photo">
-            <th mat-header-cell *matHeaderCellDef> Photo </th>
-            <td mat-cell *matCellDef="let element"> 
-                <img class="rounded-small-img img-fluid img-thumbnail rounded-circle" src="assets/images/7.jpg" alt=""> 
-            </td>
+          <th mat-header-cell *matHeaderCellDef> Photo </th>
+          <td mat-cell *matCellDef="let element"> 
+              <img class="rounded-small-img img-fluid img-thumbnail rounded-circle" [src]="'//devmode.fv.academy/public/files/' + element.image" alt=""> 
+          </td>
+      </ng-container>
+
+        <!-- # Column -->
+        <ng-container matColumnDef="#">
+          <th mat-header-cell *matHeaderCellDef> ID number </th>
+          <td mat-cell *matCellDef="let element"> {{element.user_data?.id_number}} </td>
         </ng-container>
+      
 
         <!-- Name Column -->
         <ng-container matColumnDef="name">
@@ -39,10 +52,15 @@
           <td mat-cell *matCellDef="let element"> {{element.user_data?.email}} </td>
         </ng-container>
       
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef> Phone </th>
+          <td mat-cell *matCellDef="let element"> {{element.user_data?.phone}} </td>
+        </ng-container>
+
         <!-- courses Column -->
         <ng-container matColumnDef="courses">
           <th mat-header-cell *matHeaderCellDef> Number of active courses </th>
-          <td mat-cell *matCellDef="let element"> 10 </td>
+          <td mat-cell *matCellDef="let element">not finished Yet </td>
         </ng-container>
       
 
@@ -56,9 +74,9 @@
                 </button>
 
                 <mat-menu panelClass="white-background" #menu="matMenu">
-                    <button mat-menu-item>View courses</button>
-                    <button mat-menu-item>Edit</button>
-                    <button mat-menu-item>Delete</button>
+                    <button mat-menu-item>View Instructor</button>
+                    <button [routerLink]="'/admin/edit_instructor/'  + element.user_data?.id" mat-menu-item>Edit</button>
+                    <button (click) = "deleteAlert(element.user_data.id)" mat-menu-item>Delete</button>
                 </mat-menu>
             </td>
           </ng-container>

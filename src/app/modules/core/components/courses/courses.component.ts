@@ -17,8 +17,10 @@ export class CoursesComponent implements OnInit {
   courses: Array<Course>;
   categoryId: number = 0;
   pages:Pages = {
-    current_page: 1
+    current_page: 1,
+    last_page: 1
   };
+  fitler = false;
 
   constructor(private api: ApiCallService, private route: ActivatedRoute, private router: Router) { }
 
@@ -45,11 +47,25 @@ export class CoursesComponent implements OnInit {
   } 
 
   private getAllCourses(){
+    this.fitler = false;
+    
     this.activeCatName = 'All'; 
     this.isloading = true;
+    
     this.api.getAllCourses(this.pages.current_page)
       .subscribe(
-        res=> this.courses = res.data,
+        res=> {
+          
+          this.pages.current_page = res.current_page;
+
+          this.pages.last_page = res.last_page;
+          this.courses = res.data;
+          
+          this.router.navigate([], {
+                queryParams: {'page': this.pages.current_page},
+          });
+
+        },
         () => {},
         () => this.isloading = false
       );
@@ -57,6 +73,8 @@ export class CoursesComponent implements OnInit {
 
 
   private getCoursesByCategory(){
+    this.fitler = true;
+
     this.isloading = true;
     this.api.getCoursesByCategory(this.categoryId)
       .subscribe(
@@ -71,14 +89,14 @@ export class CoursesComponent implements OnInit {
   private setCategoryId(){
       this.route.queryParamMap
         .subscribe(
-          res => this.categoryId =  parseInt(res.get('category_id')) | 0   
+          res => this.categoryId =  parseInt(res.get('category_id')) || 0   
       );
   }
 
   private setCurrentPage() {
     this.route.queryParamMap
       .subscribe(
-        res =>  this.pages.current_page = parseInt(res.get('page')) | 1 
+        res =>  this.pages.current_page = parseInt(res.get('page')) || 1 
       )
   }
 
@@ -99,5 +117,24 @@ export class CoursesComponent implements OnInit {
      this.getCoursesByCategory();
     this.setCategoryId();
   }
+
+
+
+  
+  prev(){
+    if(this.pages.current_page <= 1) return
+    this.pages.current_page--;
+    this.getAllCourses();
+    
+  }
+
+  next(){
+    if(this.pages.current_page >= this.pages.last_page) return
+    
+    this.pages.current_page++;
+    this.getAllCourses();
+    
+  }
+
   
 }

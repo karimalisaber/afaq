@@ -1,0 +1,42 @@
+<div class="login-wrapper mv-50">
+    <h1 class ="text-center">LOGIN</h1>
+    
+ <form #userForm="ngForm" (ngSubmit)="login(userForm.value)">
+   <div class="form-group">
+       <label for="email">E-MAIL</label>
+       <input 
+
+        required email name="email" ngModel type="email" #email="ngModel" placeholder="Enter you E-mail" id ="email" class ="form-control">
+  
+        
+        <div *ngIf="!email.valid && email.touched">
+            <div class="alert alert-danger" *ngIf="email.errors.required"> <small> * please enter your email </small></div>
+            <div class="alert alert-danger" *ngIf="email.errors.email"> <small> * please enter valid email </small></div>
+          </div>
+    </div>
+
+   <div class="form-group">
+     <label for="password">PASSWORD</label>
+     
+     <input
+        required name="password" ngModel #password="ngModel" type="password" 
+        placeholder="Enter you password" id ="password" type="password" class ="form-control">
+   
+     <div *ngIf="!password.valid && password.touched">
+        <div class="alert alert-danger" *ngIf="password.errors.required"> <small> * please enter your password </small></div>
+     </div>    
+   </div>
+   
+   <div class="mt-20 server-error-message alert alert-danger" *ngIf="invalidLogin"> 
+      email or password didn't match
+    </div>
+
+    <button [disabled]="userForm.invalid" class="btn btn-top btn-new">LOGIN</button>
+      
+   <div class="row">
+      <div *ngIf="isLoading" class="spinner-border main-header-color mt-0 mb-0" role="status">
+      <span class="sr-only">Loading...</span>
+      </div>
+   </div>  
+</form>
+</div>

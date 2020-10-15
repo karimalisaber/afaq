@@ -1,29 +1,47 @@
-<app-main-admin-title
-    [type]="false"
-    [title]="'Add New Category'"
-    [link] ="false"
+<div *ngIf="isLoading" class="row">
+  <div  class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+
+<sectoin [ngClass]="{'hidden': isLoading}" class="">
+  <app-main-admin-title
+  [type]="false"
+  [title]="title"
+  [link] ="false"
 >
 </app-main-admin-title>
 
 <section class="pv-20 ph-30 cat-form white-background main-shadow black-color">
-        <form>
-            <h2 class="brawn-color">Add CATEGORY FORM</h2>
+      <form #userForm="ngForm" (ngSubmit)="addOrEditCategory(userForm.value)">
+          <h2 class="brawn-color text-uppercase" id ="title">Add CATEGORY FORM</h2>
 
-            <div class="form-group">
-              <label for="title"> Category title <span class="text-danger">*</span> </label>
-              <input type="text" class="form-control" id="title" >
-            </div>
-                        
-            <label for="thumbnail"> Category thumbnail <span class="text-danger">*</span> </label>
-  
-                        
-            <div class="input-group mb-3">
-                <div class="custom-file">
-                <input type="file" class="custom-file-input" id="thumbnail">
-                <label class="custom-file-label" for="thumbnail">Choose file</label>
-                </div>
-            </div>
-            
-            <button type="submit" class="ph-0 btn submit-btn">Submit</button>
-          </form>
+          <div class="form-group">
+            <label for="title"> Category title <span class="text-danger">*</span> </label>
+            <input 
+            [ngClass]="{ 'is-invalid': name.invalid && errorStatus, 'is-valid': !name.invalid && errorStatus}"
+
+              required #name=ngModel name="name" [(ngModel)]="catData.name" type="text" class="form-control" id="title" >
+          </div>
+                      
+          <label for="thumbnail"> Category thumbnail <span class="text-danger">*</span> </label>
+
+                      
+          <div class="input-group mb-3">
+              <div class="custom-file">
+              <input 
+                [ngClass]="{ 'is-invalid': img.invalid && errorStatus, 'is-valid': !img.invalid && errorStatus}"
+                required #img=ngModel ngModel name="img"
+                (change)="imgUpload($event.target)"
+                type="file" class="custom-file-input" id="thumbnail" accept="image">
+              <label class="custom-file-label" for="thumbnail">{{imgName}}</label>
+              </div>
+          </div>
+          
+          <button type="submit" class="ph-0 btn submit-btn">Submit</button>
+        </form>
 </section>
+
+
+</sectoin>

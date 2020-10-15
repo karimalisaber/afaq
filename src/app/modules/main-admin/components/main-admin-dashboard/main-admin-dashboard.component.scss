@@ -33,6 +33,18 @@ nav{
 }
 
 
+.logout{
+    background-color:#D4D7FC;
+    transition: $mainTransition;
+
+    &:hover{
+        background-color: $adminBtnColor;
+        
+        *{color: #fff !important};
+        cursor: pointer;
+    }
+}
+
 mat-sidenav-container{
     position: fixed;
     background-color: #fff;

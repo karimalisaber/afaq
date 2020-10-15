@@ -155,10 +155,6 @@ hr {
     padding: 5px 40px;
     background-color: $secondHeaderColor;
     border-radius: 20px;
-
-    &:hover{
-      cursor: initial;
-    }
   }
 }
 
@@ -213,6 +209,14 @@ hr {
   }
 }
 
+
+.in-cart{
+  background-color: #39AFD1 !important;
+  
+  &:hover{
+    cursor: initial;
+  }
+}
 
 @media(max-width: 1000px) and (min-width: 768px){
   .share{

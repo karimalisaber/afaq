@@ -7,7 +7,7 @@ import { Courses } from 'src/app/interfaces/courses';
   styleUrls: ['./related-course.component.scss']
 })
 export class RelatedCourseComponent implements OnInit, AfterContentInit, OnChanges {
-@Input('relatedCourses') relatedCourses: Courses;
+@Input('relatedCourses') relatedCourses  ;
   constructor() { }
 
   ngOnInit(): void {

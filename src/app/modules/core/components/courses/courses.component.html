@@ -19,7 +19,7 @@
     
       <article class="d-none d-lg-flex categories-wrapper mv-20">
          <a *ngFor="let category of categories"  class="d-flex hover cat-img-wrapper" [ngClass]="{'in-active': category.id !== categoryId}" (click)="changeCategory(category)">
-          <img class="cat-img" src="assets/images/7.jpg" alt="">
+          <img class="cat-img" [src]="'//devmode.fv.academy/public/files/' + category.img" alt="">
             <h5 class="cat-name"> {{category.name}}  <br> Courses</h5>
          </a>
 
@@ -33,8 +33,8 @@
     <div class="coursers-wrapper">
      
       <div *ngIf="!isloading">
-        <div  class="row" *ngFor="let course of courses">
-          <app-course-item class="col-md-6 col-lg-4 col-xl-3 mb-30" [course]="course"></app-course-item>
+        <div  class="row" >
+          <app-course-item *ngFor="let course of courses" class="col-md-6 col-lg-4 col-xl-3 mb-30" [course]="course"></app-course-item>
         </div>
       </div>
 
@@ -49,26 +49,23 @@
     <!-- spinner -->
    
 
-    <!-- <div class="load-more-wrapper text-center">
-      <button class="btn second-color">Load more...</button>
-    </div> -->
 
     <!-- start pagination -->
 <nav class="d-flex" aria-label="Page navigation example">
    <ul class="m-auto pagination">
      <li class="page-item">
-       <button class="page-link " aria-label="Previous">
+       <button [disabled] = "this.pages.current_page == 1" (click)="prev()" class="page-link " aria-label="Previous">
          <span aria-hidden="true">&laquo;</span>
        </button>
      </li>
  
      
      <li class="page-item" >
-       <button class="active page-link" >1</button>
+       <button  class="active page-link" >{{pages.current_page}}</button>
      </li>
    
-     <li class="page-item">
-       <button class="page-link" aria-label="Next">
+     <li  class="page-item">
+       <button (click)="next()" [disabled] = "this.pages.current_page >= this.pages.last_page"  class="page-link" aria-label="Next">
          <span aria-hidden="true">&raquo;</span>
        </button>
      </li>
@@ -78,7 +75,3 @@
 </div>
 
 </section>
-
-<!-- 
-<mat-progress-spinner>
-</mat-progress-spinner> -->

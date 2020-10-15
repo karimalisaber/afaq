@@ -19,13 +19,21 @@ import { DeleteDialogComponent } from './components/delete-dialog/delete-dialog.
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { SnackbarErrorComponent } from './components/snackbar-error/snackbar-error.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ChartsModule } from 'ng2-charts';
+// import { ProgressHttpModule } from "angular-progress-http";
+
 
 const SharedComponents =[
   FooterComponent,
+  SnackbarComponent,
   DeleteDialogComponent
 ];
 const  MaterialEntryComponents =[
-  DeleteDialogComponent
+  DeleteDialogComponent,
+  SnackbarComponent
 ];
 
 const SharedImportes = [
@@ -37,6 +45,7 @@ const SharedImportes = [
   FormsModule,
   MatRadioModule,
   HttpClientModule,
+  // ProgressHttpModule,
   MatMenuModule,
   MatSidenavModule,
   MatProgressBarModule,
@@ -45,11 +54,13 @@ const SharedImportes = [
   MatSelectModule,
   MatDialogModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSnackBarModule,
+  ChartsModule
 ];
 
 @NgModule({
-  declarations: [SharedComponents],
+  declarations: [SharedComponents, SnackbarErrorComponent ],
   imports: [
     SharedImportes
   ],

@@ -37,6 +37,14 @@ import { ChatComponent } from './modules/main-admin/components/chat/chat.compone
 import { AllChatsComponent } from './modules/main-admin/components/all-chats/all-chats.component';
 import { UserChatsComponent } from './modules/main-admin/components/user-chats/user-chats.component';
 import { SpecificUserChatComponent } from './modules/main-admin/components/specific-user-chat/specific-user-chat.component';
+import { AdminLoginComponent } from './modules/main-admin/components/admin-login/admin-login.component';
+import { AdminAuthguardService } from './modules/main-admin/services/admin-authguard.service';
+import { ViewEventsComponent } from './modules/main-admin/components/view-events/view-events.component';
+import { AddEventComponent } from './modules/main-admin/components/add-event/add-event.component';
+import { MainAdminHomeComponent } from './modules/main-admin/components/main-admin-home/main-admin-home.component';
+import { ProfileComponent } from './modules/main-admin/components/profile/profile.component';
+import { InstructorRevenuComponent } from './modules/main-admin/components/instructor-revenu/instructor-revenu.component';
+import { AdminRevenuComponent } from './modules/main-admin/components/admin-revenu/admin-revenu.component';
 
 
 const routes: Routes = [
@@ -50,12 +58,15 @@ const routes: Routes = [
     {path: 'instructor/:id', component: SpecificInstructorComponent},
     {path: 'course/view/:id', component: ViewSpecificCourseComponent},
 
+    {path: 'admin_login', component: AdminLoginComponent},
+
     {path: 'course/:id', component: SpecificCourseComponent, children:[
         {path: '', component: SpecificCourseDescriptionComponent},
         {path: 'content', component: SpecificCourseContentComponent},
         {path: 'reviews', component: SpecificCourseReviewsComponent},
     ]},
   
+
     {path: 'cart', component: CartComponent},
     // auth
     {path: 'login', component: LoginComponent},
@@ -67,7 +78,10 @@ const routes: Routes = [
   // dashboard
   {path: 'dashboard', component: DashMainComponent},
 
-  {path: 'admin', component: MainAdminDashboardComponent, children:[
+
+  {path: 'admin', canActivate:[AdminAuthguardService], component: MainAdminDashboardComponent, children:[
+    {path: '', component: MainAdminHomeComponent},
+    
     {path: 'categories', component: ViewCategoriesComponent},
     {path: 'add_category', component: AddCategoryComponent},
     {path: 'edit_category/:id', component: AddCategoryComponent},
@@ -85,19 +99,34 @@ const routes: Routes = [
     {path: 'courses', component: ViewCoursesComponent},
     {path: 'add_course', component: AddCourseComponent},
     {path: 'edit_course/:id', component: EditCourseComponent},
+
+    // events
+    {path: 'events', component: ViewEventsComponent},
+    {path: 'add_event', component: AddEventComponent},
+
+
+    // revenue
+    {path: 'admin_revenue', component: AdminRevenuComponent},
+    {path: 'instructor_revenue', component: InstructorRevenuComponent},
+
+
+    // chat
     {path: 'messages', component: ChatComponent, children:[
       {path: '', component: AllChatsComponent},
-      {path: ':userOneId', component: UserChatsComponent ,children:[
-        {path: ':userTwoId', component: SpecificUserChatComponent},
+      {path: ':userId/:userName', component: UserChatsComponent ,children:[
+        {path: ':participantId/:participantName/:room', component: SpecificUserChatComponent},
       ]},
 
     ]},
+
+
 
     // static pages
     {path: 'faq', component: EditFaqComponent},
     {path: 'add_faq', component: AddFaqComponent},
     {path: 'about', component: EditAboutComponent},
     {path: 'contacts', component: EditContactInfoComponent},
+    {path: 'profile', component: ProfileComponent},
 
   ]},
 

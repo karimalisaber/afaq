@@ -1,0 +1,76 @@
+<app-main-admin-title
+    [title]="'Admin Revenu'"
+    [type]="false"
+    [link] ="false"
+>
+</app-main-admin-title>
+
+
+<section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background main-shadow black-color">
+    <h2 class="brawn-color text-uppercase">Admin revenu</h2>
+
+    <!-- start search  -->
+    <div class="row mb-30 d-flex justify-content-between no-gutters dashboard-search">
+      <div class="col-md-6"></div>
+
+      <div class="">
+          <div id="course-datatable-server-side_filter" class="d-flex dataTables_filter">
+              <label class="d-flex align-items-center mb-0 mh-10">Search: </label>
+                  <input type="search" class="form-control form-control-sm" >
+          </div>
+      </div>
+  </div>
+  <!-- end search -->
+  
+
+    <table mat-table [dataSource]="students" class="admin-table table-striped w-100 mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="Enrolled_course">
+          <th mat-header-cell *matHeaderCellDef> Enrolled course </th>
+          <td mat-cell *matCellDef="let element"> test </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="Total_amount">
+          <th mat-header-cell *matHeaderCellDef> Total amount </th>
+          <td mat-cell *matCellDef="let element"> SR 15</td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Admin_revenue">
+          <th mat-header-cell *matHeaderCellDef> Admin Revenue </th>
+          <td class="" mat-cell *matCellDef="let element">
+           test
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="enrolment_date">
+          <th mat-header-cell *matHeaderCellDef> Enrolment date </th>
+          <td mat-cell *matCellDef="let element"> 
+            test
+          </td>
+        </ng-container>
+      
+
+        <tr mat-header-row class="text-capitalize" *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+      </table>
+
+      
+        
+      <div class="align-items-center d-flex pagination-wrapper justify-content-center mt-30">
+        <button [disabled] = "this.pages.current_page == 1" (click)="prev()" class="p-0 d-inline-block left btn "><i class="fas fa-angle-double-left"></i></button>
+
+        <div class="number">{{pages.current_page}}</div>
+
+        <button [disabled] = "this.pages.current_page >= this.pages.last_page" (click)="next()" class="p-0 d-inline-block left btn"><i class="fas fa-angle-double-right"></i></button>
+    </div>
+</section>
+
+<div class="row">
+    <div *ngIf="isLoading" class="spinner-border main-header-color" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+</div>
+  

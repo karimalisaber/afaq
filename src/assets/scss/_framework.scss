@@ -718,3 +718,10 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+
+.light-shadow{
+  box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+}
+.main-shadow{
+  box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.12);
+}

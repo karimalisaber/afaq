@@ -28,6 +28,79 @@
     gap: 20px 0;
 }
 
+
+.main-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+  .fa-long-arrow-alt-right,
+  .fa-long-arrow-alt-left {
+    font-size: 1.7rem;
+    color: #ed9397;
+  }
+  
+  .fas.not-active {
+    opacity: 0.4;
+  }
+  
+  .instructor {
+    position: relative;
+    padding: 0;
+    margin-left: 12px;
+    margin-right: 12px;
+    overflow: hidden;
+  
+    &:hover {
+      // cursor: pointer;
+      .details {
+        bottom: 0;
+      }
+  
+      a:hover{
+        cursor: pointer;
+      }
+    }
+  
+    img {
+      height: 300px;
+      border-radius: 10px;
+    }
+  
+    .details {
+      overflow: hidden;
+      width: 100%;
+      padding: 20px 15px;
+  
+      bottom: -100px; // for hidding it
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      position: absolute;
+      background-color: rgba($color: $mainHeaderColor, $alpha: .8);
+      transition: $mainTransition;
+      .name,
+      .position {
+        font-size: 1.2rem;
+        text-transform: capitalize;
+        margin: 0;
+        padding: 0;
+        color: #f2f2f2;
+      }
+      .position {
+        font-size: .9rem;
+        color: $silverColor;
+        font-weight: normal;
+      }
+  
+      .rate {
+        color: $mainColor;
+        margin-top: 10px;
+        font-size: 1rem;
+      }
+    }
+  }
+  
+
+
 @media(max-width: 1200px){
     .instructors-wrapper{
         display: grid;

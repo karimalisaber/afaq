@@ -1,35 +1,40 @@
 <section class="white-background main-shadow p-20">
     <h2 class="brawn-color font-weight-lighter">CHAT</h2>
+    <div class="row">
+        <div *ngIf="isLoading" class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
 
-    
-    <div class="chat-data-wrapper">
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
+    <div  class="chat-data-wrapper">
+        <div *ngIf="!isLoading" class="">
+<div *ngFor="let message of chatData" class="ph-20 chat-data">
+            <div *ngIf="message.sender_id == sender.id" class="d-flex incomming-messages mb-30">
                 <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
              
                 <div class="details mh-20">
                     <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
+                        <h3 class="name m-0"> {{sender.name}} </h3>
+                        <p class="message-info m-0 text-capitalize">{{message.body}}</p>
                     </div>
         
                     
                     <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
+                        <span class="date d-inline-block">{{message.created_at | date }}</span>
                     </div>
                 </div>
                
             </div>
             
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
+            <div *ngIf="message.sender_id == sender.id" class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
                 <div class="details mh-20">
                     <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
+                        <h3 class="name m-0">{{participant.name}}</h3>
+                        <p class="message-info m-0 text-capitalize">{{message.body}}</p>
                     </div>
         
                     <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
+                        <span class="date d-inline-block text-right">{{message.created_at | date }}</span>
                     </div>
                 </div>
               
@@ -38,360 +43,10 @@
         
             </div>    
         </div>
-    
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
                
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-        
-            </div>    
+
         </div>
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-        
-            </div>    
-        </div>
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-        
-            </div>    
-        </div>
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-        
-            </div>    
-        </div>
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-        
-            </div>    
-        </div>
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-            </div>    
-        </div>
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div> 
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-            </div>    
-        </div>
-    
-    
-    
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div> 
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">    
-            </div>    
-        </div>
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-        
-                    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div>
-               
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">    
-            </div>    
-        </div>
-    
-        <div class="ph-20 chat-data">
-            <div class="d-flex incomming-messages mb-30">
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-             
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">  kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">teshfpfdsahpofjh dsakhfdsa[fj;lkdsah [sdajflds khfdsha[fjdsa;khn ufhdsaofhdsakjhfdsa[]jf;dsahfj[odujfdsa</p>
-                    </div>
-    
-                    <div class="date-wrapper">
-                        <span class="date d-inline-block">20 june 2020</span>
-                    </div>
-                </div> 
-            </div>
-            
-            <div class="mb-20 d-flex justify-content-end outcomming-messages mb-30">
-                <div class="details mh-20">
-                    <div class="message-wrapper">
-                        <h3 class="name m-0">kokkok</h3>
-                        <p class="message-info m-0 text-capitalize">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio dolore iure necessitatibus maxime, eaque recusandae quisquam placeat consequuntur corporis quibusdam doloremque praesentium culpa nostrum adipisci, nisi velit nam doloribus numquam!</p>
-                    </div>
-        
-                    <div class="date-wrapper text-right">
-                        <span class="date d-inline-block text-right">20 june 2020</span>
-                    </div>
-                </div>
-              
-                <img class="rounded-small-img" src="assets/images/7.jpg" alt="">
-            </div>    
-        </div>            
+         
     </div>
    
    </section>

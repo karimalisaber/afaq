@@ -22,13 +22,12 @@ export class InstructorsComponent implements OnInit {
     this.api.getAllInstructors()
       .subscribe(
         res => this.instructros = res
-      )
+      
       ,
       ()=>{},
       ()=>{
         this.isloading = false;
-      }
-      ;
+      });
   }
 
 }

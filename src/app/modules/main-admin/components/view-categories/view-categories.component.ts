@@ -30,7 +30,21 @@ isLoading = false;
   }
 
   deleteAlert(id){
-    this.assets.deleteAlert();
+    this.assets.deleteAlert().subscribe(res=> res? this.deleteCategory(id): false );;
+  }
+
+  deleteCategory(id){
+    this.api.deleteCategory(id).subscribe(
+      res=>{
+        this.assets.addSuccess().afterDismissed().subscribe(res=>{
+          location.reload();
+        })
+      },
+      err=>{
+        
+        
+      }
+    )
   }
 
 }

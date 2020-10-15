@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pages } from 'src/app/interfaces/pages';
+import { ApiCallService } from 'src/app/modules/shared/services/api-call.service';
 
 export interface PeriodicElement {
   name: string;
@@ -7,18 +9,6 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 
 @Component({
@@ -29,12 +19,52 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 export class StudentListComponent implements OnInit {
   isLoading: boolean = false;
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol' , 'courses', 'action'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['id_number', 'name', 'jobAndTitle' ,'contacts' , 'courses', 'action'];
+  students;
   
-  constructor() { }
+  pages:Pages = {
+    current_page: 1,
+    last_page: 1
+  };
 
-  ngOnInit(): void {
+  constructor(private api: ApiCallService) { 
   }
+  
+  ngOnInit(): void {
+    this.getStudents()
+
+  }
+  
+  private getStudents(){
+    this.isLoading = true;
+  
+      this.api.getAllStudents(this.pages.current_page)
+        .subscribe( (res:any)=>{
+          this.students = res.data;
+          this.pages.current_page = res.current_page;
+          this.pages.last_page = res.last_page;
+        }
+        ,()=>{}
+        ,()=> this.isLoading = false
+        )
+    }
+
+
+    
+  prev(){
+    if(this.pages.current_page <= 1) return
+    this.pages.current_page--;
+    this.getStudents();
+    
+  }
+
+  next(){
+    if(this.pages.current_page >= this.pages.last_page) return
+    
+    this.pages.current_page++;
+    this.getStudents();
+    
+  }
+ 
 
 }

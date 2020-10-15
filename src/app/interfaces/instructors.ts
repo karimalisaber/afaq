@@ -24,12 +24,14 @@ export interface UserData {
     phone?: string,
     gender?: string,
     email: string,
-    biography: any,
-    img: any,
+    biography?: any,
+    image: any,
     facebook?: string,
     twitter?: string,
     linkedin?: string,
     email_verified_at?: string,
     created_at?: string,
-    updated_at?: string
+    updated_at?: string,
+    lang: any,
+    password: any
 }

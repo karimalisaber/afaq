@@ -5,48 +5,104 @@
 >
 </app-main-admin-title>
 
-<section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background main-shadow black-color">
-    <h2 class="brawn-color uppercase">Students</h2>
 
-    <table mat-table [dataSource]="dataSource" class="admin-table table-striped w-100 mat-elevation-z8">
+<section *ngIf="!isLoading" class="pv-20 ph-30 cat-form white-background main-shadow black-color">
+    <h2 class="brawn-color text-uppercase">Students</h2>
+
+    <!-- start search  -->
+    <div class="row mb-30 d-flex justify-content-between no-gutters dashboard-search">
+      <!-- <div class="col-sm-12 col-md-6">
+          <div class="dataTables_length" id="course-datatable-server-side_length">
+              <div class="d-flex"> 
+                  <label class="p-0 mb-0 d-flex align-items-center" for=""> Show</label>  
+                  
+                  <select class="mh-10 custom-select custom-select-sm form-control form-control-sm">
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                  </select> 
+
+                  <label  class="mb-0 p-0 d-flex align-items-center mh-10" for="">entries</label>
+              </div>
+          </div>
+      </div> -->
+
+      <div class="col-md-6"></div>
+
+      <div class="">
+          <div id="course-datatable-server-side_filter" class="d-flex dataTables_filter">
+              <label class="d-flex align-items-center mb-0 mh-10">Search: </label>
+                  <input type="search" class="form-control form-control-sm" >
+          </div>
+      </div>
+  </div>
+  <!-- end search -->
+  
+
+    <table mat-table [dataSource]="students" class="admin-table table-striped w-100 mat-elevation-z8">
 
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <ng-container matColumnDef="id_number">
+          <th mat-header-cell *matHeaderCellDef> Id Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.id_number}} </td>
         </ng-container>
       
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>photo </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <th mat-header-cell *matHeaderCellDef>name </th>
+          <td mat-cell *matCellDef="let element"> {{element.first_name}} {{element.last_name}}</td>
         </ng-container>
       
         <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-          <th mat-header-cell *matHeaderCellDef> name </th>
-          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+        <ng-container matColumnDef="contacts">
+          <th mat-header-cell *matHeaderCellDef> contacts </th>
+          <td class="" mat-cell *matCellDef="let element">
+            {{element.email}} <br>  
+            {{element.phone}}
+          </td>
         </ng-container>
-      
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-          <th mat-header-cell *matHeaderCellDef> email </th>
-          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+
+        <ng-container matColumnDef="jobAndTitle">
+          <th mat-header-cell *matHeaderCellDef> job & title </th>
+          <td mat-cell *matCellDef="let element"> 
+            {{element.job}} <br>  
+            {{element.title}}  
+          </td>
         </ng-container>
       
         <ng-container matColumnDef="courses">
-            <th mat-header-cell *matHeaderCellDef> enrolled courses </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <th mat-header-cell *matHeaderCellDef> enrolled courses</th>
+            <td mat-cell *matCellDef="let element"> thier is no enrolled Corueses Yet </td>
           </ng-container>
 
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> action </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <td mat-cell *matCellDef="let element"> 
+              <button panelClass="white-background" mat-button [matMenuTriggerFor]="menu" class="action-btn btn">
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+
+            <mat-menu panelClass="white-background" #menu="matMenu">
+                <button mat-menu-item>View</button>
+                <button mat-menu-item>ban</button>
+            </mat-menu>
+            </td>
           </ng-container>
 
         <tr mat-header-row class="text-capitalize" *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
       </table>
+
+      
+        
+      <div class="align-items-center d-flex pagination-wrapper justify-content-center mt-30">
+        <button [disabled] = "this.pages.current_page == 1" (click)="prev()" class="p-0 d-inline-block left btn "><i class="fas fa-angle-double-left"></i></button>
+
+        <div class="number">{{pages.current_page}}</div>
+
+        <button [disabled] = "this.pages.current_page >= this.pages.last_page" (click)="next()" class="p-0 d-inline-block left btn"><i class="fas fa-angle-double-right"></i></button>
+    </div>
 </section>
 
 <div class="row">

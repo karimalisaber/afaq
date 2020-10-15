@@ -11,14 +11,22 @@ import { Instructor } from 'src/app/interfaces/instructors';
 export class CourseItemComponent implements OnInit {
 
   @Input('home') home: boolean;
-  @Input('course') course: Course;
+  @Input('course') course: Course ;
   
   constructor() { 
     
   }
 
-  ngOnInit(): void {
+  coureRateMape(){
+    
+    this.course.rate = Array(Math.round(this.course.rate)).fill('').map((res, i)=> res = i+1);
+      // res.emptyRate = Array( 5 - Math.round(res.rate)).fill('').map((res, i)=> res = i+1);
 
+  }
+
+  ngOnInit(): void {
+    if(this.course)
+    this.coureRateMape();
   }
 
 

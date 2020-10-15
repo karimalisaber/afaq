@@ -15,28 +15,29 @@
                Basic
             </button>
         </div>
-    
+        
         <div class="col-md">
-            <button id="control-2" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+            <button [disabled]="!steps.two.inProgress"  id="control-2" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-lock"></i>
                 Requirements
             </button>
         </div>
     
-        <div class="col-md">
+        <!-- <div class="col-md">
             <button id="control-3" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Pricing
             </button>
-        </div>
+        </div> -->
 
         <div class="col-md">
-            <button id="control-4" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+            <button [disabled]="!steps.three.inProgress" id="control-3" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Media
             </button>
         </div>
-<!-- 
+        
+        <!-- 
         <div class="col-md">
             <button id="control-5" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
@@ -45,7 +46,7 @@
         </div> -->
 
         <div class="col-md">
-            <button id="control-5" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+            <button [disabled]="!steps.four.inProgress" id="control-4" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
                 <i class="mh-10 fas fa-check"></i>
                 Finish
             </button>
@@ -56,75 +57,225 @@
             <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="progressStatus"></div>
         </div>
     
-        <form class="m-auto w-75 ph-20">
             <!-- controll item one -->
             <section id="item-control-1" class="visible item basic-info">
-                <div class="mb-20 form-group row no-gutters">
+                <form #firstStepForm="ngForm" (ngSubmit)="moveForward(firstStepForm.value,1 )" action="" class="ph-100">
+
+                <div class="mb-20 form-group row justify-content-end no-gutters">
                     <label class="col-md-3" for="title"> Course Title <span class="text-danger">*</span> </label>
-                    <input type="text" class="col-md-9 form-control" id="title" >
+                    <input 
+                        [ngClass]="{ 'is-invalid': title.invalid && title.touched, 'is-valid': !title.invalid && title.touched}"
+
+                        name="title" ngModel #title="ngModel" required minlength="3"
+                        type="text" class="col-md-9 form-control" id="title" >
+                
+                    <div *ngIf="!title.valid && title.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="title.errors.required"> <small> *Your title is required </small> </div>
+                        <div class="alert alert-danger" *ngIf="title.errors.minlength"> <small> *Your title must be at least 3 characters </small> </div>
+                    </div>
+                </div>
+                
+                <div class="row no-gutters justify-content-end mb-20">
+                    <label class="col-md-3" for="title"> Thumbnail image  <span class="text-danger">*</span> </label>
+                    
+                    <div class="input-group col-md-9">
+                        <div class="custom-file">
+                            <input (change)="uploadImage($event.target)"
+                            [ngClass]="{ 'is-invalid': main_image.invalid && main_image.touched, 'is-valid': !main_image.invalid && main_image.touched}"
+                                name="main_image" required ngModel #main_image="ngModel" type="file" class="custom-file-input" id="thumbnail" accept="image/*">
+                           
+                            <label class="custom-file-label" for="thumbnail">{{imgName}}</label>
+                        </div>
+                    </div>
+
+                    <div *ngIf="!main_image && main_image.touched" class="col-md-9 alert alert-danger">
+                        <small> *Instructor thumbnail is required </small> 
+                     </div>
                 </div>
           
-                <div class="mb-20 form-group row no-gutters">
+                <div class="mb-20 form-group row justify-content-end no-gutters">
                     <label class="col-md-3" for="title"> Short description <span class="text-danger">*</span> </label>
-                    <input type="text" class="col-md-9 form-control" id="title" >
+                    <div class="p-0 col-md-9">
+                        <angular-editor  
+                        [ngClass]="{ 'is-invalid': description.invalid && description.touched, 'is-valid': !description.invalid && description.touched}"
+                        name="description" ngModel #description="ngModel" required minlength="20"
+
+                         [config]="editorConfig" ></angular-editor>
+                    </div>    
+
+                    
+                    <div *ngIf="!description.valid && description.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="description.errors.required"> <small> *description is required </small> </div>
+                        <div class="alert alert-danger" *ngIf="description.errors.minlength"> <small> *description must be at least 20 characters </small> </div>
+                    </div>
                 </div>
     
-                <div class="mb-20 form-group row no-gutters">
-                    <label class="col-md-3" for="title"> Description <span class="text-danger">*</span> </label>
+                <div class="mb-20 form-group row justify-content-end no-gutters">
+                    <label class="col-md-3" for="title"> Details <span class="text-danger">*</span> </label>
                     
                     <div class="p-0 col-md-9">
-                        <angular-editor  name="biography" [config]="editorConfig" ></angular-editor>
+                        <angular-editor  
+                        [ngClass]="{ 'is-invalid': details.invalid && details.touched, 'is-valid': !details.invalid && details.touched}"
+                        name="details" ngModel #details="ngModel" required minlength="50"
+
+                         [config]="editorConfig" ></angular-editor>
                     </div>    
+
+                    
+                    <div *ngIf="!details.valid && details.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="details.errors.required"> <small> *details is required </small> </div>
+                        <div class="alert alert-danger" *ngIf="details.errors.minlength"> <small> *details must be at least 50 characters </small> </div>
+                    </div>
                 </div>
 
                 <!-- category  -->
-                <div class="mb-20 form-group row no-gutters">
+                <div class="mb-20 form-group row justify-content-end no-gutters">
                     <label class="col-md-3" for="title"> Category <span class="text-danger">*</span> </label>
                     
                     <div class="p-0 col-md-9">         
-                        <mat-select value="0">
+                        <mat-select 
+                        [ngClass]="{ 'is-invalid': category_id.invalid && category_id.touched, 'is-valid': !category_id.invalid && category_id.touched}"
+                        name="category_id" ngModel #category_id="ngModel" required>
+
                             <div class="p-10 w-100">
-                                <input type="text" class="w-100 input-search">
+                                <input (keyup)="filterCategories($event.target.value)" type="text" class="w-100 input-search">
                             </div>
 
-                            <mat-option selected value="0">
-                                All
-                            </mat-option>
-                            
-                            <mat-option *ngFor="let cat of categories" selected [value]="cat.id">
+                            <mat-option *ngFor="let cat of filteredCategories"  [value]="cat.id">
                                 {{cat.name}}
                             </mat-option>
                         </mat-select>
                     </div>    
+
+                    <div *ngIf="!category_id.valid && category_id.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="category_id.errors.required"> <small> *category is required </small> </div>
+                    </div>
+                </div>
+
+                
+                <!-- instructor  -->
+                <div class="mb-20 form-group row justify-content-end no-gutters">
+                    <label class="col-md-3" for="title"> Instructor <span class="text-danger">*</span> </label>
+                    
+                    <div class="p-0 col-md-9">         
+                        <mat-select 
+                            [ngClass]="{ 'is-invalid': instractuer_id.invalid && instractuer_id.touched, 'is-valid': !instractuer_id.invalid && instractuer_id.touched}"
+                            name="instractuer_id" ngModel #instractuer_id="ngModel" required 
+                            >
+                            
+                            <div class="p-10 w-100">
+                                <input type="text" class="w-100 input-search">
+                            </div>
+
+                            <mat-option *ngFor="let instructor of instructros" selected [value]="instructor.user_data.id">
+                                {{instructor.user_data?.first_name}}   {{instructor.user_data?.last_name}}
+                            </mat-option>
+                        </mat-select>
+                    </div>   
+                    
+                    <div *ngIf="!instractuer_id.valid && instractuer_id.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="instractuer_id.errors.required"> <small> *instructor is required </small> </div>
+                    </div>
                 </div>
 
                 <!-- level -->
-                <div class="row no-gutters">
+                <div class="row justify-content-end no-gutters">
                     <label class="col-md-3" for="title"> Level  <span class="text-danger">*</span> </label>
  
                     <div class="p-0 col-md-9">
-                        <mat-select value="beginner">
-                            <mat-option  selected value="beginner">
+                        <mat-select name="level" ngModel="beginner" #level="ngModel">
+
+                            <mat-option value="beginner">
                                 beginner
                             </mat-option>
     
-                            <mat-option  selected value="beginner">
+                            <mat-option value="beginner">
                                 Intermediate
                             </mat-option>
     
-                            <mat-option  selected value="beginner">
+                            <mat-option value="beginner">
                                 Advanced
                             </mat-option>
                         </mat-select>
                     </div>
                 </div>
 
+                <!-- price  -->
+                <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+                    <label class="col-md-3" for="price"> price <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': price.invalid && price.touched, 'is-valid': !price.invalid && price.touched}"
+
+                        name="price" ngModel #price="ngModel" required minlength="3"
+                        type="number" class="col-md-9 form-control" id="price" >
+                
+                    <div *ngIf="!price.valid && price.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="price.errors.required"> <small> *price is required </small> </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+                    <label class="col-md-3" for="discount"> discount <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': discount.invalid && discount.touched, 'is-valid': !discount.invalid && discount.touched}"
+
+                        name="discount" ngModel #discount="ngModel" required minlength="3"
+                        type="number" class="col-md-9 form-control" id="discount" >
+                
+                    <div *ngIf="!discount.valid && discount.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="discount.errors.required"> <small> *discount is required </small> </div>
+                        <!-- <div class="alert alert-danger" *ngIf="price.errors.pattern"> <small> *add discount from 0 to 1 (it is percentage) </small> </div> -->
+                    </div>
+                </div>
+
+                <!-- time -->
+                <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+                    <label class="col-md-3" for="title"> Time <span class="text-danger">*</span> </label>
+                    
+                    <div class="p-0 date-wrapper d-flex col-md-8">
+                        <input 
+                            [ngClass]="{ 'is-invalid': time.invalid && time.touched, 'is-valid': !time.invalid && time.touched}"
+                            name="time" ngModel #time="ngModel" required minlength="30"
+                            class="form-control" type="number">
+                    </div>    
+
+                    <h2 class="col-md-1 ph-10">
+                        Hrs
+                    </h2>
+
+                    <div *ngIf="!time.valid && time.touched" class="col-md-8" >
+                        <div class="alert alert-danger" *ngIf="time.errors.required"> <small> *time is required </small> </div>
+                    </div>
+
+                    <div class="col-md-1"></div>
+                </div>   
+
+                <div class="row justify-content-end no-gutters">
+                    <label class="col-md-3" for="title"> Lang  <span class="text-danger">*</span> </label>
+ 
+                    <div class="p-0 col-md-9">
+                        <mat-select name="lang" ngModel="0" #lang="ngModel">
+                            <mat-option value="0">
+                                English
+                            </mat-option>
+                            <mat-option value="1">
+                                Arabic
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
                 <!-- start date -->
-                <div class="mb-20 mt-20 form-group row no-gutters">
-                    <label class="col-md-3" for="title"> Start Date <span class="text-danger">*</span> </label>
+                <div class="mb-20 mt-20 form-group row justify-content-end no-gutters">
+                    <label class="col-md-3" for="start_date"> Start Date <span class="text-danger">*</span> </label>
                     
                     <div class="p-0 date-wrapper d-flex col-md-9">
-                        <input class="form-control" matInput [matDatepicker]="picker">
+                        <input  (focus)="picker.open()"
+                            [ngClass]="{ 'is-invalid': start_date.invalid && start_date.touched, 'is-valid': !start_date.invalid && start_date.touched}"
+
+                            required ngModel #start_date = "ngModel" name="start_date" id="start_date"
+
+                            class="form-control" matInput [matDatepicker]="picker">
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                     </div>    
@@ -132,47 +283,72 @@
 
                   <!-- end date -->
                 <div class="mb-20 mt-20 form-group row no-gutters">
-                   <label class="col-md-3" for="title"> End Date <span class="text-danger">*</span> </label>
+                   <label class="col-md-3" for="end_date"> End Date <span class="text-danger">*</span> </label>
                     
                    <div class="p-0 date-wrapper d-flex col-md-9">
-                       <input class="form-control" matInput [matDatepicker]="endDatePicker">
-                       <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+                       <input (focus)="endDatePicker.open()"
+                       [ngClass]="{ 'is-invalid': end_date.invalid && end_date.touched, 'is-valid': !end_date.invalid && end_date.touched}"
+                        
+                       required ngModel #end_date = "ngModel" name="end_date" id="end_date"
+                        class="form-control" matInput [matDatepicker]="endDatePicker">
+                     
+                        <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
                        <mat-datepicker #endDatePicker></mat-datepicker>
-                   </div>    
+                   </div>
                 </div>
+
+                <!-- [disabled]="firstStepForm.invalid" -->
+                <div class="d-flex justify-content-center actions pb-30 mt-20">
+                    <button  type="submit" [disabled]="firstStepForm.invalid" class="admin-btn next-step-btn"> 
+                        Next
+                    </button>
+                </div>
+              </form>
             </section>
             
             <!-- control item 2 -->
             <section id="item-control-2" class="in-visible item">
-                <div *ngFor ="let req of requirementsArray; index as i" class="form-group row no-gutters">
-                   <!-- <div class="col-md-3">
-                        <label [hidden]="i !==0" for="requirements"> Requirements</label>
-                   </div>
-                    
-                    <div class="d-flex col-md-9 mb-10 justify-content-between">
-                        <input placeholder="provide requirements" type="requirements" class=" form-control" [id]="'requirements-' + i">
-
-                        <button (click)="addRequirement()" *ngIf="i=== 0" class="btn ml-30 p-0 d-flex align-items-center">
-                            <i class="d-flex align-items-center rounded fas fa-plus"></i>
-                        </button>
-
-                        <button (click)="removeRequirement(i)" *ngIf="i > 0" class="btn  ml-30 p-0 d-flex align-items-center">
-                            <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
-                        </button>
-                    </div> -->
-
-                    <div class="mb-20 form-group row no-gutters">
-                        <label class="col-md-3" for="title"> Description <span class="text-danger">*</span> </label>
+                <form #reqForm="ngForm"  action="" class="ph-90">         
+                
+                    <div *ngFor ="let req of requirementsArray; index as i" class="form-group row no-gutters">
+                        <div class="col-md-3">
+                                <label [hidden]="i !==0" for="requirements"> Requirements</label>
+                        </div>
                         
-                        <div class="p-0 col-md-9">
-                            <angular-editor  name="biography" [config]="editorConfig" ></angular-editor>
-                        </div>    
+                        <div class="d-flex col-md-9 mb-10 justify-content-between">
+                            <input
+                                [name]="'requirement'+i" ngModel required 
+                            
+                                placeholder="provide requirements" class=" form-control" [id]="'requirements-' + i">
+
+                            <button (click)="addRequirement()" *ngIf="i=== 0" class="btn ml-30 p-0 d-flex align-items-center">
+                                <i class="d-flex align-items-center rounded fas fa-plus"></i>
+                            </button>
+
+                            <button (click)="removeRequirement(i)" type="button" *ngIf="i > 0" class="btn  ml-30 p-0 d-flex align-items-center">
+                                <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
+                            </button>
+                        </div>
+
+                        <!-- <div class="mb-20 form-group row no-gutters">
+                            <label class="col-md-3" for="title"> Description <span class="text-danger">*</span> </label>
+                            
+                            <div class="p-0 col-md-9">
+                                <angular-editor  name="biography" [config]="editorConfig" ></angular-editor>
+                            </div>    
+                        </div> -->
                     </div>
-                </div>
+
+                <div class="d-flex justify-content-center actions pb-30 mt-20">
+                    <button type="button" (click)="moveBackowrd()" class="btn arrow-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button [disabled]="reqForm.invalid" type="submit" (click)="moveForward(reqForm.value,2)" class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
+                </div> 
+
+                </form>
             </section>
             
             <!-- control item 3 -->
-            <section id="item-control-3" class="main-transition in-visible item pricing">
+            <!-- <section id="item-control-3" class="main-transition in-visible item pricing">
                 <div class="mb-20 form-group row no-gutters">
                    <div class="col-md-3"></div>
 
@@ -191,11 +367,14 @@
                         <input type="number" class="col-md-9 form-control" id="discount" >
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- item control 4 -->
-            <section id="item-control-4" class="in-visible item">
-                <div class="row no-gutters mb-30">
+            <section id="item-control-3" class="in-visible item ph-70">
+                <form *ngFor ="let outcome of chaptersArray; index as outerIndex" class="control-item-4-form" #addChapterForm="ngForm" action="">
+                                  
+
+                <!-- <div class="row no-gutters mb-30">
                     <label class="col-md-3" for="title"> Course thumbnail <span>(image or viedo) </span> <span class="text-danger">*</span> </label>
                     
                     <div class="input-group mb-3 col-md-9">
@@ -204,58 +383,132 @@
                         <label class="custom-file-label" for="thumbnail">Choose file</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="mb-20 form-group row no-gutters">
+                <!-- <div class="mb-20 form-group row no-gutters">
                     <div class="col-md-3"></div>
  
                      <input #adobeConnect style="width: 15px; height: 15px;" type="checkbox" class="mr-10" id="adobeConnect" >
                      <label class="col-md-3" for="adobeConnect">Check if You Are Using Adobe Connect</label>
-                 </div>
+                 </div> -->
 
-                <div *ngFor ="let outcome of chaptersArray; index as i" class="row no-gutters mt-50">
+                <div  class="row no-gutters mt-50">
                     <div class="col-md-3">
-                        <label [hidden]="i !==0" for="requirements"> Add Chapters </label>
+                        <label> Add Chapter </label>
                     </div>
                      
                     <div class="d-flex col-md-9 mb-20 justify-content-between">
-                        <input placeholder="provide outcomes" type="requirements" class=" form-control" [id]="'outcome-' + i">
+                        <input [disabled]="submit[outerIndex]" placeholder="chapter Name" required name="chapter_name" ngModel class=" form-control" [id]="'outcome-' + outerIndex">
 
-                        <button (click)="addChapter()" *ngIf="i=== 0" class="btn ml-30 p-0 d-flex align-items-center">
-                            <i class="d-flex align-items-center rounded fas fa-plus"></i>
-                        </button>
+                    
 
-                        <button (click)="removeChapter(i)" *ngIf="i > 0" class="btn  ml-30 p-0 d-flex align-items-center">
+                        <button *ngIf="!submit[outerIndex] && outerIndex > 0" (click)="removeChapter(outerIndex)" class="btn  ml-30 p-0 d-flex align-items-center">
                             <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
                         </button>
                     </div>
 
-                    <div class="col-md-3"></div>
+                    <!-- <div class=" col-md-12"> -->
+                        <!-- <div class="col-md-3">
+                            <label for="requirements"> upload Lesssons Videos </label>
+                        </div>
 
-                    <app-add-lesson class="col-md-9"></app-add-lesson>
+                        <div class="col-md-9 custom-file mb-10">
+                            <input id="videos" required ngModel name="lesson_video" (change)="uploadLeasonVideo($event.target)" type="file" class="custom-file-input" id="thumbnail" multiple>
+                            <label class="custom-file-label" for="thumbnail">{{chaptersUploadName}}</label>
+                        </div> -->
+                    <!-- </div> -->
+                    
+                    <!-- <div class="col-md-3"></div> -->
+
+                    <div class="col-md-12 mt-20">
+                        <div *ngFor="let lesson of lessonsArray[outerIndex]; index as i" class="row no-gutters">
+                            <div class="col-md-3">
+                                <label [hidden]="i !==0" for="requirements"> Add Lessons </label>
+                            </div>
+                        
+                            <div class="d-flex flex-wrap col-md-9 mb-20 justify-content-between">
+                                <div ngModelGroup="lesson_name" class="d-flex w-100">
+                                    <input [disabled]="submit[outerIndex]" [name]="'leasson-' + i" placeholder="lesson {{i+1}} name" ngModel class=" form-control" [id]="'lesson-' + i">
+                        
+                                    <div *ngIf="!submit[outerIndex] && i === 0" class="d-flex ml-10">
+                                        <button (click)="addLesson(outerIndex,0)"  class="btn p-0 d-flex align-items-center">
+                                            <i class="d-flex btn-danger align-items-center rounded fas fa-plus"></i>
+                                        </button>
+                        
+                                        <button (click)="removeLesson(outerIndex,0)" class="hidden btn ml-10 p-0 d-flex align-items-center">
+                                            <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                        
+                                    <div *ngIf="!submit[outerIndex] && i > 0" class="d-flex ml-10">
+                                        <button (click)="addLesson(outerIndex,i)"  class="btn p-0 d-flex align-items-center">
+                                            <i class="d-flex btn-danger align-items-center rounded fas fa-plus"></i>
+                                        </button>
+                        
+                                        <button (click)="removeLesson(outerIndex,i)" class="btn ml-10 p-0 d-flex align-items-center">
+                                            <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                        
+                                <div class="break"></div>
+                        
+                                <div class="d-flex w-100 mt-10" ngModelGroup="lesson_video">
+                                    <div class="custom-file mb-10">
+                                        <input [disabled]="submit[outerIndex]" required ngModel [name]="'lesson-video-' + i" (change)="uploadLeasonVideo($event.target,(outerIndex.toString()+i))" type="file" class="custom-file-input lesson-video-label" id="thumbnail" [id]="'lesson-video' + outerIndex +i" >
+                                        <label class="custom-file-label" [id]="'lesson-video-label-' + outerIndex.toString() + i" for="thumbnail">Choose Viedo For Lesson {{i +1 }}</label>
+                                    </div>
+                        
+                                    <div *ngIf="!submit[outerIndex]" class="d-flex ml-10 hidden">
+                                        <button type="button" class="btn p-0 d-flex align-items-center">
+                                            <i class="d-flex btn-danger align-items-center rounded fas fa-plus"></i>
+                                        </button>
+                        
+                                        <button type="button" class="btn ml-10 p-0 d-flex align-items-center">
+                                            <i class="d-flex btn-danger align-items-center rounded fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="break"></div>  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center actions pb-30 mt-20 col-md-12">
+                        <button *ngIf="!submit[outerIndex]" (click)="postChapter(addChapterForm.value, outerIndex)"  type="submit" class="admin-btn next-step-btn"> 
+                            Submit Chapter
+                        </button>
+
+
+
+                        <!-- <mat-progress-bar *ngIf="submit[outerIndex] && !courseSubmitSuccess[outerIndex]" mode="buffer"></mat-progress-bar> -->
+                        <!-- <img class="loader-image" src="assets/images/admin/loader.gif" alt=""> -->
+                    </div>
+                        
+                    <div class="w-100 d-flex justify-content-center mb-20">
+                        <div *ngIf="submit[outerIndex]" class="progress" style="width: 30%;">
+                            <div class="progress-bar bg-info" role="progressbar" [style.width.%]="addcourseProgressBar[outerIndex]" ></div>
+                        </div>
+                    </div>
+
+
+                    <div *ngIf="submit[outerIndex] && submit[outerIndex+1] === undefined" class="d-flex justify-content-center add-chaper-btn w-100">
+                        <button style="height: 40px; margin-left: -4px;" (click)="addChapter(outerIndex)" class="btn ml-30 p-0 d-flex align-items-center">
+                            <i class="d-flex align-items-center rounded fas fa-plus"></i>
+                        </button> 
+                    </div>
+                    
                  </div>
+                </form>
+                
+                <div class="d-flex justify-content-center actions pb-30 mt-20">
+                    <button (click)="moveBackowrd()" type="button" class="btn arrow-btn"><i class="fas fa-arrow-left"></i></button>
+                    <button [disabled]="!getAllCoursesStatus" (click)="moveForward('null', 3)" class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
+                </div>
             </section>
 
-            <!-- control item 5 -->
-            <section id="item-control-5" class="in-visible item text-center finish">
-                <div class="w-100">
-                    <i class="far fa-check-circle"></i> 
-                </div>
-    
-                <h2 class="m-0 w-100">
-                    Add Course !
-                </h2>
-    
-                <h4 class="">You are just one click away </h4>
-                
-                <div class="w-100">
-                    <button type="submit" class="main-shadow rounded ph-0 btn white-color submit-btn">Add Coures</button>
-                </div>
+            <!-- control item 4 -->
+            <section id="item-control-4" class="in-visible item text-center finish">
+                <app-add-course-finish></app-add-course-finish>
             </section>
-        </form>
-    
-        <div class="d-flex justify-content-center actions pb-30 mt-20">
-            <button (click)="moveBackowrd()" class="btn arrow-btn"><i class="fas fa-arrow-left"></i></button>
-            <button (click)="moveForward()" class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
-        </div>
 </div>

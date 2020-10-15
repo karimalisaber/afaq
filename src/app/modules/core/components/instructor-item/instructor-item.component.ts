@@ -12,6 +12,7 @@ export class InstructorItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }

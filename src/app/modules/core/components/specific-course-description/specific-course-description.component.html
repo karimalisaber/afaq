@@ -1,1 +1,14 @@
-<p>specific-course-description works!</p>
+<section *ngIf="course" class="wrapper p-20">
+
+    <div id="course-desc-item" class="wrapper">
+    </div>
+    
+    <br>
+    
+    <div id="course-details-item" class="wrapper">
+    </div>
+    
+    <h1 class="admin-btn-color"> REQUIRMENTS</h1>
+
+    <h2 *ngFor="let req of course.requirments; index as i" class="mb-0"> {{i+1}} - {{req.name}}</h2>
+</section>

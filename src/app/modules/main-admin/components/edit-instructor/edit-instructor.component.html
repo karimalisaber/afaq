@@ -1,1 +1,252 @@
-<p>edit-instructor works!</p>
+<app-main-admin-title
+    [type]="false"
+    [title]="'Add Instructor'"
+    [link] ="false"
+>
+</app-main-admin-title>
+
+<div class="white-background main-shadow">
+    <h2 class="mh-30 pt-30 pb-20 brawn-color">EDit <span style="color:#727CF5"> Karim </span> INSTRUCTOR FORM</h2>
+
+    <section class="row no-gutters">
+        <div class="p-0 col-md">
+            <button id="control-1" (click)="move($event.target)" class="active btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-info"></i>
+                Basic info
+            </button>
+        </div>
+    
+        <div class="col-md">
+            <button id="control-2" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-lock"></i>
+                Login Credientials
+            </button>
+        </div>
+
+    
+        <div class="col-md">
+            <button id="control-3" (click)="move($event.target)" class="btn w-100 rounded-0 admin-btn">
+                <i class="mh-10 fas fa-check"></i>
+                Finish
+            </button>
+        </div>
+    </section>
+    
+        <div class="mh-40 mv-30 progress">
+            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="progressStatus"></div>
+        </div>
+    
+        <form #instructorForm="ngForm" class="ph-60">
+            <section id="item-control-1" class="visible item basic-info">
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="title"> First name <span class="text-danger">*</span> </label>
+                    <input   
+                        [ngClass]="{ 'is-invalid': first_name.invalid && (first_name.touched || hasError), 'is-valid': !first_name.invalid && (first_name.touched || hasError)}"
+                        minlength="3" required [(ngModel)]="instructor.first_name" #first_name="ngModel" name="first_name" type="text" class="col-md-9 form-control" id="title"  >
+
+                    <div *ngIf="!first_name.valid && first_name.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="first_name.errors.required"> <small> *Instructor first name is required </small> </div>
+                        <div class="alert alert-danger" *ngIf="first_name.errors.minlength"> <small> *Instructor First name must be at least {{first_name.errors.minlength.requiredLength}} characters </small> </div>
+                    </div>
+                </div>
+          
+
+
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="last_name"> Last name <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': last_name.invalid && (last_name.touched || hasError), 'is-valid': !last_name.invalid && (last_name.touched || hasError)}"
+                        minlength="3" required [(ngModel)]="instructor.last_name" #last_name="ngModel" name="last_name" type="text" class="col-md-9 form-control" id="title" >
+               
+                    <div *ngIf="!last_name.valid && last_name.touched" class="col-md-9">
+                        <div class="alert alert-danger" *ngIf="last_name.errors.required"> <small> *Instructor last name is required </small> </div>
+                    <div class="alert alert-danger" *ngIf="last_name.errors.minlength"> <small> *Instructor last name must be at least {{last_name.errors.minlength.requiredLength}} characters </small> </div>
+                    </div>
+                </div>
+    
+                <div class="row no-gutters justify-content-end mb-20">
+                    <label class="col-md-3" for="image"> User image  <span class="text-danger">*</span> </label>
+                    
+                    <div class="input-group col-md-9">
+                        <div class="custom-file">
+                            <input (change)="uploadImage($event.target)"
+                            [ngClass]="{ 'is-invalid': !this.instructor.image && image.touched, 'is-valid': this.instructor.image}"
+                                name="image" required ngModel #image="ngModel" type="file" class="custom-file-input" id="thumbnail" accept="image/*">
+                           
+                            <label class="custom-file-label" for="thumbnail">{{instructor.image}}</label>
+                        </div>
+                    </div>
+
+                    <div *ngIf="!this.instructor.image && image.touched" class="col-md-9 alert alert-danger">
+                        <small> *Instructor thumbnail is required </small> 
+                     </div>
+                </div>
+
+                
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="title"> Title <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': title.invalid && (title.touched || hasError), 'is-valid': !title.invalid && (title.touched || hasError)}"
+                        minlength="3" required [(ngModel)]="instructor.title" #title="ngModel" name="title" type="text" class="col-md-9 form-control" id="title" >
+               
+                    <div *ngIf="!title.valid && title.touched" class="col-md-9">
+                        <div class="alert alert-danger" *ngIf="title.errors.required"> <small> *Instructor title is required </small> </div>
+                    <div class="alert alert-danger" *ngIf="title.errors.minlength"> <small> *Instructor last name must be at least {{title.errors.minlength.requiredLength}} characters </small> </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="job"> job <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': job.invalid && (job.touched || hasError), 'is-valid': !job.invalid && (job.touched || hasError)}"
+                        minlength="3" required [(ngModel)]="instructor.job" #job="ngModel" name="job" type="text" class="col-md-9 form-control" id="job" >
+               
+                    <div *ngIf="!job.valid && job.touched" class="col-md-9">
+                        <div class="alert alert-danger" *ngIf="job.errors.required"> <small> *Instructor job is required </small> </div>
+                    <div class="alert alert-danger" *ngIf="job.errors.minlength"> <small> *Instructor last name must be at least {{job.errors.minlength.requiredLength}} characters </small> </div>
+                    </div>
+                </div>
+
+                
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="id_number"> id_number <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': id_number.invalid && (id_number.touched || hasError), 'is-valid': !id_number.invalid && (id_number.touched || hasError)}"
+                         required [(ngModel)]="instructor.id_number" #id_number="ngModel" name="id_number" type="number" class="col-md-9 form-control" id="id_number" >
+               
+                    <div *ngIf="!id_number.valid && id_number.touched" class="col-md-9">
+                        <div class="alert alert-danger" *ngIf="id_number.errors.required"> <small> *Instructor id_number is required </small> </div>
+                    </div>
+                </div>
+
+                
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="medical_number"> medical_number <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': medical_number.invalid && (medical_number.touched || hasError), 'is-valid': !medical_number.invalid && (medical_number.touched || hasError)}"
+                     required [(ngModel)]="instructor.medical_number" #medical_number="ngModel" name="medical_number" type="number" class="col-md-9 form-control" id="medical_number" >
+               
+                    <div *ngIf="!medical_number.valid && medical_number.touched" class="col-md-9">
+                        <div class="alert alert-danger" *ngIf="medical_number.errors.required"> <small> *Instructor medical_number is required </small> </div>
+                    </div>
+                </div>
+
+                
+                <div class="row justify-content-end no-gutters mb-20">
+                    <label class="col-md-3" for="title"> gender  <span class="text-danger">*</span> </label>
+ 
+                    <div class="p-0 col-md-9">
+                        <mat-select name="gender" ngModel="male" #gender="ngModel">
+                            <mat-option value="male">
+                                Male
+                            </mat-option>
+                            <mat-option value="female">
+                                Female
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-end no-gutters mb-20">
+                    <label class="col-md-3" for="title"> Lang  <span class="text-danger">*</span> </label>
+ 
+                    <div class="p-0 col-md-9">
+                        <mat-select name="lang" ngModel="0" #lang="ngModel">
+                            <mat-option value="0">
+                                English
+                            </mat-option>
+                            <mat-option value="1">
+                                Arabic
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- control item 2 -->
+            <section id="item-control-2" class="in-visible item login-credential">
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="email"> Email <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': email.invalid && (email.touched || hasError), 'is-valid': !email.invalid && (email.touched)}"
+                        name="email" required email [(ngModel)]="instructor.email" #email="ngModel" type="email" class="col-md-9 form-control" id="email" >
+               
+                    <div *ngIf="!email.valid && email.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="email.errors.required"> <small> *Instructor email is required </small> </div>
+                        <div class="alert alert-danger" *ngIf="email.errors.email"> <small> *Please enter valid email </small> </div>
+                    </div>
+                </div>
+
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="phone"> Phone <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': phone.invalid && (phone.touched || hasError), 'is-valid': !phone.invalid && (phone.touched)}"
+                        name="phone" required phone [(ngModel)]="instructor.phone" #phone="ngModel" type="number" class="col-md-9 form-control" id="phone" >
+               
+                    <div *ngIf="!phone.valid && phone.touched" class="col-md-9" >
+                        <div class="alert alert-danger" *ngIf="phone.errors.required"> <small> *Instructor phone is required </small> </div>
+                        <div class="alert alert-danger" *ngIf="phone.errors.phone"> <small> *Please enter valid phone Number </small> </div>
+                    </div>
+                </div>
+                
+
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="password"> Password <span class="text-danger">*</span> </label>
+                    <input 
+                    [ngClass]="{ 'is-invalid': password.touched && (password.invalid || passwordError(password.value)) , 'is-valid': !password.invalid && password.touched && !passwordError(password.value)}"
+                        required ngModel #password="ngModel" name="password" type="password" class="col-md-9 form-control" name="password" id="password" >
+              
+                        <div class="alert alert-danger col-md-9" *ngIf="passwordError(password.value) && password.touched"> <small> {{passwordErrorMessage}} </small> </div>
+                </div>
+    
+                <div class="mb-20 form-group row no-gutters justify-content-end">
+                    <label class="col-md-3" for="confirm_password"> Confirm password <span class="text-danger">*</span> </label>
+                    <input 
+                        [ngClass]="{ 'is-invalid': confirm_password.touched && (confirmPasswordError(confirm_password.value) || !isPasswordMatches(password.value, confirm_password.value)) , 'is-valid': confirm_password.touched && !confirmPasswordError(confirm_password.value) && isPasswordMatches(password.value, confirm_password.value)}"
+                        required ngModel #confirm_password="ngModel" name="confirm_password" type="password" class="col-md-9 form-control" id="confirm_password" name="confirm_password" >
+        
+                    <div class="col-md-9 alert alert-danger" *ngIf="!isPasswordMatches(password.value, confirm_password.value)  && confirm_password.touched && !confirmPasswordError(confirm_password.value)"> <small> passwords must be identical </small> </div>
+                    <div class="col-md-9 alert alert-danger" *ngIf="confirmPasswordError(confirm_password.value) && confirm_password.touched"> <small> {{confirmPasswordErrorMessage}} </small> </div>
+                </div>
+            </section>
+    
+            <section *ngIf="instructorForm.valid" id="item-control-3" class="in-visible item text-center finish">
+                <div class="w-100">
+                    <i class="far fa-check-circle"></i> 
+                </div>
+    
+                <h2  class="m-0 w-100">
+                    Thank you !
+                </h2>
+    
+                <h4 class="">You are just one click away </h4>
+                
+                <div class="w-100">
+                    <button type="button" (click)="addInstructor(instructorForm.value)" class="main-shadow rounded ph-0 btn white-color submit-btn">Submit</button>
+                </div>
+            </section>
+
+            
+            <section *ngIf="instructorForm.invalid" id="item-control-3" class="in-visible item text-center finish">
+                <div class="w-100">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+    
+                <h2 class="m-0 w-100">
+                   Not Yet !
+                </h2>
+    
+                <h4 class="">You can't submit until finishing all missing data </h4>
+            </section>
+            <!-- <div [froalaEditor]>Hello, Froala!</div> -->
+            
+            <!-- <button type="submit" class="ph-0 btn submit-btn">Submit</button> -->
+          </form>
+    
+          <div class="d-flex justify-content-center actions pb-30 mt-20">
+                <button (click)="moveBackowrd()" class="btn arrow-btn"><i class="fas fa-arrow-left"></i></button>
+                <button (click)="moveForward()" class="btn arrow-btn"><i class="fas fa-arrow-right"></i></button>
+          </div>
+</div>
+
+<!-- <ngx-editor [ngModel]="jsonDoc"></ngx-editor> -->

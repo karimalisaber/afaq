@@ -1,14 +1,17 @@
-<app-component-title 
-[title]="'live events & course list'" 
-[sub-title]="'cardiovascular pharmacology'" 
-src="'assets/images/core/about-slider.png'">
-</app-component-title>
+<div *ngIf="course">
+    <app-component-title 
+    [title]="'live events & course list'" 
+    [sub-title]="course.name" 
+    src="'assets/images/core/about-slider.png'">
+    </app-component-title>    
+</div>
+
 
 <div class="main-background main-section">
-        <div class="container">
+        <div *ngIf="course" class="container">
             <header class="header row">
             <div class="col-md-5">
-                <img class="main-img" src="assets/images/course.jpg" alt="">
+                <img class="main-img" [src]="'//devmode.fv.academy/public/files/' + course.main_image" alt="">
                 <div class="d-flex mt-20 socials">
                     <h5 class="share">Share this: </h5>
 
@@ -20,17 +23,14 @@ src="'assets/images/core/about-slider.png'">
             </div>
 
             <!-- right section  -->
-            <div *ngIf="course" class="gray-color col-md-7 details">
+            <div class="gray-color col-md-7 details">
                 <h2 class="course-name mv-20 text-capitalize">{{course.name}} <span class="live float-right">{{course.type}}</span></h2>
 
                 <!-- rate -->
-                <div class="stars row no-gutters">
+                <div *ngIf="course.rate[0]" class="stars row no-gutters">
                     <div class="stars-color d-inline fill-starts">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                        <i *ngFor="let element of course.rate" class="fas fa-star"></i>
+                      
                     </div>
                     <p class= "black-header-color text-light-color">3 Review(s) <a href="course/{{'1'}}/reviews#Review"> | Add your Review </a>  </p>
                 </div>
@@ -41,24 +41,25 @@ src="'assets/images/core/about-slider.png'">
                 <hr class="float-left mv-10">
                 <div class="clearfix"></div>
 
-                <p class="second-paragraph p-0 mb-40">
-                    {{course.details}}
+                <p id="course-details" class="second-paragraph p-0 mb-40">
+                   
                 </p>
                 
                 <div class="row no-gutters">
                     <div class="col-lg-5 col-xl col-md-12 mb-20">
-                        <span class= "pt-10 main-paragraph fake-price"> RS{{course.discount}} </span>
-                        <span class="pt-10 main-paragraph mh-20 real-price"> RS{{course.price}} </span>        
+                        <span class= "pt-10 main-paragraph fake-price"> RS{{course.price}} </span>
+                        <span class="pt-10 main-paragraph mh-20 real-price"> RS{{course.discount}} </span>        
                     </div>
                     
                     <div class="col-lg-7 col-xl col-md-12">
-                        <!-- <button class="enroll-btn ml-auto btn second-btn mh-30"> Enroll Now</button> -->
-                        <span class="btn purchased-btn second-btn"> Purchased</span>
+                        <span *ngIf="course.is_purchased === 1 && course.is_wishlist === 0" class="enroll-btn ml-auto btn second-btn in-cart rounded-0 mh-30"> In Cart</span>
+                        
+                        <button *ngIf="course.is_purchased ===0" (click)="addToCart()" class="btn purchased-btn second-btn"> Enroll Now</button>
     
-                        <div class="d-inline-block ph-30">
+                        <!-- <div class="d-inline-block ph-30">
                             <i class="fas fa-heart"></i>
                             <i class="fas fa-heart"></i>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 
@@ -69,12 +70,12 @@ src="'assets/images/core/about-slider.png'">
 
         <section class="black-header-color content-wrapper main-section">
             <ul class="control-wrapper d-flex">
-                <li><button routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" routerLink="/course/1" class="text-left control-item btn">Description</button></li>
+                <li><button routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" [routerLink]="'/course/' + courseId" class="text-left control-item btn">Description</button></li>
                 <li><button routerLinkActive="active" routerLink="content" class="text-left control-item btn">Content</button></li>
                 <li><button routerLinkActive="active" routerLink="reviews" class="text-left control-item btn">Reviews(10)</button></li>
             </ul>
 
-            <article class="content">
+            <article style="min-height: 400px;" class="content">
                 <router-outlet></router-outlet>
             </article>
         </section>

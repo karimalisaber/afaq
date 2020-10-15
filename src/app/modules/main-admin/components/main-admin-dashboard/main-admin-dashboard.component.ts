@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-admin-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainAdminDashboardComponent implements OnInit {
   navOpened= true;
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
+
+  }
+
+  logOut(){
+    localStorage.clear();
+    location.reload();
   }
 
 }

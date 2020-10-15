@@ -1,0 +1,8 @@
+@import "variables";
+app-summary{
+    border-right: 1px solid $lightBorder;
+    color: $brawnColor;
+    &:last-child{
+        border-right: 0;
+    }
+}

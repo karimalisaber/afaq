@@ -13,6 +13,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { MainAdminModule } from './modules/main-admin/main-admin.module';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AdminApiService } from './modules/shared/services/admin-api.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { MainAdminModule } from './modules/main-admin/main-admin.module';
     NgbModule,
     MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: HTTP_INTERCEPTORS, useClass: AdminApiService , multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

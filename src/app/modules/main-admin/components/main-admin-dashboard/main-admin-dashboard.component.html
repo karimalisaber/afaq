@@ -143,7 +143,7 @@
           
           <ul>
             <li class="sub-menu"><a routerLink="student_list" routerLinkActive="active" class="btn">Student list </a> </li>
-            <li class="sub-menu"><a routerLink="student_application" routerLinkActive="active" class="btn"> application </a> </li>
+            <!-- <li class="sub-menu"><a routerLink="student_application" routerLinkActive="active" class="btn"> application </a> </li> -->
           </ul>
       </mat-expansion-panel>         
    </li>
@@ -155,6 +155,30 @@
             Courses
         </a>
       </li>
+
+      <li class="w-100 control-item mv-10">
+        <a routerLink="events" routerLinkActive="active">
+         <i class="fab fa-fonticons-fi"></i>    
+          Events
+        </a>
+      </li>
+
+      
+      <li style="display: flex !important" class="control-item">
+        <i class="fas fa-home mh-10"></i>    
+
+        <mat-expansion-panel class="w-100 d-inline-block">
+            <mat-expansion-panel-header class="p-0" style="height: auto !important;"> 
+                <button class="btn"> Reports </button>
+            </mat-expansion-panel-header>
+            
+            <ul>
+              <li class="sub-menu"><a routerLink="admin_revenue" routerLinkActive="active" class="d-block text-left btn">Admin revenue </a> </li>
+              <li class="sub-menu"><a routerLink="instructor_revenue" routerLinkActive="active" class="d-block text-left btn">Instructor revenue </a> </li>
+            </ul>
+        </mat-expansion-panel>         
+      </li>
+
 
       
       <li class="w-100 control-item mv-10">
@@ -180,9 +204,23 @@
             </ul>
         </mat-expansion-panel>         
       </li>
+
+      
+      <li class="w-100 control-item mv-10">
+        <a routerLink="profile" routerLinkActive="active">
+         <i class="fab fa-fonticons-fi"></i>    
+            Manage Profile 
+        </a>
+      </li>
+
+      <li class="w-100 control-item mv-30 pv-10 text-center logout d-flex align-items-center justify-content-center">
+        <a (click)="logOut()" routerLinkActive="active">
+         <!-- <i class="fab fa-fonticons-fi"></i>     -->
+            <h3 class="admin-btn-color m-0">LOGOUT</h3>
+        </a>
+      </li>
    </ul>
   </div>
-
 
   <div class="content">
     <router-outlet></router-outlet>

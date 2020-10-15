@@ -1,0 +1,16 @@
+label{
+    color: rgb(112,112,112);
+}
+
+.main-wrapper{
+    // flex-grow: 2 1 ;
+
+    .basic-info{
+        flex-grow: 3;
+    }
+
+    .password-wrapper{
+        flex-grow: 2;
+    }
+}
+

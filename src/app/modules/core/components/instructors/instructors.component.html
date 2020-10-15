@@ -19,14 +19,33 @@
 
 <!-- start instructors -->
 <section class="pb-60 main-section main-background">
-    <div class="container">
-        <div *ngFor="let instructor of instructros" class="instructors-wrapper">
-            <app-instructor-item *ngIf="instructor" [instructor]="instructor" ></app-instructor-item> <!-- the component has the responsibility of col -->
+    <div *ngIf="!isloading" class="container">
+        <div class="instructors-wrapper">
+
+        <div *ngFor="let instructor of instructros" class="">
+            
+            <div class="d-inline-block instructor">
+                <img class="img-fluid" [src]="'//devmode.fv.academy/public/files/' + instructor.image" alt="">
+            
+                <a [routerLink]="['/instructor', instructor.id]" class="details row no-gutters">
+                    <div class="mr-auto">
+                        <h3 class="name">{{instructor?.user_data?.first_name}} {{instructor?.user_data?.last_name}}</h3>
+            
+                        <h3 class="position">{{instructor?.user_data?.title}} & {{instructor?.user_data?.job}}</h3>
+                    </div>
+            
+                    <p class="rate">
+                        4.5
+                    </p>
+                </a>
+            </div>
+        </div>
+        
         </div>
     </div>
     
-    <div class="row">
-        <div *ngIf="isloading" class="spinner-border" role="status">
+    <div *ngIf="isloading" class="row">
+        <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
     </div>

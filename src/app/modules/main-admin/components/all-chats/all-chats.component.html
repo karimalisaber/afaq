@@ -12,64 +12,27 @@
         
 
         <!-- users  -->
-        <div class="users-wrapper">
-            <button routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button>
-
-            <button routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button>
-
-            <button routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button>
-
-            <button routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button>
-            <button routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button>
-            <button routerLink="10" class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> 
-            <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> 
-            <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> 
-            <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> 
-            <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button> <button routerLink="10"
-                class="mb-20 d-flex justify-content-start user-wrapper rounded btn w-100 users">
-                <h2 class="m-0 name">karim ali saber</h2>
-            </button>
+        <div *ngIf="isLoading" class="users-wrapper">
+            <div class="row">
+                <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
         </div>
 
+        <div *ngIf="!isLoading" class="users-wrapper">
+            <a *ngFor="let student of students" [routerLink]="student.id + '/' + student.first_name + ' ' + student.last_name" class="mb-20 d-flex justify-content-start user-wrapper active rounded btn w-100 users">
+                <h2 class="m-0 name">{{student.first_name}} {{student.last_name}}</h2>
+            </a>
+        </div>
+        
+        <div class="align-items-center d-flex pagination-wrapper justify-content-center">
+            <button [disabled] = "this.pages.current_page == 1" (click)="prev()" class="p-0 d-inline-block left btn "><i class="fas fa-angle-double-left"></i></button>
+
+            <div class="number">{{pages.current_page}}</div>
+
+            <button [disabled] = "this.pages.current_page >= this.pages.last_page" (click)="next()" class="p-0 d-inline-block left btn"><i class="fas fa-angle-double-right"></i></button>
+        </div>
     </div>
 
     <div class="chat col-md-9">
